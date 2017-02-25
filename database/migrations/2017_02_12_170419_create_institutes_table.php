@@ -18,7 +18,7 @@ class CreateInstitutesTable extends Migration
             $table->string('name');
             $table->text('address');
             $table->string('logoUrl');
-            $table->enum('type', ['club', 'school','mercantile']);
+            $table->enum('type', ['club', 'school','mercantile','university']);
             $table->timestamps();
         });
     }
