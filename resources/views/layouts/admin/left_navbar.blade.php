@@ -34,6 +34,9 @@
         <!-- Optionally, you can add icons to the links -->
         <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>
         <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
+        <li><a href="http://127.0.0.1:8000/addplayer"><i class="fa fa-link"></i> <span>Player Registration</span></a></li>
+        <li><a href="http://127.0.0.1:8000/instituteRegistration"><i class="fa fa-link"></i> <span>Institute Registration</span></a></li>
+        <li><a href="http://127.0.0.1:8000/teamRegistration"><i class="fa fa-link"></i> <span>Team Registration</span></a></li>
         <li class="treeview">
           <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
             <span class="pull-right-container">
