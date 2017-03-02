@@ -18,3 +18,16 @@ Route::get('/', function () {
 Route::get('admin', function () {
     return view('dashboard.index');
 });
+Route::get('addplayer', function () {
+    return view('dashboard.addplayer');
+});
+
+Route::get('instituteRegistration', function () {
+    return view('dashboard.instituteRegistration');
+});
+
+Route::get('teamRegistration', function () {
+    return view('dashboard.teamRegistration');
+});
+Route::post('/players', 'PlayerController@store');
+
