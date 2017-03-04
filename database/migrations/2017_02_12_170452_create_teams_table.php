@@ -16,9 +16,9 @@ class CreateTeamsTable extends Migration
         Schema::create('teams', function (Blueprint $table) {
             $table->increments('id');
             
-            $table->string('name');
-            $table->integer('ageCat');
-            $table->enum('div', ['1', '2','3', 'A', 'B', 'C', 'D', 'E', 'F']);
+            $table->string('name'); 
+            $table->integer('ageCat')->nullable();
+            $table->enum('div', ['0','1', '2','3', 'A', 'B', 'C', 'D', 'E', 'F']);
             $table->timestamps();
 
             $table->integer('institute_id')->unsigned();

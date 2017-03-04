@@ -17,11 +17,16 @@ class CreatePlayersTable extends Migration
             $table->increments('id');
             $table->string('firstName'); //All Names other than last name
             $table->string('lastName');
-            $table->string('useName');
-            $table->date('dob');
-            $table->string('playingRole');
+            $table->string('useName')->nullable();
+            $table->date('dob')->nullable();
+            $table->string('email')->nullable();
+            $table->string('contactNo')->nullable();
+            $table->float('height')->nullable();
+            $table->float('weight')->nullable();
+            $table->string('playingRole')->nullable();
             $table->string('batStyle');
             $table->string('bowlStyle');
+            $table->string('photoUrl')->nullable();
             $table->timestamps();
         });
     }
