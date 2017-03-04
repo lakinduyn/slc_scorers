@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateInstitutesTable extends Migration
+class CreateScorersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateInstitutesTable extends Migration
      */
     public function up()
     {
-        Schema::create('institutes', function (Blueprint $table) {
+        Schema::create('scorers', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->text('address')->nullable();
-            $table->string('contactNo')->nullable();
-            $table->string('logoUrl')->nullable();
-            $table->enum('type', ['club', 'school','mercantile','university']);
+            $table->string('firstName'); 
+            $table->string('lastName');
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ class CreateInstitutesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('institutes');
+        Schema::dropIfExists('scorers');
     }
 }
