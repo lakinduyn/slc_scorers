@@ -4,11 +4,13 @@
 @section('content')
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
+
 <!-- Content Header (Page header) -->
     <section class="content-header">
+
       <h1>
-        Institute Registration
-        <small>Optional description</small>
+        Registration of institute
+        <small>(Club/School/University/Mercantile)</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
@@ -20,8 +22,9 @@
     <section class="content">
    
             <div class="box box-info">
-            <div class="box-header with-border">
-      <h3 class="box-title"> Institute Registration</h3>
+            
+              <div class="box-header with-border">
+      <!--h3 class="box-title"> Institute Registration</h3-->
             </div>
             <!-- /.box-header -->
             <!-- form start -->
@@ -31,28 +34,24 @@
               <div class="col-md-6">
               <div class="box box-primary">
             <div class="box-header with-border">
+              
               <label>General Details</label><br><br>
                <div class="form-group">
-                  <label for="instituteName" class="col-sm-2 control-label">Institute  Name</label>
+                  <label for="instituteName" class="col-sm-2 control-label">Name</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="instituteName" placeholder=" Name">
+                    <input type="text" class="form-control" id="instituteName" placeholder="">
                   </div>
                   </div>
-                  <div class="form-group">
-                  <label for="inputotherName" class="col-sm-2 control-label">other Names</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="otherName" placeholder="other Names">
-                  </div>
-                </div>
                
                 <div class="form-group">
-                <label for="type" class="col-sm-2 control-label">Institute Type</label>
+                <label for="type" class="col-sm-2 control-label">Type</label>
                <div class="col-sm-10">
                 <select class="form-control" style="width: 100%;" id="instituteType">
                   <option selected="selected">Club</option>
                   <option>School</option>
                   <option>University</option>
+                  <option>Mercantile</option>
                 </select>
 
                 </div>
@@ -75,20 +74,20 @@
                   <label for="inputContact" class="col-sm-2 control-label">Contact No</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="ContactNumber" placeholder="ContactNumber">
+                    <input type="text" class="form-control" id="ContactNumber" placeholder="">
                   </div>
                   </div>
                   <div class="form-group">
                   <label for="inputemail" class="col-sm-2 control-label">Email</label>
                   <div class="col-sm-10">
-                    <input type="email" class="form-control" id="email" placeholder="Email">
+                    <input type="email" class="form-control" id="email" placeholder="">
                   </div>
                   </div>
               
                <div class="form-group">
                   <label for="inputAddress" class="col-sm-2 control-label">Address</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="Address" placeholder="Address">
+                    <input type="text" class="form-control" id="Address" placeholder="">
                   </div>
                   </div>
                   </div>

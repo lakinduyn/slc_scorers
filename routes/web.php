@@ -29,5 +29,15 @@ Route::get('instituteRegistration', function () {
 Route::get('teamRegistration', function () {
     return view('dashboard.teamRegistration');
 });
+
+Route::get('searchInstitute', function () {
+
+    $ins = DB::table('institutes')->get();
+
+    return view('dashboard.searchInstitutes', compact('ins'));
+});
+
 Route::post('/players', 'PlayerController@store');
+
+
 
