@@ -17,6 +17,7 @@ class CreateInstitutesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->text('address')->nullable();
+             $table->text('email')->nullable();
             $table->string('contactNo')->nullable();
             $table->string('logoUrl')->nullable();
             $table->enum('type', ['club', 'school','mercantile','university']);
