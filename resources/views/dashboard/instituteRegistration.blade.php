@@ -28,7 +28,11 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form class="form-horizontal">
+            <form class="form-horizontal" method="POST" action="/institutes">
+
+            <input name="_token" type="hidden" value="{!! csrf_token() !!}" />
+            {{csrf_field() }}
+
              <div class="box-body">
                <div class="row">
               <div class="col-md-6">
@@ -37,17 +41,17 @@
               
               <label>General Details</label><br><br>
                <div class="form-group">
-                  <label for="instituteName" class="col-sm-2 control-label">Name</label>
+                  <label for="instituteName" class="col-sm-2 control-label" >Name</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="instituteName" placeholder="">
+                    <input type="text" class="form-control" id="instituteName" name="name" placeholder="">
                   </div>
                   </div>
                
                 <div class="form-group">
                 <label for="type" class="col-sm-2 control-label">Type</label>
                <div class="col-sm-10">
-                <select class="form-control" style="width: 100%;" id="instituteType">
+                <select class="form-control" style="width: 100%;" id="instituteType" name="type" >
                   <option selected="selected">Club</option>
                   <option>School</option>
                   <option>University</option>
@@ -59,7 +63,7 @@
                 <div class="form-group">
                   <label for="inputPicture" class="col-sm-2 control-label">Logo</label>
                 <div class="col-sm-10">
-                 <input type="file" id="logoImage">
+                 <input type="file" id="instituteLogoImage" name="logoUrl">
                  </div>
                 </div>
                 </div>
@@ -74,20 +78,20 @@
                   <label for="inputContact" class="col-sm-2 control-label">Contact No</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="ContactNumber" placeholder="">
+                    <input type="text" class="form-control" id="instituteContactNo" name="contactNo" placeholder="">
                   </div>
                   </div>
                   <div class="form-group">
                   <label for="inputemail" class="col-sm-2 control-label">Email</label>
                   <div class="col-sm-10">
-                    <input type="email" class="form-control" id="email" placeholder="">
+                    <input type="email" class="form-control" id="instituteEmail" name="email" placeholder="">
                   </div>
                   </div>
               
                <div class="form-group">
                   <label for="inputAddress" class="col-sm-2 control-label">Address</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="Address" placeholder="">
+                    <input type="text" class="form-control" id="instituteAddress" name="address" placeholder="">
                   </div>
                   </div>
                   </div>

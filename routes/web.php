@@ -25,16 +25,16 @@ Route::get('addplayer', function () {
 });
 
 
-Route::get('instituteRegistration', function () {
-    return view('dashboard.instituteRegistration');
-});
+Route::get('instituteRegistration', 'InstituteController@create');
 
 Route::get('teamRegistration', function () {
     return view('dashboard.teamRegistration');
 });
 
 
-Route::get('searchInstitutes', 'InstituteController@searchInstitutes');
+Route::get('searchInstitutes', 'InstituteController@search');
+
+Route::POST('/institutes', 'InstituteController@store');
 
 Route::post('/players', 'PlayerController@store');
 
