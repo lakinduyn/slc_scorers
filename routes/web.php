@@ -11,6 +11,8 @@
 |
 */
 
+use App\Institutes;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -22,6 +24,7 @@ Route::get('addplayer', function () {
     return view('dashboard.addplayer');
 });
 
+
 Route::get('instituteRegistration', function () {
     return view('dashboard.instituteRegistration');
 });
@@ -30,12 +33,8 @@ Route::get('teamRegistration', function () {
     return view('dashboard.teamRegistration');
 });
 
-Route::get('searchInstitutes', function () {
 
-    $ins = DB::table('institutes')->get();
-
-    return view('dashboard.searchInstitutes', compact('ins'));
-});
+Route::get('searchInstitutes', 'InstituteController@searchInstitutes');
 
 Route::post('/players', 'PlayerController@store');
 

@@ -15,8 +15,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Data Tables
-        <small>advanced tables</small>
+        Search Institutes
+        <small>Optional title here</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -31,11 +31,11 @@
         <div class="col-xs-12">
            <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Data Table With Full Features</h3>
+              <!--h3 class="box-title">Data Table With Full Features</h3-->
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="example" class="table table-bordered table-striped">
+              <table id="institutesDataTable" class="table table-bordered table-striped">
                 <thead>
                 <tr>
                   <th>Name</th>
@@ -88,6 +88,6 @@
     <script src="bower_components/adminlte/plugins/datatables/dataTables.bootstrap.min.js"></script>
     <script> 
         $(document).ready(function(){
-        $('#example').DataTable();
+        $('#institutesDataTable').DataTable();
 });</script>
 @endsection()
