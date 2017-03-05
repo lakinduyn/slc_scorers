@@ -30,7 +30,7 @@ Route::get('teamRegistration', function () {
     return view('dashboard.teamRegistration');
 });
 
-Route::get('searchInstitute', function () {
+Route::get('searchInstitutes', function () {
 
     $ins = DB::table('institutes')->get();
 
