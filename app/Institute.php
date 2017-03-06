@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Institute extends Model
 {
     //
+    protected $guarded = [];
+
     public function teams()
     {
         return $this->hasMany(Team::class);
@@ -17,4 +19,6 @@ class Institute extends Model
 
         return static::table('institutes')->get();
     }
+
+
 }

@@ -11,3 +11,5 @@ class Player extends Model
        return $this->belongsToMany('App\Team')->withPivot('joinDate','endDate');;
     }
 }
+
+
