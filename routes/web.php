@@ -24,15 +24,16 @@ Route::get('addplayer', function () {
     return view('dashboard.addplayer');
 });
 
-
-Route::get('instituteRegistration', 'InstituteController@create');
-
 Route::get('teamRegistration', function () {
     return view('dashboard.teamRegistration');
 });
 
 
-Route::get('searchInstitutes', 'InstituteController@search');
+Route::get('createInstitute', 'InstituteController@create');
+
+Route::get('searchInstitute', 'InstituteController@search');
+
+Route::get('editInstitute/{institute}', 'InstituteController@edit');
 
 Route::POST('/institutes', 'InstituteController@store');
 

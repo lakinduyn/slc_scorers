@@ -15,14 +15,14 @@ class InstituteController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     public function search()
     {
         $ins = Institute::all();
 
-        return view('dashboard.searchInstitutes', compact('ins'));
+        return view('dashboard.searchInstitute', compact('ins'));
 
     }
     /**
@@ -33,7 +33,7 @@ class InstituteController extends Controller
     public function create()
     {
         //
-        return view('dashboard.instituteRegistration');
+        return view('dashboard.createInstitute');
 
     }
 
@@ -83,9 +83,11 @@ class InstituteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Institute $inst)
     {
-        //
+
+        return view('dashboard.editInstitute', compact('inst'));
+
     }
 
     /**
