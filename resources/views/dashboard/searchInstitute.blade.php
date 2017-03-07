@@ -60,9 +60,8 @@
                     
                   <td><?= $insData->email ?></td>
 
-                
-                  <td><?= $insData->address ?></td> 
-
+                  <td><?= $insData->address ?></td>
+              
                 </tr>
 
                 <?php endforeach; ?>
