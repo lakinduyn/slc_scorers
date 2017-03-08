@@ -15,6 +15,10 @@ class CreateTeamTournamentsTable extends Migration
     {
         Schema::create('team_tournaments', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('tournament_id')->unsigned();
+            $table->foreign('tournament_id')->references('id')->on('tournaments');
+            $table->integer('team_id')->unsigned();
+            $table->foreign('team_id')->references('id')->on('teams');
             $table->timestamps();
         });
     }

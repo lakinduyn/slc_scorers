@@ -15,6 +15,10 @@ class CreatePoolTeamsTable extends Migration
     {
         Schema::create('pool_teams', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('pool_id')->unsigned();
+            $table->foreign('pool_id')->references('id')->on('pools');
+            $table->integer('team_id')->unsigned();
+            $table->foreign('team_id')->references('id')->on('teams');
             $table->timestamps();
         });
     }
