@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\ScoreCard;
+use App\MatchResult;
 use Illuminate\Http\Request;
 
-class ScoreCardController extends Controller
+class MatchResultController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class ScoreCardController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\ScoreCard  $scoreCard
+     * @param  \App\MatchResult  $matchResult
      * @return \Illuminate\Http\Response
      */
-    public function show(ScoreCard $scoreCard)
+    public function show(MatchResult $matchResult)
     {
         //
     }
@@ -52,10 +52,10 @@ class ScoreCardController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\ScoreCard  $scoreCard
+     * @param  \App\MatchResult  $matchResult
      * @return \Illuminate\Http\Response
      */
-    public function edit(ScoreCard $scoreCard)
+    public function edit(MatchResult $matchResult)
     {
         //
     }
@@ -64,10 +64,10 @@ class ScoreCardController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\ScoreCard  $scoreCard
+     * @param  \App\MatchResult  $matchResult
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ScoreCard $scoreCard)
+    public function update(Request $request, MatchResult $matchResult)
     {
         //
     }
@@ -75,10 +75,10 @@ class ScoreCardController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\ScoreCard  $scoreCard
+     * @param  \App\MatchResult  $matchResult
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ScoreCard $scoreCard)
+    public function destroy(MatchResult $matchResult)
     {
         //
     }
