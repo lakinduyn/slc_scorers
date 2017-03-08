@@ -28,6 +28,14 @@ class CreateMatchesTable extends Migration
             $table->foreign('tournament_id')->references('id')->on('tournaments');
             $table->integer('pool_id')->unsigned();
             $table->foreign('pool_id')->references('id')->on('pools');
+
+            $table->integer('umpire1')->unsigned()->nullable();
+            $table->foreign('umpire1')->references('id')->on('umpires');
+            $table->integer('umpire2')->unsigned()->nullable();
+            $table->foreign('umpire2')->references('id')->on('umpires');
+            $table->integer('scorer_id')->unsigned()->nullable();
+            $table->foreign('scorer_id')->references('id')->on('scorers');
+         
             $table->timestamps();
         });
     }
