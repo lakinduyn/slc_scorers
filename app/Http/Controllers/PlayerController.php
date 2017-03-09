@@ -17,6 +17,14 @@ class PlayerController extends Controller
     {
         //
     }
+    public function search()
+    {
+        $ply = Player::all();
+
+        return view('dashboard.searchPlayer', compact('ply'));
+
+    }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -26,6 +34,8 @@ class PlayerController extends Controller
     public function create()
     {
         //
+         return view('dashboard.addPlayer');
+
     }
 
     /**
@@ -38,14 +48,33 @@ class PlayerController extends Controller
     {
         //Request $request
         //dd(request()->all());
+        $this->validate(request(),[
+            'registrationNo'=>'required',
+            'lastName'=>'required'
+        ]);
         $player = new Player;
 
         $player->firstName=request('otherNames');
         $player->lastName=request('lastName');
-
+        
+        //testing code
+        $player->useName=request('otherNames');
+        
+        $player->playingRole=request('otherNames');
+        $player->dob=request('DOB');
+        $player->batStyle=request('lastName');
+        $player->bowlStyle=request('otherNames');
+        $player->regId=request('registrationNo');
         $player->save();
+        
+        /*$Player = new Player;
 
+        Player::create(request() -> all());
+
+        //$institute -> save();
+ */
         return redirect('/admin');
+       
 
 
     }
@@ -70,6 +99,7 @@ class PlayerController extends Controller
     public function edit($id)
     {
         //
+        
     }
 
     /**
