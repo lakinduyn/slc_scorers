@@ -43,3 +43,5 @@ Route::get('createTournament', function () {
     return view('tournaments.createTournament');
 });
 
+Route::post('/tournaments', 'TournamentController@store');
+
