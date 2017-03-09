@@ -22,13 +22,14 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form">
+            <form role="form" method="POST" action="/tournaments">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
               <div class="box-body">
                 <div class="row">
                   <div class="col-md-4">
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Name</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter tournament name">
+                  <label for="tournamentName">Name</label>
+                  <input type="text" class="form-control" id="tournamentName" name="tournamentName" placeholder="Enter tournament name">
                 </div>
                   </div>
                   <div class="col-md-4">
