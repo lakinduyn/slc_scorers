@@ -17,6 +17,10 @@ class CreateScorersTable extends Migration
             $table->increments('id');
             $table->string('firstName'); 
             $table->string('lastName');
+            $table->date('dob');
+            $table->string('nic');
+            $table->string('regNo');
+            $table->string('photoUrl');
             $table->timestamps();
         });
     }

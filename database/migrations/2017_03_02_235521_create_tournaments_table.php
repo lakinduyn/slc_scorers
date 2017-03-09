@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUmpiresTable extends Migration
+class CreateTournamentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CreateUmpiresTable extends Migration
      */
     public function up()
     {
-        Schema::create('umpires', function (Blueprint $table) {
+        Schema::create('tournaments', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('firstName'); 
-            $table->string('lastName');
-            $table->date('dob');
-            $table->string('nic');
-            $table->string('regNo');
-            $table->string('photoUrl');
+            $table->string('name');
+            $table->string('divLevel');      
+            $table->string('imgUrl')->nullable();
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ class CreateUmpiresTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('umpires');
+        Schema::dropIfExists('tournaments');
     }
 }
