@@ -83,10 +83,10 @@ class InstituteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Institute $inst)
+    public function edit(Institute $institute)
     {
 
-        return view('dashboard.editInstitute', compact('inst'));
+        return view('dashboard.editInstitute', compact('institute'));
 
     }
 
@@ -99,7 +99,16 @@ class InstituteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $record = $this->records->findOrFail($id);
+
+        if(! $record){
+            Upload::create(Input::all());
+            return $this->respondCreated('Upload was created');
+        }
+
+        $record = fill(Input::all())->save();
+        return $this->respondCreated('Upload was created');
+
     }
 
     /**

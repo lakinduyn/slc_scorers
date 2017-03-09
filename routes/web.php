@@ -33,9 +33,11 @@ Route::get('createInstitute', 'InstituteController@create');
 
 Route::get('searchInstitute', 'InstituteController@search');
 
-Route::get('editInstitute/{institute}', 'InstituteController@edit');
+Route::get('editInstitute/{institute}/edit', 'InstituteController@edit');
 
 Route::POST('/institutes', 'InstituteController@store');
+
+Route::POST('/institutes', 'InstituteController@update');
 
 Route::post('/players', 'PlayerController@store');
 

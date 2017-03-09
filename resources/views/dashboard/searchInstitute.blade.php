@@ -4,7 +4,7 @@
 @section('page_specific_css')
 
   <!-- DataTables -->
-  <link rel="stylesheet" href="bower_components/adminlte/plugins/datatables/dataTables.bootstrap.css">
+  <link rel="stylesheet" href="bower_components/adminlte/plugins/datatables/dataTables.bootstrap.forEditInstitutes.css">
 
 @endsection
 
@@ -35,6 +35,8 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
+
+              <div class="col-xs-12">
               <table id="institutesDataTable" class="table table-bordered table-striped">
                 <thead>
                 <tr>
@@ -49,7 +51,8 @@
                 <?php foreach ($ins as $insData) : ?>
                  <tr>
 
-                  <td><?= $insData->name ?> </td>
+                  <td><a class="btn btn-app" href="/editInstitute/{{$insData->id}}/edit/"><i class="fa fa-edit"></i> Edit</a>
+                  <?= $insData->name ?> </td>
 
                  
                   <td><?= $insData->type ?></td>
@@ -69,11 +72,14 @@
 
             </table>
             </div>
+
+
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
         </div>
         <!-- /.col -->
+        
       </div>
       <!-- /.row -->
     </section>
