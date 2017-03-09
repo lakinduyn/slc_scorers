@@ -39,5 +39,9 @@ Route::POST('/institutes', 'InstituteController@store');
 
 Route::post('/players', 'PlayerController@store');
 
+Route::get('createTournament', function () {
+    return view('tournaments.createTournament');
+});
 
+Route::post('/tournaments', 'TournamentController@store');
 

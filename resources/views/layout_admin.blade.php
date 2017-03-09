@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="bower_components/adminlte/dist/css/skins/skin-blue.min.css">
 
   <!--Load css files that are specific to a particular page -->
-  @yield('page_specific_css');
+  @yield('page_specific_css')
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -81,7 +81,7 @@ desired effect
      user experience. Slimscroll is required when using the
      fixed layout. -->
 
-@yield('page_specific_scripts');
+@yield('page_specific_scripts')
 
 </body>
 </html>
