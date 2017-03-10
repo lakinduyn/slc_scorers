@@ -27,6 +27,7 @@ Route::get('addplayer', function () {
 Route::get('teamRegistration', function () {
     return view('dashboard.teamRegistration');
 });
+Route::get('searchPlayer', 'PlayerController@search');
 
 
 Route::get('createInstitute', 'InstituteController@create');
@@ -38,6 +39,7 @@ Route::get('editInstitute/{institute}', 'InstituteController@edit');
 Route::POST('/institutes', 'InstituteController@store');
 
 Route::post('/players', 'PlayerController@store');
+Route::POST('/teams', 'teamController@store');
 
 Route::get('createTournament', function () {
     return view('tournaments.createTournament');
