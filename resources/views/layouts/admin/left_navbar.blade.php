@@ -7,7 +7,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="bower_components/adminlte/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="/bower_components/adminlte/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>Alexander Pierce</p>
@@ -38,6 +38,17 @@
         <li><a href="http://127.0.0.1:8000/createInstitute"><i class="fa fa-link"></i> <span>Institute Registration</span></a></li>
         <li><a href="http://127.0.0.1:8000/teamRegistration"><i class="fa fa-link"></i> <span>Team Registration</span></a></li>
         <li><a href="http://127.0.0.1:8000/searchInstitute"><i class="fa fa-link"></i> <span>Search Institutes</span></a></li>
+        <li class="treeview">
+          <a href="#"><i class="fa fa-link"></i> <span>Tournaments</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="createTournament">Create Tournament</a></li>
+            <li><a href="#">Schedule Matches</a></li>
+          </ul>
+        </li>
         <li class="treeview">
           <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
             <span class="pull-right-container">

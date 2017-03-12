@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Tournament;
 use Illuminate\Http\Request;
 
-class TournamentController extends Controller
+use App\Institute;
+
+class InstituteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +15,16 @@ class TournamentController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
+    public function search()
+    {
+        $ins = Institute::all();
+
+        return view('dashboard.searchInstitute', compact('ins'));
+
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -25,6 +33,8 @@ class TournamentController extends Controller
     public function create()
     {
         //
+        return view('dashboard.createInstitute');
+
     }
 
     /**
@@ -33,23 +43,36 @@ class TournamentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        $tournament = new Tournament;
-         $tournament->name = $request->tournamentName;
+        
+        $institute = new Institute;
 
-         $tournament->save();
+        // \App\Institute::create([
+        //     'name' => request('name'),
+        //     'type' => request('type'),
+        //     'logoUrl' => request('logoUrl'),
+        //     'contactNo' => request('contactNo'),
+        //     'email' => request('email'),
+        //     'address' => request('address')
 
-         return redirect('/admin');
+        // ]);
+
+        Institute::create(request() -> all());
+
+        //$institute -> save();
+
+        return redirect('/admin');
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Tournament  $tournament
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Tournament $tournament)
+    public function show($id)
     {
         //
     }
@@ -57,22 +80,24 @@ class TournamentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Tournament  $tournament
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tournament $tournament)
+    public function edit(Institute $inst)
     {
-        //
+
+        return view('dashboard.editInstitute', compact('inst'));
+
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Tournament  $tournament
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tournament $tournament)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -80,10 +105,10 @@ class TournamentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Tournament  $tournament
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tournament $tournament)
+    public function destroy($id)
     {
         //
     }

@@ -35,12 +35,7 @@ class TournamentController extends Controller
      */
     public function store(Request $request)
     {
-        $tournament = new Tournament;
-         $tournament->name = $request->tournamentName;
-
-         $tournament->save();
-
-         return redirect('/admin');
+        //
     }
 
     /**

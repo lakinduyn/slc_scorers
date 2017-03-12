@@ -18,12 +18,11 @@ class CreateTeamsTable extends Migration
             
             $table->string('name'); 
             $table->integer('ageCat')->nullable();
-            $table->enum('div', ['0','1', '2','3', 'A', 'B', 'C', 'D', 'E', 'F']);
-            $table->timestamps();
-
+            $table->enum('div', ['0','1', '2','3', 'A', 'B', 'C', 'D', 'E', 'F']);        
+            $table->string('abbrevation'); 
             $table->integer('institute_id')->unsigned();
             $table->foreign('institute_id')->references('id')->on('institutes');
-
+            $table->timestamps();
 
         });
     }

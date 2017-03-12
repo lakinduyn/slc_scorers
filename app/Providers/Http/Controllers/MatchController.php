@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Tournament;
+use App\Match;
 use Illuminate\Http\Request;
 
-class TournamentController extends Controller
+class MatchController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,21 +35,16 @@ class TournamentController extends Controller
      */
     public function store(Request $request)
     {
-        $tournament = new Tournament;
-         $tournament->name = $request->tournamentName;
-
-         $tournament->save();
-
-         return redirect('/admin');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Tournament  $tournament
+     * @param  \App\Match  $match
      * @return \Illuminate\Http\Response
      */
-    public function show(Tournament $tournament)
+    public function show(Match $match)
     {
         //
     }
@@ -57,10 +52,10 @@ class TournamentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Tournament  $tournament
+     * @param  \App\Match  $match
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tournament $tournament)
+    public function edit(Match $match)
     {
         //
     }
@@ -69,10 +64,10 @@ class TournamentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Tournament  $tournament
+     * @param  \App\Match  $match
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tournament $tournament)
+    public function update(Request $request, Match $match)
     {
         //
     }
@@ -80,10 +75,10 @@ class TournamentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Tournament  $tournament
+     * @param  \App\Match  $match
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tournament $tournament)
+    public function destroy(Match $match)
     {
         //
     }
