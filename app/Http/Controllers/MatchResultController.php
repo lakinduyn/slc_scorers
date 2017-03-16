@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\MatchResult;
 use Illuminate\Http\Request;
+use App\Match;
 
 class MatchResultController extends Controller
 {
@@ -44,9 +45,16 @@ class MatchResultController extends Controller
      * @param  \App\MatchResult  $matchResult
      * @return \Illuminate\Http\Response
      */
-    public function show(MatchResult $matchResult)
+    public function show(Match $match)
     {
-        //
+        //$umpires = \App\Umpire::get(['id']);
+        $umpires = \App\Umpire::all();
+        $scorers = \App\Scorer::all();
+        $tournament = $match->tournament;
+        $tou_team_1 = $tournament->players()->where('team_id','=',$match->team1_id)->get();
+        $tou_team_2 = $tournament->players()->where('team_id','=',$match->team2_id)->get();
+
+        return view('dashboard.matchResult', compact('match','umpires','scorers','tou_team_1','tou_team_2'));
     }
 
     /**
@@ -82,4 +90,5 @@ class MatchResultController extends Controller
     {
         //
     }
+    
 }

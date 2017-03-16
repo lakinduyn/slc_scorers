@@ -41,6 +41,7 @@ Route::POST('/institutes', 'InstituteController@store');
 Route::post('/players', 'PlayerController@store');
 Route::POST('/teams', 'teamController@store');
 
+Route::get('/matchResults/{match}', 'MatchResultController@show');
 Route::get('createTournament', function () {
     return view('tournaments.createTournament');
 });
