@@ -25,21 +25,25 @@ Route::get('addplayer', function () {
 });
 
 Route::get('teamRegistration', function () {
-    return view('dashboard.teamRegistration');
+    return view('player.teamRegistration');
 });
+ Route::get('addplayer','TeamController@search');
+
 Route::get('searchPlayer', 'PlayerController@search');
 
-
+Route::get('createScorer', 'ScorerController@create');
+Route::get('searchScorer', 'ScorerController@search');
 Route::get('createInstitute', 'InstituteController@create');
 
 Route::get('searchInstitute', 'InstituteController@search');
 
 Route::get('editInstitute/{institute}', 'InstituteController@edit');
 
-Route::POST('/institutes', 'InstituteController@store');
 
+Route::POST('/institutes', 'InstituteController@store');
+Route::post('/scorers', 'ScorerController@store');
 Route::post('/players', 'PlayerController@store');
-Route::POST('/teams', 'teamController@store');
+Route::POST('/teams', 'TeamController@store');
 
 Route::get('/matchResults/{match}', 'MatchResultController@show');
 Route::get('createTournament', function () {

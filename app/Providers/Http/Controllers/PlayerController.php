@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Institute;
+use App\Player;
 
-class InstituteController extends Controller
+class PlayerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,16 +15,17 @@ class InstituteController extends Controller
      */
     public function index()
     {
-
+        //
     }
-
     public function search()
     {
-        $ins = Institute::all();
+        $ply = Player::all();
 
-        return view('dashboard.searchInstitute', compact('ins'));
+        return view('players.searchPlayer', compact('ply'));
 
     }
+    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -33,7 +34,7 @@ class InstituteController extends Controller
     public function create()
     {
         //
-        return view('dashboard.createInstitute');
+         return view('players.addPlayer');
 
     }
 
@@ -45,12 +46,36 @@ class InstituteController extends Controller
      */
     public function store()
     {
+        //Request $request
+        //dd(request()->all());
+        $this->validate(request(),[
+            'registrationNo'=>'required',
+            'lastName'=>'required'
+        ]);
+        $player = new Player;
+
+        $player->firstName=request('otherNames');
+        $player->lastName=request('lastName');
         
-        $institute = new Institute;
+        //testing code
+        $player->useName=request('otherNames');
+        
+        $player->playingRole=request('otherNames');
+        $player->dob=request('DOB');
+        $player->batStyle=request('lastName');
+        $player->bowlStyle=request('otherNames');
+        $player->regId=request('registrationNo');
+        $player->save();
+        
+        /*$Player = new Player;
 
-        Institute::create(request() -> all());
+        Player::create(request() -> all());
 
+        //$institute -> save();
+ */
         return redirect('/admin');
+       
+
 
     }
 
@@ -71,11 +96,10 @@ class InstituteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Institute $inst)
+    public function edit($id)
     {
-
-        return view('dashboard.editInstitute', compact('inst'));
-
+        //
+        
     }
 
     /**
@@ -100,4 +124,7 @@ class InstituteController extends Controller
     {
         //
     }
+
+
+    
 }

@@ -29,14 +29,14 @@
                   <div class="col-md-4">
                 <div class="form-group">
                   <label for="tournamentName">Name</label>
-                  <input type="text" class="form-control" id="tournamentName" name="tournamentName" placeholder="Enter tournament name">
+                  <input type="text" class="form-control" id="tournamentName" name="name" placeholder="Enter tournament name">
                 </div>
                   </div>
                   <div class="col-md-4">
                   <div class="form-group">
                   <label>Format</label>
                   <select class="form-control">
-                    <option>5 Days</option>
+                    <option value>5 Days</option>
                     <option>3 Days</option>
                     <option>50 Overs</option>
                     <option>Twenty20</option>
@@ -45,12 +45,12 @@
                 </div>
                 </div>
                   <div class="col-md-4">
-                  <div class="form-group">
+                  <div class="form-group" >
                   <label>Level</label>
-                  <select class="form-control">
-                    <option>Under 19</option>
-                    <option>Club</option>
-                    <option>Mercantile</option>
+                  <select class="form-control" name="divLevel">
+                    <option value="19">Under 19</option>
+                    <option value="club">Club</option>
+                    <option value="mercantile">Mercantile</option>
                     <option>option 4</option>
                     <option>option 5</option>
                   </select>
