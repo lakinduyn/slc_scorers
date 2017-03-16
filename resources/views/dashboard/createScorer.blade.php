@@ -7,7 +7,7 @@
 <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Create Institute
+        Create Scorer
         <small>Optional description</small>
       </h1>
       <ol class="breadcrumb">
@@ -27,7 +27,7 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form class="form-horizontal" method="POST" action="/institutes">
+            <form class="form-horizontal" method="POST" action="/scorers">
 
             <input name="_token" type="hidden" value="{!! csrf_token() !!}" />
             {{csrf_field() }}
@@ -40,29 +40,27 @@
               
               <label>General Details</label><br><br>
                <div class="form-group">
-                  <label for="instituteName" class="col-sm-2 control-label" >Name</label>
-
+                  <label for="ScorerName" class="col-sm-2 control-label" >Last Name</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="instituteName" name="name" placeholder="">
+                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="">
+                  </div>
+               </div>
+                <div class="form-group">
+                  <label for="ScorerName" class="col-sm-2 control-label" >Other Names</label>
+                    <div class="col-sm-10">
+                    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="">
                   </div>
                   </div>
-               
+                  <div class="form-group">
+                  <label for="ScorerName" class="col-sm-2 control-label" >NIC</label>
+                    <div class="col-sm-10">
+                    <input type="text" class="form-control" id="nic" name="nic" placeholder="">
+                  </div>
+                  </div>
                 <div class="form-group">
-                <label for="type" class="col-sm-2 control-label">Type</label>
-               <div class="col-sm-10">
-                <select class="form-control" style="width: 100%;" id="instituteType" name="type" >
-                  <option selected="selected">Club</option>
-                  <option>School</option>
-                  <option>University</option>
-                  <option>Mercantile</option>
-                </select>
-
-                </div>
-                </div>
-                <div class="form-group">
-                  <label for="inputPicture" class="col-sm-2 control-label">Logo</label>
+                  <label for="inputPicture" class="col-sm-2 control-label">Image</label>
                 <div class="col-sm-10">
-                 <input type="file" id="instituteLogoImage" name="logoUrl">
+                 <input type="file" id="scorerImage" name="scorerImage">
                  </div>
                 </div>
                 </div>
@@ -77,7 +75,7 @@
                   <label for="inputContact" class="col-sm-2 control-label">Contact No</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="instituteContactNo" name="contactNo" placeholder="">
+                    <input type="text" class="form-control" id="contactNo" name="contactNo" placeholder="">
                   </div>
                   </div>
                   <div class="form-group">

@@ -21,7 +21,7 @@ class PlayerController extends Controller
     {
         $ply = Player::all();
 
-        return view('dashboard.searchPlayer', compact('ply'));
+        return view('players.searchPlayer', compact('ply'));
 
     }
     
@@ -34,7 +34,7 @@ class PlayerController extends Controller
     public function create()
     {
         //
-         return view('dashboard.addPlayer');
+         return view('players.addPlayer');
 
     }
 

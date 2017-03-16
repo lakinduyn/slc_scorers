@@ -34,10 +34,29 @@
         <!-- Optionally, you can add icons to the links -->
         <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>
         <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
-        <li><a href="http://127.0.0.1:8000/addplayer"><i class="fa fa-link"></i> <span>Player Registration</span></a></li>
-        <li><a href="http://127.0.0.1:8000/createInstitute"><i class="fa fa-link"></i> <span>Institute Registration</span></a></li>
         <li><a href="http://127.0.0.1:8000/teamRegistration"><i class="fa fa-link"></i> <span>Team Registration</span></a></li>
-        <li><a href="http://127.0.0.1:8000/searchInstitute"><i class="fa fa-link"></i> <span>Search Institutes</span></a></li>
+        <li class="treeview">
+          <a href="#"><i class="fa fa-link"></i> <span>Institutes/Clubs</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="createInstitute">Add Institute</a></li>
+            <li><a href="searchInstitute">Search Institute</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#"><i class="fa fa-link"></i> <span>Players</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="addplayer">Add Player</a></li>
+            <li><a href="searchPlayer">Search Players</a></li>
+          </ul>
+        </li>
         <li class="treeview">
           <a href="#"><i class="fa fa-link"></i> <span>Tournaments</span>
             <span class="pull-right-container">
@@ -47,6 +66,17 @@
           <ul class="treeview-menu">
             <li><a href="createTournament">Create Tournament</a></li>
             <li><a href="#">Schedule Matches</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#"><i class="fa fa-link"></i> <span>Scoreres</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="createScorer">Add Scorere</a></li>
+            <li><a href="searchScorer">Search Scorer</a></li>
           </ul>
         </li>
         <li class="treeview">

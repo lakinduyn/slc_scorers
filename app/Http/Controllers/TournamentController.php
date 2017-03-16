@@ -36,7 +36,8 @@ class TournamentController extends Controller
     public function store(Request $request)
     {
         $tournament = new Tournament;
-         $tournament->name = $request->tournamentName;
+         $tournament->name = $request->name;
+         $tournament->divLevel = $request->divLevel;
 
          $tournament->save();
 

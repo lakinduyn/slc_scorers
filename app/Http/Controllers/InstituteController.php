@@ -48,19 +48,7 @@ class InstituteController extends Controller
         
         $institute = new Institute;
 
-        // \App\Institute::create([
-        //     'name' => request('name'),
-        //     'type' => request('type'),
-        //     'logoUrl' => request('logoUrl'),
-        //     'contactNo' => request('contactNo'),
-        //     'email' => request('email'),
-        //     'address' => request('address')
-
-        // ]);
-
         Institute::create(request() -> all());
-
-        //$institute -> save();
 
         return redirect('/admin');
 
