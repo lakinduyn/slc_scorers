@@ -16,6 +16,7 @@ class TeamController extends Controller
     public function index()
     {
         //
+         return view('dashboard.teamregistration');
     }
 
     /**
@@ -28,23 +29,30 @@ class TeamController extends Controller
         //
     }
 
-    public function search()
-    {
-        $teams = Team::all();
-
-        return view('dashboard.addplayer', compact('teams'));
-
-    }
-
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
         //
+        $team = new Team();
+
+        $team->name=request('teamName');
+        $team->ageCat=request('ageCategory');
+        $team->div=request('division');
+        $team->institute_id=request('institute');
+
+        $team->save();
+
+        //$users = App\Team::all();
+
+        
+
+     return redirect('/admin');
+
     }
 
     /**
