@@ -51,7 +51,7 @@
                 <?php foreach ($ins as $insData) : ?>
                  <tr>
 
-                  <td><a class="btn btn-app" href="/editInstitute/{{$insData->id}}/edit/"><i class="fa fa-edit"></i> Edit</a>
+                  <td><a class="btn btn-app" href="/editInstitute/{{$insData ->id}}/edit"><i class="fa fa-edit"></i> Edit</a>
                   <?= $insData->name ?> </td>
 
                  

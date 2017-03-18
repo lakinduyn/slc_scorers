@@ -1,6 +1,5 @@
 @extends('layout_admin')
 
-
 @section('content')
 
 <!-- Content Wrapper. Contains page content -->
@@ -31,7 +30,6 @@
             <!-- form start -->
             <form class="form-horizontal" method="POST" action="/institutes">
 
-            <input name="_token" type="hidden" value="{!! csrf_token() !!}" />
             {{csrf_field() }}
 
              <div class="box-body">
@@ -45,7 +43,7 @@
                   <label for="instituteName" class="col-sm-2 control-label" >Name</label>
 
                   <div class="col-sm-10">
-                    <input type="text" value= {{$institute->name}} class="form-control" id="instituteName" name="name" placeholder="">
+                    <input type="text" value= {{$institute ->name}} class="form-control" id="instituteName" name="name" placeholder="">
                   </div>
                   </div>
                
@@ -54,8 +52,8 @@
                <div class="col-sm-10">
                 <select class="form-control" style="width: 100%;" id="instituteType" name="type" >
 
-                  <?php 
-                    $selectType = $institute->name;
+                  @php
+                    $selectType = $institute->type;
                     $selectClub = "";
                     $selectSchool = "";
                     $selectUniversity = "";
@@ -69,7 +67,9 @@
                       $selectUniversity = "selected";
                     }elseif($selectType == "Mercantile"){
                       $selectMercantile = "selected";
-                    }?>
+                    }
+
+                  @endphp
                   <option selected=<?= $selectClub ?>>Club</option>
                   <option selected=<?= $selectSchool?>>School</option>
                   <option selected=<?= $selectUniversity?>>University</option>
@@ -97,13 +97,13 @@
                   <label for="inputContact" class="col-sm-2 control-label">Contact No</label>
 
                   <div class="col-sm-10">
-                    <input type="text" value = {{ $contactNoValue or 'None' }}class="form-control" id="instituteContactNo" name="contactNo" placeholder="">
+                    <input type="text" value = {{ $institute -> contactNo or 'None' }}class="form-control" id="instituteContactNo" name="contactNo" placeholder="">
                   </div>
                   </div>
                   <div class="form-group">
                   <label for="inputemail" class="col-sm-2 control-label">Email</label>
                   <div class="col-sm-10">
-                    <input type="email" value= {{ $emailValue or "None" }}  class="form-control" id="instituteEmail" name="email" placeholder="">
+                    <input type="email" value= {{ $institute -> email or "None" }}  class="form-control" id="instituteEmail" name="email" placeholder="">
                   </div>
                   </div>
               
@@ -125,12 +125,12 @@
                 </form>
               </div>
               </div>
-              <!-- /.bo
+              <!-- /.bo -->
             
    
 
     </section>
     <!-- /.content -->
 </div>
-@endsection()
 
+@endsection()
