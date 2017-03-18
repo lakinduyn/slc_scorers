@@ -28,8 +28,8 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form class="form-horizontal" method="POST" action="/institutes">
-
+            <form class="form-horizontal" method="POST" action="/institutes/{{$institute -> id}}">
+            {{ method_field('PUT') }}
             {{csrf_field() }}
 
              <div class="box-body">
@@ -43,17 +43,17 @@
                   <label for="instituteName" class="col-sm-2 control-label" >Name</label>
 
                   <div class="col-sm-10">
-                    <input type="text" value= {{$institute ->name}} class="form-control" id="instituteName" name="name" placeholder="">
+                    <input type="text" value= "{{$institute ->name}}" class="form-control" id="instituteName" name="name" placeholder="">
                   </div>
                   </div>
                
                 <div class="form-group">
                 <label for="type" class="col-sm-2 control-label">Type</label>
                <div class="col-sm-10">
-                <select class="form-control" style="width: 100%;" id="instituteType" name="type" >
 
-                  @php
+               <!--@php
                     $selectType = $institute->type;
+                    
                     $selectClub = "";
                     $selectSchool = "";
                     $selectUniversity = "";
@@ -62,18 +62,26 @@
                     if($selectType == "Club"){
                       $selectClub = "selected";
                     }elseif($selectType == "School"){
-                      $selectSchool = "selected";                                         
+                      $selectSchool = "selected";      
+                                              
                     }elseif($selectType == "University"){
                       $selectUniversity = "selected";
+                    
                     }elseif($selectType == "Mercantile"){
                       $selectMercantile = "selected";
+                    
                     }
+              @endphp-->
 
-                  @endphp
-                  <option selected=<?= $selectClub ?>>Club</option>
-                  <option selected=<?= $selectSchool?>>School</option>
-                  <option selected=<?= $selectUniversity?>>University</option>
-                  <option selected=<? $selectMercantile?>>Mercantile</option>
+               <p>Current Type: {{$institute -> type}} </p>
+
+                <select class="form-control" style="width: 100%;" id="instituteType" name="type" >
+
+                  <option selected="selected">Club</option>
+                  <option>School</option> 
+                  <option>University</option>
+                  <option>>Mercantile</option>
+
                  
                 </select>
 
@@ -81,6 +89,9 @@
                 </div>
                 <div class="form-group">
                   <label for="inputPicture" class="col-sm-2 control-label">Logo</label>
+
+                  <!--<img src="" alt="Mountain View" style="width:30px;height:40px;">-->
+
                 <div class="col-sm-10">
                  <input type="file" id="instituteLogoImage" name="logoUrl">
                  </div>
@@ -97,20 +108,20 @@
                   <label for="inputContact" class="col-sm-2 control-label">Contact No</label>
 
                   <div class="col-sm-10">
-                    <input type="text" value = {{ $institute -> contactNo or 'None' }}class="form-control" id="instituteContactNo" name="contactNo" placeholder="">
+                    <input type="text" value = "{{ $institute -> contactNo or "NA"}}" class="form-control" id="instituteContactNo" name="contactNo" placeholder="">
                   </div>
                   </div>
                   <div class="form-group">
                   <label for="inputemail" class="col-sm-2 control-label">Email</label>
                   <div class="col-sm-10">
-                    <input type="email" value= {{ $institute -> email or "None" }}  class="form-control" id="instituteEmail" name="email" placeholder="">
+                    <input type="email" value= "{{ $institute -> email or "NA"}}"  class="form-control" id="instituteEmail" name="email" placeholder="">
                   </div>
                   </div>
               
                <div class="form-group">
                   <label for="inputAddress" class="col-sm-2 control-label">Address</label>
                   <div class="col-sm-10">
-                    <input type="text" value= {{ $institute->address or "None"}} class="form-control" id="instituteAddress" name="address" placeholder="">
+                    <input type="text" value= "{{ $institute->address or "NA"}}" class="form-control" id="instituteAddress" name="address" placeholder="">
                   </div>
                   </div>
                   </div>

@@ -30,8 +30,7 @@
             <!-- /.box-header -->
             <!-- form start -->
             <form class="form-horizontal" method="POST" action="/institutes">
-
-            <input name="_token" type="hidden" value="{!! csrf_token() !!}" />
+            
             {{csrf_field() }}
 
              <div class="box-body">

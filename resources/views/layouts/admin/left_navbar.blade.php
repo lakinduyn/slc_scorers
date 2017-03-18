@@ -42,8 +42,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="createInstitute">Add Institute</a></li>
-            <li><a href="searchInstitute">Search Institute</a></li>
+            <li><a href="/institutes/create">Add Institute</a></li>
+            <li><a href="/institutes/search">Search Institute</a></li>
           </ul>
         </li>
         <li class="treeview">

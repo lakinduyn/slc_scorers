@@ -43,14 +43,24 @@ class InstituteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(Request $request)
     {
         
         $institute = new Institute;
 
-        Institute::create(request() -> all());
+        $institute->name = $request->name;
+        $institute->type = $request->type;
+        $institute->logoUrl = $request->logoUrl;
+        $institute->contactNo = $request->contactNo;
+        $institute->email = $request->email;
+        $institute->address = $request->address;
+
+        $institute->save();
+
+        //$institueLogoPath = $request->logoUrl->store('images');
 
         return redirect('/admin');
+
 
     }
 
@@ -87,16 +97,18 @@ class InstituteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $record = $this->records->findOrFail($id);
+       $institute = Institute::findOrFail($id);
+       $institute->name = $request->input('name');
+       $institute->type = $request->input('type');
+       $institute->logoUrl = $request->input('logoUrl');
+       $institute->contactNo = $request->input('contactNo');
+       $institute->address = $request->input('address');
+       $institute->email = $request->input('email');
 
-        if(! $record){
-            Upload::create(Input::all());
-            return $this->respondCreated('Upload was created');
-        }
 
-        $record = fill(Input::all())->save();
-        return $this->respondCreated('Upload was created');
+       $institute->save();
 
+       return redirect('/institutes/search');
     }
 
     /**
@@ -107,6 +119,12 @@ class InstituteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $institute = Institute::findOrFail($id);
+        $institute->delete();
+
+        return redirect('/institutes/search')->with([
+            'flash_message' => 'Deleted',
+            'flash_message_important' => false
+        ]);
     }
 }

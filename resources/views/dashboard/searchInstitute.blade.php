@@ -4,7 +4,7 @@
 @section('page_specific_css')
 
   <!-- DataTables -->
-  <link rel="stylesheet" href="bower_components/adminlte/plugins/datatables/dataTables.bootstrap.forEditInstitutes.css">
+  <link rel="stylesheet" href="bower_components/adminlte/plugins/datatables/dataTables.bootstrap.css">
 
 @endsection
 
@@ -44,16 +44,14 @@
                   <th>Type</th>
                   <th>ContactNo</th>
                   <th>Email</th>
-                  <th>Address</th>
+                  <th>Edit/Delete</th>
                 </tr>
                 </thead>
                 <tbody>
                 <?php foreach ($ins as $insData) : ?>
                  <tr>
 
-                  <td><a class="btn btn-app" href="/editInstitute/{{$insData ->id}}/edit"><i class="fa fa-edit"></i> Edit</a>
-                  <?= $insData->name ?> </td>
-
+                  <td><?= $insData->name ?> </td>
                  
                   <td><?= $insData->type ?></td>
 
@@ -63,7 +61,20 @@
                     
                   <td><?= $insData->email ?></td>
 
-                  <td><?= $insData->address ?></td>
+                  <td>
+                    <a class="btn btn-sm" href="/institutes/{{$insData ->id}}/edit"><i class="fa fa-edit"></i> </a>
+
+                    <form method="POST" action="/institutes/{{$insData -> id}}">
+                    {{ method_field('DELETE') }}
+                    {{csrf_field() }}
+                    <button type="submit" class="btn btn-sm"><i class="fa fa-edit"></i></button>
+                    </form>
+
+                    <!--<a class="btn btn-sm" href="{{action('InstituteController@destroy',$insData->id)}}" "><i class="fa fa-remove"></i> </a>-->
+
+
+
+                  </td>
               
                 </tr>
 
