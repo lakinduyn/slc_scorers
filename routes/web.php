@@ -48,7 +48,8 @@ Route::get('/institutes/search', 'InstituteController@search');
 Route::get('/institutes/{institute}/edit', 'InstituteController@edit');
 Route::PUT('/institutes/{institute}', 'InstituteController@update');
 Route::POST('/institutes', 'InstituteController@store');
-Route::DELETE('/institues/{institute}', 'InstituteController@destroy');
+Route::DELETE('/institues/{institute}', 'InstituteController@destroy')->name('institute.destroy');
+
 
 //routes for Matches
 Route::get('/matchResults/{match}', 'MatchResultController@show');

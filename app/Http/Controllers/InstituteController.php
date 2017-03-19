@@ -122,9 +122,7 @@ class InstituteController extends Controller
         $institute = Institute::findOrFail($id);
         $institute->delete();
 
-        return redirect('/institutes/search')->with([
-            'flash_message' => 'Deleted',
-            'flash_message_important' => false
-        ]);
+        return redirect('/institutes/search');
+
     }
 }

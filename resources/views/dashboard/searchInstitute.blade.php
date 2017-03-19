@@ -64,15 +64,9 @@
                   <td>
                     <a class="btn btn-sm" href="/institutes/{{$insData ->id}}/edit"><i class="fa fa-edit"></i> </a>
 
-                    <form method="POST" action="/institutes/{{$insData -> id}}">
-                    {{ method_field('DELETE') }}
-                    {{csrf_field() }}
-                    <button type="submit" class="btn btn-sm"><i class="fa fa-edit"></i></button>
-                    </form>
-
-                    <!--<a class="btn btn-sm" href="{{action('InstituteController@destroy',$insData->id)}}" "><i class="fa fa-remove"></i> </a>-->
-
-
+                    {{ Form::open(['method' => 'DELETE', 'route' => ['institute.destroy', $insData->id]]) }}
+                    {{ Form::button('<i class="fa fa-remove"></i>', ['type' => 'submit', 'class' => 'btn btn-sm']) }}
+                    {{ Form::close() }}
 
                   </td>
               
