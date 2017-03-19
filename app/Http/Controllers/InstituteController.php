@@ -58,8 +58,8 @@ class InstituteController extends Controller
         $this->validate($request, [
 
         'name' => 'required|unique:institutes|max:100',
-        'contactNo' => 'unique:institutes|max:100',
-        'email' => 'unique:institutes|max:100',
+        'contactNo' => 'nullable|unique:institutes|max:100',
+        'email' => 'nullable|unique:institutes|max:100',
         //'email' => unique:institutes|max:100',
         
          ]);
