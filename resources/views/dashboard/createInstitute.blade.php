@@ -33,6 +33,10 @@
             
             {{csrf_field() }}
 
+            @if ($errors->any())
+                <ul>{!! implode('', $errors->all('<li style="color:red">:message</li>')) !!}</ul>
+            @endif
+ 
              <div class="box-body">
                <div class="row">
               <div class="col-md-6">
