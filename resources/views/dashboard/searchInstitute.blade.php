@@ -35,6 +35,8 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
+
+              <div class="col-xs-12">
               <table id="institutesDataTable" class="table table-bordered table-striped">
                 <thead>
                 <tr>
@@ -42,7 +44,7 @@
                   <th>Type</th>
                   <th>ContactNo</th>
                   <th>Email</th>
-                  <th>Address</th>
+                  <th>Edit/Delete</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -50,7 +52,6 @@
                  <tr>
 
                   <td><?= $insData->name ?> </td>
-
                  
                   <td><?= $insData->type ?></td>
 
@@ -60,7 +61,14 @@
                     
                   <td><?= $insData->email ?></td>
 
-                  <td><?= $insData->address ?></td>
+                  <td>
+                    <a class="btn btn-sm" href="/institutes/{{$insData ->id}}/edit"><i class="fa fa-edit"></i> </a>
+
+                    {{ Form::open(['method' => 'DELETE', 'route' => ['institute.destroy', $insData->id]]) }}
+                    {{ Form::button('<i class="fa fa-remove"></i>', ['type' => 'submit', 'class' => 'btn btn-sm']) }}
+                    {{ Form::close() }}
+
+                  </td>
               
                 </tr>
 
@@ -69,11 +77,14 @@
 
             </table>
             </div>
+
+
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
         </div>
         <!-- /.col -->
+        
       </div>
       <!-- /.row -->
     </section>

@@ -2,20 +2,22 @@
 
 
 @section('content')
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
+
 <!-- Content Header (Page header) -->
     <section class="content-header">
+
       <h1>
-        Create Institute
-        <small>Optional description</small>
+        Registration of institute
+        <small>(Club/School/University/Mercantile)</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
         <li class="active">Here</li>
       </ol>
     </section>
-    
 
     <!-- Main content -->
     <section class="content">
@@ -28,8 +30,7 @@
             <!-- /.box-header -->
             <!-- form start -->
             <form class="form-horizontal" method="POST" action="/institutes">
-
-            <input name="_token" type="hidden" value="{!! csrf_token() !!}" />
+            
             {{csrf_field() }}
 
              <div class="box-body">
@@ -105,7 +106,7 @@
                 </form>
               </div>
               </div>
-              <!-- /.bo
+              <!-- /.bo -- >
             
    
 
@@ -113,3 +114,4 @@
     <!-- /.content -->
 </div>
 @endsection()
+

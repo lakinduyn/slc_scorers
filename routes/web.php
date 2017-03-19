@@ -20,32 +20,41 @@ Route::get('/', function () {
 Route::get('admin', function () {
     return view('dashboard.index');
 });
+
+//routes for Player
 Route::get('addplayer', function () {
     return view('dashboard.addplayer');
 });
+Route::get('addplayer','TeamController@search');
+Route::get('searchPlayer', 'PlayerController@search');
+Route::post('/players', 'PlayerController@store');
 
+
+//routes for Teams
 Route::get('teamRegistration', function () {
     return view('player.teamRegistration');
 });
- Route::get('addplayer','TeamController@search');
-
-Route::get('searchPlayer', 'PlayerController@search');
-
-Route::get('createScorer', 'ScorerController@create');
-Route::get('searchScorer', 'ScorerController@search');
-Route::get('createInstitute', 'InstituteController@create');
-
-Route::get('searchInstitute', 'InstituteController@search');
-
-Route::get('editInstitute/{institute}', 'InstituteController@edit');
-
-
-Route::POST('/institutes', 'InstituteController@store');
-Route::post('/scorers', 'ScorerController@store');
-Route::post('/players', 'PlayerController@store');
 Route::POST('/teams', 'TeamController@store');
 
+//routes for Scorer
+Route::get('createScorer', 'ScorerController@create');
+Route::get('searchScorer', 'ScorerController@search');
+Route::post('/scorers', 'ScorerController@store');
+
+
+//routes for Institutes
+Route::get('/institutes/create', 'InstituteController@create');
+Route::get('/institutes/search', 'InstituteController@search');
+Route::get('/institutes/{institute}/edit', 'InstituteController@edit');
+Route::PUT('/institutes/{institute}', 'InstituteController@update');
+Route::POST('/institutes', 'InstituteController@store');
+Route::DELETE('/institues/{institute}', 'InstituteController@destroy')->name('institute.destroy');
+
+
+//routes for Matches
 Route::get('/matchResults/{match}', 'MatchResultController@show');
+
+//routes for Tournaments
 Route::get('createTournament', function () {
     return view('tournaments.createTournament');
 });
