@@ -42,9 +42,11 @@ Route::post('/players', 'PlayerController@store');
 Route::POST('/teams', 'teamController@store');
 
 Route::get('/matchResults/{match}', 'MatchResultController@show');
+
 Route::get('createTournament', function () {
     return view('tournaments.createTournament');
 });
 
+Route::POST('/matchResult/{match}/basicDetails', 'MatchResultController@updateBasicInfo');
 Route::post('/tournaments', 'TournamentController@store');
 

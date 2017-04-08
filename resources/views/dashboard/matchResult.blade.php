@@ -66,7 +66,8 @@
               </div><!--End of Match Summary-->
             </div>
           </div>
-          <form name="frmMatchResult" method="POST" action="">
+          <form id="frmMatchResult" name="frmMatchResult" method="POST" action="/matchResult/{{$match->id}}/basicDetails">
+          {{csrf_field()}}
           <div class="row">
             <div class="col-md-6">
               <!--Toss info--> 
@@ -82,10 +83,10 @@
                     </div>
                     <div class="col-sm-6">
                       <div class="col-xs-6">
-                        <label class="radio-inline"><input  type="radio" name="toss">{{$match->team1->abbrevation}}</label>
+                        <label class="radio-inline"><input  type="radio" value={{$match->team1->id}}  name="toss">{{$match->team1->abbrevation}}</label>
                       </div>
                       <div class="col-xs-6">
-                        <label class="radio-inline"><input  type="radio" name="toss">{{$match->team2->abbrevation}}</label>
+                        <label class="radio-inline"><input  type="radio" value={{$match->team2->id}} name="toss">{{$match->team2->abbrevation}}</label>
                       </div>
                     </div>
                   </div>
@@ -96,10 +97,10 @@
                     </div>
                     <div class="col-sm-6">
                       <div class="col-xs-6">
-                        <label class="radio-inline"><input type="radio"  name="elect">Bat</label>
+                        <label class="radio-inline"><input type="radio"  value="bat" name="elect">Bat</label>
                       </div>
                       <div class="col-xs-6">
-                        <label class="radio-inline"><input type="radio"  name="elect">Field</label>
+                        <label class="radio-inline"><input type="radio" value="field"  name="elect">Field</label>
                       </div>
                     </div>
                   </div>
@@ -169,13 +170,13 @@
                       <i class="icon fa fa-warning"></i> <span>Please Select 11 More Players </span>
                           
                     </div>
-                    <input type="hidden" name="team1Selected" id="field1" value="" />
+                    <input type="hidden" name="team1Selected" id="team1Selected" value="" />
                     <ul class="todo-list">
                       @foreach($tou_team_1 as $player)
                         <li>
                           
                           <!-- checkbox -->
-                          <input type="checkbox" value={{$player->id}} class="team1Players">
+                          <input type="checkbox" value={{$player->id}} class="team1Players" name="team1Players[]">
                           <!-- todo text -->
                           <span class="text">{{$player->nameWithInits()}}</span>
                           
@@ -235,13 +236,13 @@
                       <i class="icon fa fa-warning"></i> <span>Please Select 11 More Players </span>
                           
                     </div>
-                    <input type="hidden" name="team2Selected" id="field1" value="" />
+                    <input type="hidden" name="team2Selected" id="team2Selected" value="" />
                     <ul class="todo-list">
                       @foreach($tou_team_2 as $player)
                         <li>
                           
                           <!-- checkbox -->
-                          <input type="checkbox" value={{$player->id}} class="team2Players">
+                          <input type="checkbox" value={{$player->id}} class="team2Players" name="team2Players[]">
                           <!-- todo text -->
                           <span class="text">{{$player->nameWithInits()}}</span>
                           
@@ -292,8 +293,14 @@
                 </div>
               </div>
           </div>
-          </form
+          <div class="row">
+          <button id="frmSubmit" type="submit" class="btn btn-primary">Submit</button>
+          </div>
+          </form>
         </div>
+        
+              
+        
       </div>   
     </section>
     
@@ -376,5 +383,4 @@
   });
 </script>
 
-$("#isAgeSelected").is(':checked'))
 @endsection()
