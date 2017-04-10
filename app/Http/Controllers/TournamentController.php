@@ -38,6 +38,7 @@ class TournamentController extends Controller
         $tournament = new Tournament;
          $tournament->name = $request->name;
          $tournament->divLevel = $request->divLevel;
+         $tournament->imgUrl = $request->tournamentLogo;
 
          $tournament->save();
 
