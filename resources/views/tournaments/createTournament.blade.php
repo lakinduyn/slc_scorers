@@ -71,8 +71,9 @@
                   
                 <div class="col-md-4">
   <div class="form-group">
-                  <label for="exampleInputFile">Tournament Logo</label>
-                  <input type="file" id="exampleInputFile">
+                  <label for="tournamentLogo">Tournament Logo</label>
+                  <input type="file" id="tournamentLogo" name="tournamentLogo">
+                  <img id="image" style="width:70px;height:70px"; />
 
                   <!--<p class="help-block">Example block-level help text here.</p>-->
                 </div>
@@ -94,4 +95,20 @@
           </section>
    
 </div>
+@endsection()
+
+@section('page_specific_scripts')
+<script>
+document.getElementById("tournamentLogo").onchange = function () {
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+        // get loaded data and render thumbnail.
+        document.getElementById("image").src = e.target.result;
+    };
+
+    // read the image file as a data URL.
+    reader.readAsDataURL(this.files[0]);
+};
+</script>
 @endsection()
