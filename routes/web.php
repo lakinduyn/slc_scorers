@@ -55,3 +55,5 @@ Route::post('/tournaments', 'TournamentController@store');
 Route::get('/team', 'TeamController@index');
 
 Route::post('/saveteam', 'TeamController@store');
+
+Route::get('deleteteam/{id}', 'TeamController@destroy');

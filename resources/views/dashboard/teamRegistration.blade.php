@@ -1,5 +1,17 @@
 @extends('layout_admin')
-
+<script type="text/javascript" charset="utf-8">
+                    function deleteConfirm()
+                    {
+                        if(confirm("! Warning you are about to remove a team from the system. Are you sure do you want to remove the team?"))
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+</script>
 
 @section('content')
 <!-- Content Wrapper. Contains page content -->
@@ -95,34 +107,28 @@
                 </tr>
                 </thead>
                 <tbody>
-                  <?php
-                           for($i=0;$i<5;$i++)
-                           {
-                           ?>
-                           <tr>
-                               
-                               <td>hi</td>
-                               <td>hi</td>
-                               <td>hi</td>
-                               <td>hi</td>
-                             
-                               <td> <button type="button" class="btn btn-block btn-primary">Edit</button></td>
-                               <td> <button type="button" class="btn btn-block btn-danger">Delete</button></td>
-                           </tr>
-                           <?php
-                           }
-                           ?>
+                  <?php foreach ($team as $teamData) : ?>
+                 <tr>
+
+                  <td><?= $teamData->name ?> </td>
+
+                 
+                  <td><?= $teamData->ageCat ?></td>
+
+                  
+                  <td><?= $teamData->div ?></td>
+
+                    
+                  <td><?= $teamData->institute_id ?></td>
+
+                  <td> <button type="button" class="btn btn-block btn-primary">Edit</button></td>
+                  <td><button type="button" class="btn btn-block btn-danger"><a href = 'deleteteam/{{ $teamData->id }}' onclick="return deleteConfirm()">Delete</a></button></td>
+              
+                 </tr>
+
+                <?php endforeach; ?>
+
                 </tbody>
-                <tfoot>
-                <tr>
-                  <th>Team Name</th>
-                  <th>Age Category</th>
-                  <th>Division</th>
-                  <th>Institute</th>
-                  <th>Edit</th>
-                  <th>Delete</th>
-                </tr>
-                </tfoot>
               </table>
                 </div>
                   </div>

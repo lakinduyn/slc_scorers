@@ -16,7 +16,11 @@ class TeamController extends Controller
     public function index()
     {
         //
-         return view('dashboard.teamregistration');
+         
+         $team = Team::all();
+
+        return view('dashboard.teamregistration', compact('team'));
+         
     }
 
     /**
@@ -98,5 +102,10 @@ class TeamController extends Controller
     public function destroy($id)
     {
         //
+         $team = Team::findOrFail($id);
+        $team->delete();
+        //Session::flash('message', 'Successfully deleted the Team!');
+        return redirect('/team');
+
     }
 }
