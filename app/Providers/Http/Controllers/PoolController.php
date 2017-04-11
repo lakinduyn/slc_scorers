@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Tournament;
+use App\Pool;
 use Illuminate\Http\Request;
 
-class TournamentController extends Controller
+class PoolController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,23 +35,16 @@ class TournamentController extends Controller
      */
     public function store(Request $request)
     {
-        $tournament = new Tournament;
-         $tournament->name = $request->name;
-         $tournament->divLevel = $request->divLevel;
-         $tournament->imgUrl = $request->tournamentLogo;
-
-         $tournament->save();
-
-         return redirect('/admin');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Tournament  $tournament
+     * @param  \App\Pool  $pool
      * @return \Illuminate\Http\Response
      */
-    public function show(Tournament $tournament)
+    public function show(Pool $pool)
     {
         //
     }
@@ -59,10 +52,10 @@ class TournamentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Tournament  $tournament
+     * @param  \App\Pool  $pool
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tournament $tournament)
+    public function edit(Pool $pool)
     {
         //
     }
@@ -71,10 +64,10 @@ class TournamentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Tournament  $tournament
+     * @param  \App\Pool  $pool
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tournament $tournament)
+    public function update(Request $request, Pool $pool)
     {
         //
     }
@@ -82,10 +75,10 @@ class TournamentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Tournament  $tournament
+     * @param  \App\Pool  $pool
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tournament $tournament)
+    public function destroy(Pool $pool)
     {
         //
     }

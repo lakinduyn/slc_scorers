@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Institute;
+use App\Player;
 
-class InstituteController extends Controller
+class PlayerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,16 +15,17 @@ class InstituteController extends Controller
      */
     public function index()
     {
-
+        //
     }
-
     public function search()
     {
-        $ins = Institute::all();
+        $ply = Player::all();
 
-        return view('dashboard.searchInstitute', compact('ins'));
+        return view('players.searchPlayer', compact('ply'));
 
     }
+    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -33,7 +34,7 @@ class InstituteController extends Controller
     public function create()
     {
         //
-        return view('dashboard.createInstitute');
+         return view('players.addPlayer');
 
     }
 
@@ -43,23 +44,37 @@ class InstituteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
+        //Request $request
+        //dd(request()->all());
+        $this->validate(request(),[
+            'registrationNo'=>'required',
+            'lastName'=>'required'
+        ]);
+        $player = new Player;
+
+        $player->firstName=request('otherNames');
+        $player->lastName=request('lastName');
         
-        $institute = new Institute;
+        //testing code
+        $player->useName=request('otherNames');
+        
+        $player->playingRole=request('otherNames');
+        $player->dob=request('DOB');
+        $player->batStyle=request('lastName');
+        $player->bowlStyle=request('otherNames');
+        $player->regId=request('registrationNo');
+        $player->save();
+        
+        /*$Player = new Player;
 
-        $institute->name = $request->name;
-        $institute->type = $request->type;
-        $institute->logoUrl = $request->logoUrl;
-        $institute->contactNo = $request->contactNo;
-        $institute->email = $request->email;
-        $institute->address = $request->address;
+        Player::create(request() -> all());
 
-        $institute->save();
-
-        //$institueLogoPath = $request->logoUrl->store('images');
-
+        //$institute -> save();
+ */
         return redirect('/admin');
+       
 
 
     }
@@ -81,11 +96,10 @@ class InstituteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Institute $institute)
+    public function edit($id)
     {
-
-        return view('dashboard.editInstitute', compact('institute'));
-
+        //
+        
     }
 
     /**
@@ -97,18 +111,7 @@ class InstituteController extends Controller
      */
     public function update(Request $request, $id)
     {
-       $institute = Institute::findOrFail($id);
-       $institute->name = $request->input('name');
-       $institute->type = $request->input('type');
-       $institute->logoUrl = $request->input('logoUrl');
-       $institute->contactNo = $request->input('contactNo');
-       $institute->address = $request->input('address');
-       $institute->email = $request->input('email');
-
-
-       $institute->save();
-
-       return redirect('/institutes/search');
+        //
     }
 
     /**
@@ -119,10 +122,9 @@ class InstituteController extends Controller
      */
     public function destroy($id)
     {
-        $institute = Institute::findOrFail($id);
-        $institute->delete();
-
-        return redirect('/institutes/search');
-
+        //
     }
+
+
+    
 }

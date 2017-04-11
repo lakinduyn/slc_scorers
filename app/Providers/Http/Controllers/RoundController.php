@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Tournament;
 use Illuminate\Http\Request;
 
-class TournamentController extends Controller
+class RoundController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,23 +34,16 @@ class TournamentController extends Controller
      */
     public function store(Request $request)
     {
-        $tournament = new Tournament;
-         $tournament->name = $request->name;
-         $tournament->divLevel = $request->divLevel;
-         $tournament->imgUrl = $request->tournamentLogo;
-
-         $tournament->save();
-
-         return redirect('/admin');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Tournament  $tournament
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Tournament $tournament)
+    public function show($id)
     {
         //
     }
@@ -59,10 +51,10 @@ class TournamentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Tournament  $tournament
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tournament $tournament)
+    public function edit($id)
     {
         //
     }
@@ -71,10 +63,10 @@ class TournamentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Tournament  $tournament
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tournament $tournament)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -82,10 +74,10 @@ class TournamentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Tournament  $tournament
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tournament $tournament)
+    public function destroy($id)
     {
         //
     }

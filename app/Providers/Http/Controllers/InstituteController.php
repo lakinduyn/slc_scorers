@@ -43,24 +43,26 @@ class InstituteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
         
         $institute = new Institute;
 
-        $institute->name = $request->name;
-        $institute->type = $request->type;
-        $institute->logoUrl = $request->logoUrl;
-        $institute->contactNo = $request->contactNo;
-        $institute->email = $request->email;
-        $institute->address = $request->address;
+        // \App\Institute::create([
+        //     'name' => request('name'),
+        //     'type' => request('type'),
+        //     'logoUrl' => request('logoUrl'),
+        //     'contactNo' => request('contactNo'),
+        //     'email' => request('email'),
+        //     'address' => request('address')
 
-        $institute->save();
+        // ]);
 
-        //$institueLogoPath = $request->logoUrl->store('images');
+        Institute::create(request() -> all());
+
+        //$institute -> save();
 
         return redirect('/admin');
-
 
     }
 
@@ -81,10 +83,10 @@ class InstituteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Institute $institute)
+    public function edit(Institute $inst)
     {
 
-        return view('dashboard.editInstitute', compact('institute'));
+        return view('dashboard.editInstitute', compact('inst'));
 
     }
 
@@ -97,18 +99,7 @@ class InstituteController extends Controller
      */
     public function update(Request $request, $id)
     {
-       $institute = Institute::findOrFail($id);
-       $institute->name = $request->input('name');
-       $institute->type = $request->input('type');
-       $institute->logoUrl = $request->input('logoUrl');
-       $institute->contactNo = $request->input('contactNo');
-       $institute->address = $request->input('address');
-       $institute->email = $request->input('email');
-
-
-       $institute->save();
-
-       return redirect('/institutes/search');
+        //
     }
 
     /**
@@ -119,10 +110,6 @@ class InstituteController extends Controller
      */
     public function destroy($id)
     {
-        $institute = Institute::findOrFail($id);
-        $institute->delete();
-
-        return redirect('/institutes/search');
-
+        //
     }
 }

@@ -142,8 +142,10 @@
                   <div class="col-sm-9">
                   <select class="form-control" style="width: 100%;" id="teamID" name="teamID">
                   <option selected="selected">1</option>
-                  <option>2</option>
-                  <option>3</option>
+                  <?php foreach ($teams as $teamsData) : ?>
+                 
+                  <option><?= $teamsData->name ?></option>
+                   <?php endforeach; ?>
                 </select><br>
                   </div>
                   </div>

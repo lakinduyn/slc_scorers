@@ -25,6 +25,14 @@ class ScorerController extends Controller
     public function create()
     {
         //
+        return view('dashboard.createScorer');
+    }
+    public function search()
+    {
+        $ins = Scorer::all();
+
+        return view('dashboard.searchScorer', compact('ins'));
+
     }
 
     /**
@@ -34,8 +42,15 @@ class ScorerController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
+
     {
-        //
+        $scorer = new Scorer;
+         $scorer->lastName = $request->lastName;
+         $scorer->firstName = $request->firstName;
+
+         $scorer->save();
+
+         return redirect('/admin');
     }
 
     /**

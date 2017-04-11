@@ -2,6 +2,7 @@
 
 
 @section('content')
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
 
@@ -29,8 +30,7 @@
             <!-- /.box-header -->
             <!-- form start -->
             <form class="form-horizontal" method="POST" action="/institutes">
-
-            <input name="_token" type="hidden" value="{!! csrf_token() !!}" />
+            
             {{csrf_field() }}
 
              <div class="box-body">
@@ -106,7 +106,7 @@
                 </form>
               </div>
               </div>
-              <!-- /.bo
+              <!-- /.bo -- >
             
    
 
@@ -114,3 +114,4 @@
     <!-- /.content -->
 </div>
 @endsection()
+

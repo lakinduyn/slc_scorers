@@ -15,7 +15,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Search Institutes
+        Search Scorer
         <small>Optional title here</small>
       </h1>
       <ol class="breadcrumb">
@@ -35,25 +35,23 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-
-              <div class="col-xs-12">
               <table id="institutesDataTable" class="table table-bordered table-striped">
                 <thead>
                 <tr>
                   <th>Name</th>
-                  <th>Type</th>
                   <th>ContactNo</th>
                   <th>Email</th>
-                  <th>Edit/Delete</th>
+                  <th>Address</th>
                 </tr>
                 </thead>
                 <tbody>
                 <?php foreach ($ins as $insData) : ?>
                  <tr>
 
-                  <td><?= $insData->name ?> </td>
+                  <td><?= $insData->firstName ?> </td>
+
                  
-                  <td><?= $insData->type ?></td>
+                  <td><?= $insData->lastName ?></td>
 
                   
                   <td><?= $insData->contactNo ?></td>
@@ -61,14 +59,7 @@
                     
                   <td><?= $insData->email ?></td>
 
-                  <td>
-                    <a class="btn btn-sm" href="/institutes/{{$insData ->id}}/edit"><i class="fa fa-edit"></i> </a>
-
-                    {{ Form::open(['method' => 'DELETE', 'route' => ['institute.destroy', $insData->id]]) }}
-                    {{ Form::button('<i class="fa fa-remove"></i>', ['type' => 'submit', 'class' => 'btn btn-sm']) }}
-                    {{ Form::close() }}
-
-                  </td>
+                  <td><?= $insData->address ?></td>
               
                 </tr>
 
@@ -77,14 +68,11 @@
 
             </table>
             </div>
-
-
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
         </div>
         <!-- /.col -->
-        
       </div>
       <!-- /.row -->
     </section>
