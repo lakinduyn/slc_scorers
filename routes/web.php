@@ -61,6 +61,18 @@ Route::get('createTournament', function () {
     return view('tournaments.createTournament');
 });
 
+Route::get('tournamentStructure', function () {
+    return view('tournaments.tournamentStructure');
+});
+Route::get('tournamentStructure', 'TournamentController@index');
+
+
 Route::POST('/matchResult/{match}/basicDetails', 'MatchResultController@updateBasicInfo');
+
 Route::post('/tournaments', 'TournamentController@store');
 
+//routes for Rounds
+Route::post('/tournamentRounds', 'RoundController@store');
+
+//routes for Pools
+Route::post('/roundPools', 'PoolController@store');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Pool;
+use App\Round;
 use Illuminate\Http\Request;
 
 class PoolController extends Controller
@@ -35,7 +36,15 @@ class PoolController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $pool = new Pool;
+        $pool->name = $request->poolName;
+        
+        $round = new Round;
+        $roundName = $request->roundName;
+        $round = $round::where('name', $roundName)->firstOrFail();
+        $round->pools()->save($pool);
+
+        return redirect('/tournamentStructure');
     }
 
     /**

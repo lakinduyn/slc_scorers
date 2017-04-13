@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Tournament;
 use Illuminate\Http\Request;
+use DB;
 
 class TournamentController extends Controller
 {
@@ -14,7 +15,10 @@ class TournamentController extends Controller
      */
     public function index()
     {
-        //
+        $tournaments = DB::table('tournaments')->get();
+        $teams = DB::table('teams')->get();
+
+        return view('tournaments.tournamentStructure', ['tournaments' => $tournaments, 'teams' => $teams]);
     }
 
     /**
@@ -24,7 +28,7 @@ class TournamentController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
