@@ -25,9 +25,14 @@ Route::get('admin', function () {
 Route::get('addplayer', function () {
     return view('dashboard.addplayer');
 });
-Route::get('addplayer','TeamController@search');
-Route::get('searchPlayer', 'PlayerController@search');
+Route::get('/players/addplayer','TeamController@search');
+Route::get('editPlayer','TeamController@search1');
+Route::get('/players/search', 'PlayerController@search');
+Route::get('players/{player}/edit', 'PlayerController@edit');
 Route::post('/players', 'PlayerController@store');
+Route::PUT('/players/{player}', 'PlayerController@update');
+Route::DELETE('/players/{player}', 'PlayerController@destroy')->name('institute.destroy');
+
 
 
 //routes for Teams
