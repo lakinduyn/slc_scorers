@@ -54,14 +54,21 @@ Route::DELETE('/institues/{institute}', 'InstituteController@destroy')->name('in
 //routes for Matches
 Route::get('/matchResults/{match}', 'MatchResultController@show');
 
+
 //routes for Tournaments
+
 Route::get('createTournament', function () {
     return view('tournaments.createTournament');
 });
+
 Route::get('tournamentStructure', function () {
     return view('tournaments.tournamentStructure');
 });
 Route::get('tournamentStructure', 'TournamentController@index');
+
+
+Route::POST('/matchResult/{match}/basicDetails', 'MatchResultController@updateBasicInfo');
+
 Route::post('/tournaments', 'TournamentController@store');
 
 //routes for Rounds
