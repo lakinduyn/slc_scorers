@@ -22,6 +22,15 @@ class TeamController extends Controller
         return view('dashboard.teamregistration', compact('team'));
          
     }
+      public function addteam()
+    {
+        //
+         
+         $team = Team::all();
+
+        return view('dashboard.addteam', compact('team'));
+         
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -55,7 +64,7 @@ class TeamController extends Controller
 
         
 
-     return redirect('/admin');
+     return redirect('/team');
 
     }
 
@@ -76,9 +85,10 @@ class TeamController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Team $team)
     {
-        //
+        
+         return view('dashboard.editTeam', compact('team'));
     }
 
     /**
@@ -91,6 +101,14 @@ class TeamController extends Controller
     public function update(Request $request, $id)
     {
         //
+         $team = Team::findOrFail($id);
+       $team->name = $request->input('name');
+       $team->ageCat = $request->input('age');
+       $team->div = $request->input('div');
+       $team->institute_id = $request->input('ins');
+     
+       $team->save();
+      return redirect('/team');
     }
 
     /**
@@ -105,6 +123,7 @@ class TeamController extends Controller
          $team = Team::findOrFail($id);
         $team->delete();
         //Session::flash('message', 'Successfully deleted the Team!');
+        //Session::flash('flash_message', 'Team successfully deleted!');
         return redirect('/team');
 
     }

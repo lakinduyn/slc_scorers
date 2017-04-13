@@ -53,7 +53,10 @@ Route::get('createTournament', function () {
 Route::post('/tournaments', 'TournamentController@store');
 
 Route::get('/team', 'TeamController@index');
+Route::get('/addteam', 'TeamController@addteam');
 
 Route::post('/saveteam', 'TeamController@store');
 
 Route::get('deleteteam/{id}', 'TeamController@destroy');
+Route::get('editteamteam/{team}', 'TeamController@edit');
+Route::PUT('saveeditteam/{team}', 'TeamController@update');
