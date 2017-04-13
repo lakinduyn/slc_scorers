@@ -76,3 +76,5 @@ Route::post('/tournamentRounds', 'RoundController@store');
 
 //routes for Pools
 Route::post('/roundPools', 'PoolController@store');
+
+Route::post('/poolTeams', 'TournamentController@storeTournamentTeams');

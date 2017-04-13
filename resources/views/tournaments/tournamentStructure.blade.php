@@ -57,11 +57,12 @@
                         @foreach ($teams as $team) 
                         <li>                      
                           <!-- checkbox -->
-                          <input type="checkbox" value="teamName" class="" name="teamName">
+                          <input type="checkbox" value="{{ $team->name }}" class="" name="teamName[]">
                           <!-- todo text -->
                           <span class="text">{{ $team->name }}</span>
                         </li>
                         @endforeach
+                        <!--<input type="checkbox" value="{{ $team->name }}" class="" name="teamName"> {{ $team->name }}-->
                 </div>
                 </div>
                   
@@ -77,7 +78,7 @@
                 <button type="submit" formmethod="POST" formaction="/roundPools" class="btn btn-primary">Add Pool</button>
                 </div>
                 <div class="col-md-4">
-                <button type="submit" action="/poolTeams" class="btn btn-primary">Add Teams</button>
+                <button type="submit" formmethod="POST" formaction="/poolTeams" class="btn btn-primary">Add Teams</button>
                 </div>
               </div>
             </div></form>
