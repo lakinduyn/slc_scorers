@@ -53,6 +53,13 @@ Route::DELETE('/institues/{institute}', 'InstituteController@destroy')->name('in
 
 //routes for Matches
 Route::get('/matchResults/{match}', 'MatchResultController@show');
+Route::POST('/matchResult/{match}/basicDetails', 'MatchResultController@updateBasicInfo');
+Route::get('/updateInnings/{inning}', 'InningsController@show');
+Route::POST('/updateInnings/{inning}/basic', 'InningsController@update');
+Route::POST('/updateInnings/{inning}/batting', 'InningsController@updateBatsman');
+Route::POST('/updateInnings/batting/delete', 'InningsController@deleteBatsman');
+Route::POST('/updateInnings/{inning}/bowling', 'InningsController@updateBowler');
+Route::POST('/updateInnings/bowling/delete', 'InningsController@deleteBowler');
 
 
 //routes for Tournaments
@@ -61,13 +68,14 @@ Route::get('createTournament', function () {
     return view('tournaments.createTournament');
 });
 
+
 Route::get('tournamentStructure', function () {
     return view('tournaments.tournamentStructure');
 });
 Route::get('tournamentStructure', 'TournamentController@index');
 
 
-Route::POST('/matchResult/{match}/basicDetails', 'MatchResultController@updateBasicInfo');
+
 
 Route::post('/tournaments', 'TournamentController@store');
 

@@ -14,6 +14,10 @@ class Inning extends Model
     {
         return $this->hasMany(BattingStat::class);
     }
+    public function bowlingStats()
+    {
+        return $this->hasMany(BowlingStat::class);
+    }
     public function battingTeam(){
         return $this->hasOne(Team::class, 'id','batTeam');
     }
