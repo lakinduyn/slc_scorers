@@ -65,6 +65,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="createTournament">Create Tournament</a></li>
+            <li><a href="tournamentStructure">Tournament Structure</a></li>
             <li><a href="#">Schedule Matches</a></li>
           </ul>
         </li>

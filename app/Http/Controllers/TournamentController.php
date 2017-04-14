@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Tournament;
+use App\Team;
+use App\Pool;
+use App\TeamTournament;
+use App\PoolTeam;
 use Illuminate\Http\Request;
+use DB;
 
 class TournamentController extends Controller
 {
@@ -14,7 +19,10 @@ class TournamentController extends Controller
      */
     public function index()
     {
-        //
+        $tournaments = DB::table('tournaments')->get();
+        $teams = DB::table('teams')->get();
+
+        return view('tournaments.tournamentStructure', ['tournaments' => $tournaments, 'teams' => $teams]);
     }
 
     /**
@@ -24,7 +32,7 @@ class TournamentController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -43,6 +51,38 @@ class TournamentController extends Controller
          $tournament->save();
 
          return redirect('/admin');
+    }
+
+    public function storeTournamentTeams(Request $request)
+    {
+        $tournament = new Tournament;
+        $tournamentName = $request->tournamentName;
+        $tournament = $tournament::where('name', $tournamentName)->firstOrFail();
+
+        $pool = new Pool;
+        $poolName = $request->poolName;
+        $pool = $pool::where('name', $poolName)->firstOrFail();
+
+        $team = new Team;
+        $teamName = $request->teamName;
+
+        foreach($teamName as $tn)
+        {
+            $team = $team::where('name', $tn)->firstOrFail();
+
+            $teamTournament = new TeamTournament;
+            $teamTournament->tournament_id = $tournament->id;
+            $teamTournament->team_id = $team->id;
+
+            $poolTeam = new PoolTeam;
+            $poolTeam->pool_id = $pool->id;
+            $poolTeam->team_id = $team->id;
+
+            $teamTournament->save();
+            $poolTeam->save();
+        }
+
+        return redirect('/tournamentStructure');
     }
 
     /**
