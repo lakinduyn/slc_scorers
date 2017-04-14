@@ -79,10 +79,18 @@ Route::get('tournamentStructure', 'TournamentController@index');
 
 Route::post('/tournaments', 'TournamentController@store');
 
+
+Route::get('/team', 'TeamController@index');
+Route::get('/addteam', 'TeamController@addteam');
+Route::post('/saveteam', 'TeamController@store');
+Route::get('deleteteam/{id}', 'TeamController@destroy');
+Route::get('editteamteam/{team}', 'TeamController@edit');
+Route::PUT('saveeditteam/{team}', 'TeamController@update');
+
 //routes for Rounds
 Route::post('/tournamentRounds', 'RoundController@store');
 
 //routes for Pools
 Route::post('/roundPools', 'PoolController@store');
-
 Route::post('/poolTeams', 'TournamentController@storeTournamentTeams');
+
