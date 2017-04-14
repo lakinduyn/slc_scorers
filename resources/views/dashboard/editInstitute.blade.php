@@ -108,20 +108,20 @@
                   <label for="inputContact" class="col-sm-2 control-label">Contact No</label>
 
                   <div class="col-sm-10">
-                    <input type="text" value = "{{ $institute -> contactNo or "NA"}}" class="form-control" id="instituteContactNo" name="contactNo" placeholder="">
+                    <input type="text" value = "{{ $institute -> contactNo}}" class="form-control" id="instituteContactNo" name="contactNo" placeholder="">
                   </div>
                   </div>
                   <div class="form-group">
                   <label for="inputemail" class="col-sm-2 control-label">Email</label>
                   <div class="col-sm-10">
-                    <input type="email" value= "{{ $institute -> email or "NA"}}"  class="form-control" id="instituteEmail" name="email" placeholder="">
+                    <input type="email" value= "{{ $institute -> email}}"  class="form-control" id="instituteEmail" name="email" placeholder="">
                   </div>
                   </div>
               
                <div class="form-group">
                   <label for="inputAddress" class="col-sm-2 control-label">Address</label>
                   <div class="col-sm-10">
-                    <input type="text" value= "{{ $institute->address or "NA"}}" class="form-control" id="instituteAddress" name="address" placeholder="">
+                    <input type="text" value= "{{ $institute->address}}" class="form-control" id="instituteAddress" name="address" placeholder="">
                   </div>
                   </div>
                   </div>

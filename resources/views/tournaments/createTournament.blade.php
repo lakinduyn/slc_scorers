@@ -70,14 +70,14 @@
                 </div>
                   
                 <div class="col-md-4">
-  <div class="form-group">
+                  <div class="form-group">
                   <label for="tournamentLogo">Tournament Logo</label>
                   <input type="file" id="tournamentLogo" name="tournamentLogo">
                   <img id="image" style="width:70px;height:70px"; />
 
                   <!--<p class="help-block">Example block-level help text here.</p>-->
                 </div>
-</div>
+              </div>
                 <!--<div class="checkbox">
                   <label>
                     <input type="checkbox"> Check me out

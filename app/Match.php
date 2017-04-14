@@ -20,4 +20,11 @@ class Match extends Model
     public function team2(){
         return $this->hasOne(Team::class, 'id','team2_id');
     }
+    public function innings()
+    {
+        return $this->hasMany(Inning::class);
+    }
+    public function players(){
+        return $this->belongsToMany('App\Player','match_players')->withPivot('team_id');
+    }
 }
