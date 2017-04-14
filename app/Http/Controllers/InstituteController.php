@@ -55,6 +55,15 @@ class InstituteController extends Controller
         $institute->email = $request->email;
         $institute->address = $request->address;
 
+        $this->validate($request, [
+
+        'name' => 'required|unique:institutes|max:100',
+        'contactNo' => 'nullable|unique:institutes|max:100',
+        'email' => 'nullable|unique:institutes|max:100',
+        //'email' => unique:institutes|max:100',
+        
+         ]);
+
         $institute->save();
 
         //$institueLogoPath = $request->logoUrl->store('images');
@@ -121,6 +130,8 @@ class InstituteController extends Controller
     {
         $institute = Institute::findOrFail($id);
         $institute->delete();
+
+        //Session::flash('message', 'Successfully deleted the record!');
 
         return redirect('/institutes/search');
 

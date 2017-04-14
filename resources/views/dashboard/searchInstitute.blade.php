@@ -62,12 +62,18 @@
                   <td><?= $insData->email ?></td>
 
                   <td>
-                    <a class="btn btn-sm" href="/institutes/{{$insData ->id}}/edit"><i class="fa fa-edit"></i> </a>
-
-                    {{ Form::open(['method' => 'DELETE', 'route' => ['institute.destroy', $insData->id]]) }}
-                    {{ Form::button('<i class="fa fa-remove"></i>', ['type' => 'submit', 'class' => 'btn btn-sm']) }}
-                    {{ Form::close() }}
-
+                    <table>
+                      <tr>
+                        <td>
+                          <a class="btn btn-sm" href="/institutes/{{$insData ->id}}/edit"><i class="fa fa-edit"></i> </a>
+                        </td>
+                        <td>
+                          {{ Form::open(['method' => 'DELETE', 'route' => ['institute.destroy', $insData->id]]) }}
+                          {{ Form::button('<i class="fa fa-remove"></i>', ['type' => 'submit', 'class' => 'btn btn-sm']) }}
+                          {{ Form::close() }}
+                        </td>
+                      </tr>
+                    </table>
                   </td>
               
                 </tr>

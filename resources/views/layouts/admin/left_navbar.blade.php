@@ -53,8 +53,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="addplayer">Add Player</a></li>
-            <li><a href="searchPlayer">Search Players</a></li>
+            <li><a href="/addplayer">Add Player</a></li>
+            <li><a href="/searchPlayer">Search Players</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -64,9 +64,11 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="createTournament">Create Tournament</a></li>
+
+            <li><a href="/createTournament">Create Tournament</a></li>
             <li><a href="tournamentStructure">Tournament Structure</a></li>
             <li><a href="#">Schedule Matches</a></li>
+
           </ul>
         </li>
         <li class="treeview">
@@ -76,8 +78,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="createScorer">Add Scorere</a></li>
-            <li><a href="searchScorer">Search Scorer</a></li>
+            <li><a href="/createScorer">Add Scorere</a></li>
+            <li><a href="/searchScorer">Search Scorer</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -87,8 +89,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#">Link in level 2</a></li>
-            <li><a href="#">Link in level 2</a></li>
+            <li><a href="/#">Link in level 2</a></li>
+            <li><a href="/#">Link in level 2</a></li>
           </ul>
         </li>
       </ul>
