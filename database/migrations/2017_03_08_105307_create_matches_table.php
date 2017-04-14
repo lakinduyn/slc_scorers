@@ -19,7 +19,7 @@ class CreateMatchesTable extends Migration
             $table->enum('format', ['50 Overs', '20 Overs','Test']);
             $table->string('venue');
             $table->date('matchStartDate');
-            $table->date('matchEndDate');
+            $table->date('matchEndDate')->nullable();
             $table->integer('team1_id')->unsigned();
             $table->foreign('team1_id')->references('id')->on('teams');
             $table->integer('team2_id')->unsigned();

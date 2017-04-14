@@ -22,9 +22,12 @@ class CreateBattingStatsTable extends Migration
             $table->integer('btOrderNo')->unsigned();
             $table->integer('runs')->unsigned();
             $table->integer('balls')->unsigned();
+            $table->integer('fours')->unsigned()->default(0);
+            $table->integer('sixes')->unsigned()->default(0);
             $table->enum('dismissalType', ['dnb', 'notout','bowled','caught','lbw','stumped','runout','retired','obstruct']);
             $table->integer('dismissalNo')->unsigned()->nullable();            
-            $table->double('dismissalAt',4,1)->unsigned()->nullable();
+            $table->double('dismissalAtOver',4,1)->unsigned()->nullable();
+            $table->integer('dismissalAtRuns')->unsigned()->nullable();
             $table->integer('dismissalBowler')->unsigned()->nullable();
             $table->foreign('dismissalBowler')->references('id')->on('players');
             $table->integer('dismissalFielder')->unsigned()->nullable();
