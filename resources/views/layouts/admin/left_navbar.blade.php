@@ -53,8 +53,9 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="addplayer">Add Player</a></li>
-            <li><a href="searchPlayer">Search Players</a></li>
+            <li><a href="/players/addplayer">Add Player</a></li>
+            <li><a href="/players/search">Search Players</a></li>
+            <li><a href="/players/addteam">Add Player to Team</a></li>
           </ul>
         </li>
         <li class="treeview">

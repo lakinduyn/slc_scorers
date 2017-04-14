@@ -35,6 +35,20 @@ class TeamController extends Controller
         return view('dashboard.addplayer', compact('teams'));
 
     }
+    public function searchTeam()
+    {
+        $teams2 = Team::all();
+
+        return view('dashboard.playerTeamRegister', compact('teams2'));
+
+    }
+    public function search1()
+    {
+        $teams1 = Team::all();
+
+        return view('dashboard.editPlayer', compact('teams1'));
+
+    }
 
     /**
      * Store a newly created resource in storage.
