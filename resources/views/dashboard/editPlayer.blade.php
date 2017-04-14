@@ -25,8 +25,9 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form class="form-horizontal" method="POST" action="/players" files="true" enctype="multipart/form-data">
+            <form class="form-horizontal" method="POST" action="/players/{{$player->id}}" >
             {{csrf_field() }}
+            {{ method_field('PUT') }}
               <div class="box-body">
                <div class="row">
               <div class="col-md-6">
@@ -36,30 +37,30 @@
               <div class="form-group">
                   <label for="regNoe" class="col-sm-3 control-label">Registration No</label>
                   <div class="col-sm-9">
-                    <input type="text" class="form-control" required id="registrationNo" name="registrationNo" placeholder="Reg123">
+                    <input type="text" value= "{{$player ->regId}}" class="form-control"  id="registrationNo" name="registrationNo" placeholder="Reg123">
               </div>
               </div>
               <div class="form-group">
                   <label for="inputLastName" class="col-sm-3 control-label">NIC</label>
                   <div class="col-sm-9">
-                    <input type="text" class="form-control" id="nic" name="nic" placeholder="123456789v">
+                    <input type="text" value="{{$player ->nic}}" class="form-control" id="nic" name="nic" placeholder="123456789v">
               </div>
               </div>
                <div class="form-group">
                   <label for="inputLastName" class="col-sm-3 control-label">Last Name</label>
                   <div class="col-sm-9">
-                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name">
+                    <input type="text" value= "{{$player ->lastName}}" class="form-control" id="lastName" name="lastName" placeholder="Last Name">
               </div>
               </div>
                   <div class="form-group">
                   <label for="inputotherName" class="col-sm-3 control-label">Other Names</label>
                   <div class="col-sm-9">
-                    <input type="text" class="form-control" id="otherNames" name="otherNames" placeholder="Other Names">
+                    <input type="text" value= "{{$player ->firstName}}" class="form-control" id="otherNames" name="otherNames" placeholder="Other Names">
                   </div></div>
                   <div class="form-group">
                 <label for="inputLastName" class="col-sm-3 control-label">Date of Birth</label>
                   <div class="col-sm-9">
-                    <input type="date" class="form-control" id="dob" name="dob">
+                    <input type="date" value= "{{$player ->dob}}" class="form-control" id="dob" name="dob">
                   </div>
                   </div>
 
@@ -67,7 +68,7 @@
                  <div class="form-group">
                   <label for="inputContact" class="col-sm-3 control-label">Contact No</label>
                   <div class="col-sm-9">
-                  <input type="text" pattern="d{10}?" class="form-control" id="contactNo" name="contactNo" placeholder="ContactNumber" >
+                  <input type="text" pattern="d{10}?" value= "{{$player ->contactNo}}" class="form-control" id="contactNo" placeholder="contactNo" >
                   </div>
                   </div>
                   <div class="form-group">
@@ -77,11 +78,10 @@
                   </div>
                   </div>
                   <div class="form-group">
-                  <label for="image" class="col-sm-3 control-label">Image</label>
+                  <label for="inputPicture" class="col-sm-3 control-label">Image</label>
                    <div class="col-sm-9">
                  <input type="file" id="image" name="image" value="image" accept="image/*">
                  <img id="image" style="width:70px;height:70px"; />
-                 
 
                  </div>
                  </div>
@@ -98,21 +98,22 @@
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-3 control-label">Height</label>
                   <div class="col-sm-9">
-                  <input type="text" class="form-control" id="height" name="height" placeholder="height">
+                  <input type="text" class="form-control" name="height" id="height" placeholder="Height" value="{{$player ->height}}">
                   </div>
                   </div>
                   <div class="form-group">
                   <label for="inputEmail3" class="col-sm-3 control-label">Weight</label>
                   <div class="col-sm-9">
-                  <input type="text" class="form-control" id="weight" name="weight" placeholder="weight">
+                  <input type="text" class="form-control" name="weight" id="weight" placeholder="weight" value="{{$player ->weight}}">
                   </div>
                   </div>
               <div class="form-group">
                 <label for="inputEmail3" class="col-sm-3 control-label">Player Role</label>
                 <div class="col-sm-9">
                 <select class="form-control" style="width: 100%;" id="playerRole" name="playerRole">
-                  <option value="Batsman" selected="selected">Batsman</option>
+                  <option  value="{{$player ->playingRole}}"selected="selected">{{$player ->playingRole}}</option>
                   <option value="Bowler">Bowler</option>
+                  <option value="Batsman">Batsman</option>
                   <option value="All Rounder">All Rounder</option>
                 </select>
               </div>
@@ -121,17 +122,18 @@
                   <label for="inputEmail3" class="col-sm-3 control-label">Batting Style</label>
                   <div class="col-sm-9">
                 <select class="form-control" style="width: 100%;" id="battingStyle" name="battingStyle">
-                  <option selected="selected">Right Hand</option>
+                  <option  value="{{$player ->batStyle}}"selected="selected">{{$player ->batStyle}}</option>
                   <option>Left hand</option>
-                  
+                  <option>Right Hand</option>   
                 </select>
                 </div>
                 </div>
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-3 control-label">Bowling Style</label>
                   <div class="col-sm-9">
-                 <select class="form-control" style="width: 100%;" id="bowlingStyle" name="bowlingStyle">
-                  <option selected="selected">Fast Bowler</option>
+                  <select class="form-control" style="width: 100%;" id="bowlingStyle" name="bowlingStyle">
+                  <option  value="{{$player ->bowlStyle}}"selected="selected">{{$player ->bowlStyle}}</option>
+                  <option>Fast Bowler</option>
                   <option>Spinner</option>
                  </select>
                   </div>
@@ -142,21 +144,18 @@
                  <div class="box-header with-border">
                   <label>Team Details</label><br><br>
                   <div class="form-group">
-                  <label for="teamId" class="col-sm-3 control-label">Team Name</label>
+                  <label for="teamId" class="col-sm-3 control-label">Team ID</label>
                   <div class="col-sm-9">
-                  <select class="form-control" style="width: 100%;" id="teamName" name="teamName" onChange="getteamName(this)";>
-                  <option selected="selected" value="1">Select team</option>
-                  <?php foreach ($teams as $teamsData) : ?>
-                 
-                  <option value="<?= $teamsData->id ?>"><?= $teamsData->name ?></option>
-                   <?php endforeach; ?>
+                  <select class="form-control" style="width: 100%;" id="teamID" name="teamID">
+                  <option selected="selected">1</option>
+                   
                 </select><br>
                   </div>
                   </div>
                   <div class="form-group">
-                  <label for="teamName" class="col-sm-3 control-label">Team ID</label>
+                  <label for="teamName" class="col-sm-3 control-label">Team Name</label>
                   <div class="col-sm-9">
-                    <input type="text" class="form-control" id="teamId" name="teamId"  >
+                    <input type="hidden" class="form-control" id="teamName" name="teamName" >
                   </div></div>
 
                 </div>
@@ -168,7 +167,7 @@
         </div><!-- /.row -->
                   <div class="box-footer">
                 <button type="submit" class="btn btn-default">Cancel</button>
-                <button type="submit" class="btn btn-info pull-right">Register</button>
+                <button type="submit" class="btn btn-info pull-right">Update</button>
                 </form>
               </div>
               </div>
@@ -195,13 +194,5 @@ document.getElementById("image").onchange = function () {
     // read the image file as a data URL.
     reader.readAsDataURL(this.files[0]);
 };
-   function getteamName(selectObject)
-            {
-                document.getElementById("teamId").value=selectObject.value;
-            };
-          
 </script>
-<script type="text/javascript">
-         
-        </script>
 @endsection()

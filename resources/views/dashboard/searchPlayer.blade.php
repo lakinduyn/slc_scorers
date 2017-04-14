@@ -38,29 +38,33 @@
               <table id="playersDataTable" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Name</th>
-                  <th>Type</th>
-                  <th>ContactNo</th>
-                  <th>Email</th>
-                  <th>Address</th>
+                  <th>Registration number</th>
+                  <th>NIC</th>
+                  <th>First Name</th>
+                  <th>Playing Role</th>
                 </tr>
                 </thead>
                 <tbody>
-                <?php foreach ($ply as $insData) : ?>
+                <?php foreach ($ply as $plyData) : ?>
                  <tr>
 
-                  <td><?= $insData->regId ?> </td>
+                  <td><?= $plyData->regId ?> </td>
 
                  
-                  <td><?= $insData->firstName?></td>
+                  <td><?= $plyData->nic?></td>
 
                   
-                  <td><?= $insData->contactNo ?></td>
+                  <td><?= $plyData->firstName ?></td>
 
                     
-                  <td><?= $insData->email ?></td>
-
-                  <td><?= $insData->playingRole?></td>
+                  <td><?= $plyData->playingRole?></td>
+                  <td>
+                    <a class="btn btn-sm" href="/players/{{$plyData ->id}}/edit"><i class="fa fa-edit"></i> </a>
+                      {{ Form::open(['method' => 'DELETE', 'route' => ['player.destroy', $plyData->id]]) }}
+                    {{ Form::button('<i class="fa fa-remove"></i>', ['type' => 'submit', 'class' => 'btn btn-sm']) }}
+                    {{ Form::close() }}
+                    
+                  </td>
               
                 </tr>
 
@@ -74,9 +78,12 @@
           <!-- /.box -->
         </div>
         <!-- /.col -->
+        </section>
+        
+
       </div>
       <!-- /.row -->
-    </section>
+    
 
 @endsection()
 
@@ -85,8 +92,13 @@
     <!-- DataTables -->
     <script src="bower_components/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="bower_components/adminlte/plugins/datatables/dataTables.bootstrap.min.js"></script>
-    <script> 
-        $(document).ready(function(){
-        $('#playersDataTable').DataTable();
-});</script>
+    <!-- DataTables -->
+    
+   
+ <script>
+  $(function () {
+    $("#playersDataTable").DataTable();
+
+  });
+</script>
 @endsection()
