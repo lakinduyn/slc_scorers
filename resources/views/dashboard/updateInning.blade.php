@@ -446,7 +446,12 @@
               </table>
           </div>
       </div>
-          
+
+      <div >
+        <form>
+        <button formmethod="GET" formaction="/matchResultsMain/{{$inning->match->id}}" type="submit" class="btn btn-default">Back to Match Result</button>
+        </form>
+      </div>  
           
              
          

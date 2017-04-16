@@ -7,4 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class MatchResult extends Model
 {
     protected $guarded = [];
+
+    public function tossWinningTeam(){
+        return $this->hasOne(Team::class, 'id','tossTeam');
+    }
 }

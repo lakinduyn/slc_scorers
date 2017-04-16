@@ -45,7 +45,7 @@ class MatchResultController extends Controller
      * @param  \App\MatchResult  $matchResult
      * @return \Illuminate\Http\Response
      */
-    public function show(Match $match)
+    public function showMatchBasicInfo(Match $match)
     {
         //$umpires = \App\Umpire::get(['id']);
         $umpires = \App\Umpire::all();
@@ -53,8 +53,16 @@ class MatchResultController extends Controller
         $tournament = $match->tournament;
         $tou_team_1 = $tournament->players()->where('team_id','=',$match->team1_id)->get();
         $tou_team_2 = $tournament->players()->where('team_id','=',$match->team2_id)->get();
+        $matchResult = $match->matchresult;
 
-        return view('dashboard.matchResult', compact('match','umpires','scorers','tou_team_1','tou_team_2'));
+        $selected_team_1 = \App\MatchPlayer::where('match_id','=',$match->id)->where('team_id','=',$match->team1_id)->get();
+        $selected_team_2 = \App\MatchPlayer::where('match_id','=',$match->id)->where('team_id','=',$match->team2_id)->get();
+
+        return view('dashboard.matchResult', compact('match','umpires','scorers','tou_team_1','tou_team_2','matchResult','selected_team_1','selected_team_2'));
+    }
+    public function show(Match $match)
+    {
+        return view('dashboard.matchResultMain', compact('match'));
     }
 
     /**
@@ -86,9 +94,9 @@ class MatchResultController extends Controller
         $m_id="".$match->id."";
         $matchResult=\App\MatchResult::firstOrCreate(['match_id'=>$m_id]);
 
-        $match->umpire1=$request->umpire1;
-        $match->umpire2=$request->umpire2;
-        $match->scorer_id=$request->scorer;
+        $match->umpire1=($request->umpire1=="0" ? null : $request->umpire1);
+        $match->umpire2=($request->umpire2=="0" ? null : $request->umpire2);
+        $match->scorer_id=($request->scorer=="0" ? null : $request->scorer);
         $match->save();
 
         $matchResult->match_id=$match->id;
@@ -123,7 +131,12 @@ class MatchResultController extends Controller
             \App\MatchPlayer::where('player_id', $request->team1_wk)->update(['isWK' => 1]);
         }
         if($request->team1_12thMan!="0"){
-            \App\MatchPlayer::where('player_id', $request->team1_12thMan)->update(['is12thMan' => 1]);
+            $pl=new  \App\MatchPlayer;
+            $pl->player_id=$request->team1_12thMan;
+            $pl->match_id=$match->id;
+            $pl->team_id=$match->team1->id;
+            $pl->is12thMan="1";
+            $pl->save();
         }
 
         if($request->team2_cap!="0"){
@@ -133,9 +146,45 @@ class MatchResultController extends Controller
             \App\MatchPlayer::where('player_id', $request->team2_wk)->update(['isWK' => 1]);
         }
         if($request->team2_12thMan!="0"){
-            \App\MatchPlayer::where('player_id', $request->team2_12thMan)->update(['is12thMan' => 1]);
+            $pl=new  \App\MatchPlayer;
+            $pl->player_id=$request->team2_12thMan;
+            $pl->match_id=$match->id;
+            $pl->team_id=$match->team2->id;
+            $pl->is12thMan="1";
+            $pl->save();
         }
-        return redirect('/admin');
+        return redirect('/matchResultsMain/'.$match->id);
+    }
+
+    public function updateFinalResult(Request $request, Match $match)
+    {
+        $matchResult=$match->matchResult;
+        if($request->wonby=="0")
+        {
+            $matchResult->winTeam=null;
+        }
+        else{
+            $matchResult->winTeam=$request->wonby;
+        }
+        if($request->wintype=="0")
+        {
+            $matchResult->wintype=null;
+        }
+        else{
+            $matchResult->wintype=$request->wonType;
+        }              
+        $matchResult->winMargin=$request->winMargin;
+        if($request->isDuck==null){
+            $matchResult->dlMethod="no";
+        }
+        else{
+            $matchResult->dlMethod=$request->isDuck;
+        }
+        
+
+        $matchResult->save();
+
+        return back();
     }
     /**
      * Remove the specified resource from storage.

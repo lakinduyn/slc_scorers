@@ -24,6 +24,7 @@ class CreateInningsTable extends Migration
             $table->double('oversPlayed',4,1)->default(0);
             $table->integer('total')->unsigned()->default(0);
             $table->integer('wicketsFallen')->unsigned()->default(0);
+            $table->enum('isDec', ['yes', 'no'])->default('no');
             $table->integer('nb')->unsigned()->default(0);
             $table->integer('wide')->unsigned()->default(0);
             $table->integer('legbyes')->unsigned()->default(0);

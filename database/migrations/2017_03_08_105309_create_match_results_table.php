@@ -22,11 +22,12 @@ class CreateMatchResultsTable extends Migration
             
             $table->integer('winTeam')->unsigned()->nullable();
             $table->foreign('winTeam')->references('id')->on('teams');
-            $table->enum('wintype', ['runs', 'wickets','innings','tie','noresult'])->nullable();
+            $table->enum('wintype', ['runs', 'wickets','innings','tie','noresult','drawn'])->nullable();
             $table->integer('winMargin')->nullable();
             $table->integer('tossTeam')->unsigned()->nullable();
             $table->foreign('tossTeam')->references('id')->on('teams');
             $table->enum('tossDecision', ['bat', 'field'])->nullable();
+            $table->enum('dlMethod', ['yes', 'no'])->default('no');
             $table->timestamps();
         });
     }
