@@ -21,8 +21,39 @@ class TournamentController extends Controller
     {
         $tournaments = DB::table('tournaments')->get();
         $teams = DB::table('teams')->get();
+        $rounds = DB::table('rounds')
+                    ->join('tournaments', 'rounds.tournament_id', '=', 'tournaments.id')
+                    ->select('rounds.name')
+                    ->get();
 
-        return view('tournaments.tournamentStructure', ['tournaments' => $tournaments, 'teams' => $teams]);
+        return view('tournaments.tournamentStructure',
+            [
+                'tournaments' => $tournaments,
+                'teams' => $teams,
+                'rounds' => $rounds
+            ]);
+    }
+
+    public function roundsDropDown($id)
+    {
+        $rounds = DB::table("rounds")
+                    ->where("tournament_id",$id)
+                    ->select("name","id")
+                    // ->distinct()
+                    ->get();
+                
+        return json_encode($rounds);
+    }
+
+    public function poolsDropDown($id)
+    {
+        $pools = DB::table("pools")
+                    ->where("round_id", $id)
+                    ->select("name","id")
+                    // ->distinct()
+                    ->get();
+                
+        return json_encode($pools);
     }
 
     /**
@@ -56,11 +87,11 @@ class TournamentController extends Controller
     public function storeTournamentTeams(Request $request)
     {
         $tournament = new Tournament;
-        $tournamentName = $request->tournamentName;
-        $tournament = $tournament::where('name', $tournamentName)->firstOrFail();
+        $tournamentID = $request->tournamentName3;
+        $tournament = $tournament::where('id', $tournamentID)->firstOrFail();
 
         $pool = new Pool;
-        $poolName = $request->poolName;
+        $poolName = $request->pool;
         $pool = $pool::where('name', $poolName)->firstOrFail();
 
         $team = new Team;

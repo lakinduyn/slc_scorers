@@ -15,21 +15,23 @@
         <li class="active">Here</li>
       </ol>
     </section>
+    <!--Start of add rounds-->
     <section class="content">
     <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Add Rounds and Pools</h3>
+              <h3 class="box-title">Add Rounds</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
             <form role="form" method="POST" action="/tournamentRounds">
-            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
               <div class="box-body">
                 <div class="row">
                 <div class="col-md-4">
                 <div class="form-group">
                   <label for="tournamentName">Tournament</label>
-                    <select class="form-control" name="tournamentName" id="tournamentName" data-parsley-required="true">
+                    <select class="form-control" name="tournamentName1" id="tournamentName1" data-parsley-required="true">
+                    <option value="">Select a tournament</option>
                     @foreach ($tournaments as $tr) 
                     {
                         <option value="{{ $tr->name }}">{{ $tr->name }}</option>
@@ -43,63 +45,219 @@
                   <label for="round">Round</label>
                   <input type="text" class="form-control" id="roundName" name="roundName" placeholder="1">
                 </div>
+                </div>        
+              </div>
+              
+              <!-- /.box-body -->
+              <div class="box-footer">
+              <div class="col-md-4">
+                <button type="submit" class="btn btn-primary">Add Round</button>
+                </div>   
+              </div>
+            </div></form>
+          </div>
+          </section>
+           <!--End of add rounds-->
+
+          <!--Add Pools-->
+          <section class="content">
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Add Pools</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form role="form" method="POST" action="/roundPools">
+            <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
+              <div class="box-body">
+                <div class="row">
+                <div class="col-md-4">
+                <div class="form-group">
+                  <label for="tournamentName">Tournament</label>
+                    <select class="form-control" name="tournamentName2" id="tournamentName2" data-parsley-required="true">
+                    <option value="">Select a tournament</option>
+                    @foreach ($tournaments as $tr) 
+                    {
+                        <option value="{{ $tr->id }}">{{ $tr->name }}</option>
+                    }
+                    @endforeach
+                    </select>
+                </div>
+                </div>
+                <div class="col-md-2">
+                <div class="form-group">
+                  <label for="round">Round</label>
+                    <select name="round" class="form-control">
+                    <option value="">Select a round</option>
+                    </select>
+                </div>
                 </div>
                 <div class="col-md-2">
                 <div class="form-group">
                   <label for="pool">Pool</label>
                   <input type="text" class="form-control" id="poolName" name="poolName" placeholder="A">
                 </div>
-                </div>
-                <div class="col-md-4">
-                <div class="form-group">
-                  <label for="teams">Teams</label>
-                  <ul class="todo-list">  
-                        @foreach ($teams as $team) 
-                        <li>                      
-                          <!-- checkbox -->
-                          <input type="checkbox" value="{{ $team->name }}" class="" name="teamName[]">
-                          <!-- todo text -->
-                          <span class="text">{{ $team->name }}</span>
-                        </li>
-                        @endforeach
-                        <!--<input type="checkbox" value="{{ $team->name }}" class="" name="teamName"> {{ $team->name }}-->
-                </div>
-                </div>
-                  
+                </div>        
               </div>
-              
-              <!-- /.box-body -->
 
+               <!-- /.box-body -->
               <div class="box-footer">
               <div class="col-md-4">
-                <button type="submit" class="btn btn-primary">Add Round</button>
+                <button type="submit" class="btn btn-primary">Add Pool</button>
+                </div>   
+              </div>
+            </div></form>
+          </div>
+          </section> 
+          <!--End of add pools-->
+
+              <!--Add Teams-->
+              <section class="content">
+              <div class="box box-primary">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Add Teams</h3>
                 </div>
-                <div class="col-md-4">
-                <button type="submit" formmethod="POST" formaction="/roundPools" class="btn btn-primary">Add Pool</button>
-                </div>
-                <div class="col-md-4">
-                <button type="submit" formmethod="POST" formaction="/poolTeams" class="btn btn-primary">Add Teams</button>
-                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                <form role="form" method="POST" action="/poolTeams">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                  <div class="box-body">
+                    <div class="row">
+                    <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="tournamentName">Tournament</label>
+                        <select class="form-control" name="tournamentName3" id="tournamentName3" data-parsley-required="true">
+                        <option value="">Select a tournament</option>
+                        @foreach ($tournaments as $tr) 
+                        {
+                            <option value="{{ $tr->id }}">{{ $tr->name }}</option>
+                        }
+                        @endforeach
+                        </select>
+                    </div>
+                    </div>
+                    <div class="col-md-2">
+                    <div class="form-group">
+                      <label for="round">Round</label>
+                    <select name="round2" class="form-control">
+                      <option value="">Select a round</option>
+                    </select>
+                    </div>
+                    </div>
+                    <div class="col-md-2">
+                    <div class="form-group">
+                      <label for="round">Pool</label>
+                      <select name="pool" class="form-control">
+                        <option value="">Select a pool</option>
+                      </select>
+                    </div>
+                    </div>
+                    <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="teams">Teams</label>
+                      <ul class="todo-list">  
+                            @foreach ($teams as $team) 
+                            <li>                      
+                              <!-- checkbox -->
+                              <input type="checkbox" value="{{ $team->name }}" class="" name="teamName[]">
+                              <!-- todo text -->
+                              <span class="text">{{ $team->name }}</span>
+                            </li>
+                            @endforeach
+                    </div>
+                    </div>        
+                  </div>
+              
+              <!-- /.box-body -->
+              <div class="box-footer">
+              <div class="col-md-4">
+                <button type="submit" class="btn btn-primary">Add Teams</button>
+                </div>   
               </div>
             </div></form>
           </div>
           </section>
-   
+           <!--End of add teams-->
+
 </div>
 @endsection()
 
-<!--@section('page_specific_scripts')
-<script>
-document.getElementById("tournamentLogo").onchange = function () {
-    var reader = new FileReader();
+@section('page_specific_scripts')
+<!--Round drop down in Add Pools-->
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('select[name="tournamentName2"]').on('change', function() {
+            var tournamentID = $(this).val();
+            if(tournamentID) {
+                $.ajax({
+                    url: '/roundsDropDown/'+tournamentID,
+                    type: "GET",
+                    dataType: "json",
+                    success:function(data) {
 
-    reader.onload = function (e) {
-        // get loaded data and render thumbnail.
-        document.getElementById("image").src = e.target.result;
-    };
+                        
+                        $('select[name="round"]').empty();
+                        $.each(data, function(key, value) {
+                            $('select[name="round"]').append('<option value="'+ value.name +'">'+ value.name +'</option>');
+                        });
 
-    // read the image file as a data URL.
-    reader.readAsDataURL(this.files[0]);
-};
+                    }
+                });
+            }else{
+                $('select[name="round"]').empty();
+            }
+        });
+    });
 </script>
-@endsection()-->
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        // Round drop down in Add Teams
+        $('select[name="tournamentName3"]').on('change', function() {
+            var tournamentID = $(this).val();
+            if(tournamentID) {
+                $.ajax({
+                    url: '/roundsDropDown/'+tournamentID,
+                    type: "GET",
+                    dataType: "json",
+                    success:function(data) {
+
+                        
+                        $('select[name="round2"]').empty();
+                        $.each(data, function(key, value) {
+                            $('select[name="round2"]').append('<option value="'+ value.id +'">'+ value.name +'</option>');
+                        });
+
+                    }
+                });
+            }else{
+                $('select[name="round2"]').empty();
+            }
+        });
+
+        // Pool drop down in Add Teams
+        $('select[name="round2"]').on('change', function() {
+            var roundID = $(this).val();
+            if(roundID) {
+                $.ajax({
+                    url: '/poolsDropDown/'+roundID,
+                    type: "GET",
+                    dataType: "json",
+                    success:function(data) {
+
+                        
+                        $('select[name="pool"]').empty();
+                        $.each(data, function(key, value) {
+                            $('select[name="pool"]').append('<option value="'+ value.name +'">'+ value.name +'</option>');
+                        });
+
+                    }
+                });
+            }else{
+                $('select[name="pool"]').empty();
+            }
+        });
+
+    });
+</script>
+@endsection()

@@ -18,25 +18,53 @@
     <section class="content">
     <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Team Details</h3>
+              <h3 class="box-title">Tournament Details</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-         <form class="form-horizontal" method="POST" action="/playerTeam" files="true" enctype="multipart/form-data">             {{csrf_field() }}
+         <form class="form-horizontal" method="POST" action="/tournamentTeamPlayer" files="true" enctype="multipart/form-data">             {{csrf_field() }}
             {{csrf_field() }}
               <div class="box-body">
                 <div class="row">
                   <div class="col-md-4">
-               
+                 <div class="form-group">
+                  <label for="teamId" class="col-sm-3 control-label">Tournament Name</label>
+                  <div class="col-sm-9">
+                  <select class="form-control" style="width: 100%;" id="tournamentName" name="tournamentName" onChange="gettournamentName(this)";>
+                  <option selected="selected" value="1">Select team</option>
+                 <?php foreach ($tm as $tournament) : ?>
                  
+                  <option value="<?= $tournament->id ?>"><?= $tournament->name ?></option>
+                   <?php endforeach; ?>
+                </select><br>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="col-md-4">
                   <div class="form-group">
+                  <label for="teamName" class="col-sm-3 control-label">Tournament ID</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="tournamentId" name="tournamentId"  > 
+                  </div>
+                 </div>
+                </div>
+              
+                <div class="col-md-3">
+                  <div class="form-group">
+                  <button type="submit" class="btn btn-info pull-right">Register</button>
+                </div>
+                </div>
+                </div>
+                 <div class="row">
+                  <div class="col-md-4">
+                 <div class="form-group">
                   <label for="teamId" class="col-sm-3 control-label">Team Name</label>
                   <div class="col-sm-9">
                   <select class="form-control" style="width: 100%;" id="teamName" name="teamName" onChange="getteamName(this)";>
                   <option selected="selected" value="1">Select team</option>
-                 <?php foreach ($team as $teamsData) : ?>
+                 <?php foreach ($teams as $teams) : ?>
                  
-                  <option value="<?= $teamsData->id ?>"><?= $teamsData->name ?></option>
+                  <option value="<?= $teams->id ?>"><?= $teams->name ?></option>
                    <?php endforeach; ?>
                 </select><br>
                   </div>
@@ -47,13 +75,8 @@
                   <label for="teamName" class="col-sm-3 control-label">Team ID</label>
                   <div class="col-sm-9">
                     <input type="text" class="form-control" id="teamId" name="teamId"  > 
-                </div>
-                </div>
-              </div>
-                <div class="col-md-3">
-                  <div class="form-group">
-                  <button type="submit" class="btn btn-info pull-right">Register</button>
-                </div>
+                  </div>
+                 </div>
                 </div>
                 </div>
                 </div>
@@ -69,10 +92,10 @@
                   <th>Playing Role</th>
                 </tr>
                 </thead>
-                <tbody>
+               <tbody>
                 <?php foreach ($ply as $plyData) : ?>
                  <tr>
-
+                  
                   <td><?= $plyData->regId ?> </td>
 
                  
@@ -84,12 +107,11 @@
                     
                   <td><?= $plyData->playingRole?></td>
                   <td>
-                    <div class="checkbox">
+                     <div class="checkbox">
                   <label>
                     <input type="checkbox" id="add" name="add[]" value="{{$plyData ->id}}"> ADD
                   </label>
                 </div>
-                    
                   </td>
               
                 </tr>
@@ -150,6 +172,10 @@ document.getElementById("image").onchange = function () {
     // read the image file as a data URL.
     reader.readAsDataURL(this.files[0]);
 };
+ function gettournamentName(selectObject)
+            {
+                document.getElementById("tournamentId").value=selectObject.value;
+            };
    function getteamName(selectObject)
             {
                 document.getElementById("teamId").value=selectObject.value;

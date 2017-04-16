@@ -15,7 +15,10 @@ class RoundController extends Controller
      */
     public function index()
     {
-        //
+        // $rounds = DB::table('rounds')->get();
+        // $teams = DB::table('teams')->get();
+
+        // return view('tournaments.tournamentStructure', ['tournaments' => $tournaments, 'teams' => $teams]);
     }
 
     /**
@@ -40,7 +43,7 @@ class RoundController extends Controller
         $round->name = $request->roundName;
 
         $tournament = new Tournament;
-        $tournamentName = $request->tournamentName;
+        $tournamentName = $request->tournamentName1;
         $tournament = $tournament::where('name', $tournamentName)->firstOrFail();
         $tournament->rounds()->save($round);
         

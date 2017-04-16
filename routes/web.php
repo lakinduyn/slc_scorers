@@ -28,10 +28,10 @@ Route::get('editPlayer','TeamController@search1');
 Route::get('/players/search', 'PlayerController@search');
 Route::get('/players/addteam', 'PlayerController@search1');
 Route::get('players/{player}/edit', 'PlayerController@edit');
-
+Route::get('/players/tournamentplayers', 'PlayerController@search2');
 Route::get('/addplayer','TeamController@search');
 Route::get('/searchPlayer', 'PlayerController@search');
-
+Route::post('/tournamentTeamPlayer', 'PlayerController@storeTournamentPlayer');
 Route::post('/players', 'PlayerController@store');
 Route::post('/playerTeam', 'PlayerController@storeTeam');
 Route::PUT('/players/{player}', 'PlayerController@update');
@@ -103,10 +103,14 @@ Route::PUT('saveeditteam/{team}', 'TeamController@update');
 
 //routes for Rounds
 Route::post('/tournamentRounds', 'RoundController@store');
+Route::get('/roundsDropDown/{id}', 'TournamentController@roundsDropDown');
 
 //routes for Pools
 Route::post('/roundPools', 'PoolController@store');
+
+Route::get('/poolsDropDown/{id}', 'TournamentController@poolsDropDown');
 Route::post('/poolTeams', 'TournamentController@storeTournamentTeams');
+
 
 
 //login register
@@ -116,3 +120,4 @@ Route::post('/register','RegistrationController@store');
 Route::get('/login','SessionsController@create');
 Route::post('/login','SessionsController@store');
 Route::get('/logout','SessionsController@destroy');
+

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Player;
 use App\PlayerTeam;
 use App\Team;
+use App\Tournament;
+use App\TeamTournamentPlayer;
 use Illuminate\Support\Facades\Input;
 use DB;
 class PlayerController extends Controller
@@ -26,12 +28,42 @@ class PlayerController extends Controller
         return view('dashboard.searchPlayer', compact('ply'));
 
     }
-    public function search1()
+      public function search1()
     {
         $ply = Player::all();
         $team=Team::all();
 
         return view('dashboard.playerTeamRegister', compact('ply','team'));
+
+    }
+    public function search2()
+    {
+        $pt = PlayerTeam::all();
+        $tm=Tournament::all();
+        $ply=Player::all();
+        $teams=Team::all();
+
+        return view('dashboard.tournamentTeamPlayers', compact('tm','teams','ply'));
+
+    }
+  
+  public function storeTournamentPlayer(Request $request)
+    {
+        
+        $myDate =date("Y-m-d");
+        
+        $add = $_POST['add'];
+        $length = count($add);
+        for ($i = 0; $i < $length; $i++) {
+         // print $add[$i];
+        $ttp[$i] = new TeamTournamentPlayer;
+        $ttp[$i]->player_id=$add[$i];
+        $ttp[$i]->team_id=request('teamId');
+        $ttp[$i]->tournament_id=request('tournamentId');
+        //$ttp[$i]->joinDate=$myDate;
+        $ttp[$i]->save();
+        }
+        return redirect('/admin');
 
     }
     public function storeTeam(Request $request)
