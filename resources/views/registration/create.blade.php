@@ -5,7 +5,7 @@
 <body class="hold-transition register-page">
 <div class="register-box">
   <div class="register-logo">
-    <a href="../../index2.html"><b>SLC Scorers'</b> Association</a>
+    <a href="/admin"><b>SLC Scorers'</b> Association</a>
   </div>
 
   <div class="register-box-body">
@@ -46,7 +46,7 @@
 
     </form>
 
-    <a href="login.html" class="text-center">I already have a membership</a>
+    <a href="/login" class="text-center">I already have a membership</a>
     
         @include('layouts.admin.errors')
     
