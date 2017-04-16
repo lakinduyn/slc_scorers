@@ -32,10 +32,10 @@ Route::get('editPlayer','TeamController@search1');
 Route::get('/players/search', 'PlayerController@search');
 Route::get('/players/addteam', 'PlayerController@search1');
 Route::get('players/{player}/edit', 'PlayerController@edit');
-
+Route::get('/players/tournamentplayers', 'PlayerController@search2');
 Route::get('/addplayer','TeamController@search');
 Route::get('/searchPlayer', 'PlayerController@search');
-
+Route::post('/tournamentTeamPlayer', 'PlayerController@storeTournamentPlayer');
 Route::post('/players', 'PlayerController@store');
 Route::post('/playerTeam', 'PlayerController@storeTeam');
 Route::PUT('/players/{player}', 'PlayerController@update');

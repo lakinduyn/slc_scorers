@@ -35,7 +35,7 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="institutesDataTable" class="table table-bordered table-striped">
+              <table id="scorersDataTable" class="table table-bordered table-striped">
                 <thead>
                 <tr>
                   <th>Name</th>
@@ -86,6 +86,6 @@
     <script src="bower_components/adminlte/plugins/datatables/dataTables.bootstrap.min.js"></script>
     <script> 
         $(document).ready(function(){
-        $('#institutesDataTable').DataTable();
+        $('#scorersDataTable').DataTable();
 });</script>
 @endsection()
