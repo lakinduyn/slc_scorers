@@ -73,8 +73,10 @@ Route::post('/tournaments', 'TournamentController@store');
 
 //routes for Rounds
 Route::post('/tournamentRounds', 'RoundController@store');
+Route::get('/roundsDropDown/{id}', 'TournamentController@roundsDropDown');
 
 //routes for Pools
 Route::post('/roundPools', 'PoolController@store');
+Route::get('/poolsDropDown/{id}', 'TournamentController@poolsDropDown');
 
 Route::post('/poolTeams', 'TournamentController@storeTournamentTeams');
