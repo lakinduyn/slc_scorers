@@ -66,8 +66,12 @@ Route::DELETE('/institues/{institute}', 'InstituteController@destroy')->name('in
 
 
 //routes for Matches
-Route::get('/matchResults/{match}', 'MatchResultController@show');
+Route::get('/matchResultsMain/{match}', 'MatchResultController@show');
+Route::get('/matchResults/{match}', 'MatchResultController@showMatchBasicInfo');
 Route::POST('/matchResult/{match}/basicDetails', 'MatchResultController@updateBasicInfo');
+Route::POST('/matchResult/{match}/finalResult', 'MatchResultController@updateFinalResult');
+Route::POST('/updateInnings/new/{match}', 'InningsController@newInning');
+Route::POST('/updateInnings/reset/{inning}', 'InningsController@resetInning');
 Route::get('/updateInnings/{inning}', 'InningsController@show');
 Route::POST('/updateInnings/{inning}/basic', 'InningsController@update');
 Route::POST('/updateInnings/{inning}/batting', 'InningsController@updateBatsman');

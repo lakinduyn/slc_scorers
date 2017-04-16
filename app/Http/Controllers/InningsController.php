@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Inning;
+use App\Match;
 
 class InningsController extends Controller
 {
@@ -169,6 +170,25 @@ class InningsController extends Controller
         \App\BowlingStat::destroy($bowlStId);
         return back();
     }
+    public function newInning(Request $request, Match $match)
+    {
+        $inning=new \App\Inning;
+
+        $inning->match_id=$match->id;
+        $inning->inningNo=$request->inningNo;
+        $inning->batTeam=$request->batTeam;
+        $inning->save();
+
+        return back();
+    }
+    public function resetInning(Request $request, Inning $inning)
+    {
+        \App\BattingStat::where('inning_id', '=', $inning->id)->delete();
+        \App\BowlingStat::where('inning_id', '=', $inning->id)->delete();
+        $inning->delete();
+        return back();
+    }
+    
     /**
      * Remove the specified resource from storage.
      *
