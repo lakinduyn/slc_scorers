@@ -16,6 +16,20 @@ class TeamController extends Controller
     public function index()
     {
         //
+         
+         $team = Team::all();
+
+        return view('dashboard.teamregistration', compact('team'));
+         
+    }
+      public function addteam()
+    {
+        //
+         
+         $team = Team::all();
+
+        return view('dashboard.addteam', compact('team'));
+         
     }
 
     /**
@@ -35,6 +49,21 @@ class TeamController extends Controller
         return view('dashboard.addplayer', compact('teams'));
 
     }
+    public function searchTeam()
+    {
+        $teams2 = Team::all();
+
+        return view('dashboard.playerTeamRegister', compact('teams2'));
+
+    }
+    public function search1()
+    {
+        $teams1 = Team::all();
+
+        return view('dashboard.editPlayer', compact('teams1'));
+
+    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -42,9 +71,24 @@ class TeamController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
         //
+        $team = new Team();
+
+        $team->name=request('teamName');
+        $team->ageCat=request('ageCategory');
+        $team->div=request('division');
+        $team->institute_id=request('institute');
+
+        $team->save();
+
+        //$users = App\Team::all();
+
+        
+
+     return redirect('/team');
+
     }
 
     /**
@@ -64,9 +108,10 @@ class TeamController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Team $team)
     {
-        //
+        
+         return view('dashboard.editTeam', compact('team'));
     }
 
     /**
@@ -79,6 +124,14 @@ class TeamController extends Controller
     public function update(Request $request, $id)
     {
         //
+         $team = Team::findOrFail($id);
+       $team->name = $request->input('name');
+       $team->ageCat = $request->input('age');
+       $team->div = $request->input('div');
+       $team->institute_id = $request->input('ins');
+     
+       $team->save();
+      return redirect('/team');
     }
 
     /**
@@ -90,5 +143,11 @@ class TeamController extends Controller
     public function destroy($id)
     {
         //
+         $team = Team::findOrFail($id);
+        $team->delete();
+        //Session::flash('message', 'Successfully deleted the Team!');
+        //Session::flash('flash_message', 'Team successfully deleted!');
+        return redirect('/team');
+
     }
 }

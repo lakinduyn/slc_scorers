@@ -20,10 +20,11 @@ class CreateInningsTable extends Migration
             $table->integer('inningNo')->unsigned()->nullable();
             $table->integer('batTeam')->unsigned();
             $table->foreign('batTeam')->references('id')->on('teams');
-            $table->double('maxOvers',4,1);
-            $table->double('oversPlayed',4,1);
-            $table->integer('Total')->unsigned();
-            $table->integer('wicketsFallen')->unsigned();
+            $table->double('maxOvers',4,1)->default(0);
+            $table->double('oversPlayed',4,1)->default(0);
+            $table->integer('total')->unsigned()->default(0);
+            $table->integer('wicketsFallen')->unsigned()->default(0);
+            $table->enum('isDec', ['yes', 'no'])->default('no');
             $table->integer('nb')->unsigned()->default(0);
             $table->integer('wide')->unsigned()->default(0);
             $table->integer('legbyes')->unsigned()->default(0);

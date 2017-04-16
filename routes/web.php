@@ -17,28 +17,42 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('admin', function () {
+Route::get('/admin', function () {
     return view('dashboard.index');
 });
 
 //routes for Player
-Route::get('addplayer', function () {
+Route::get('/addplayer', function () {
     return view('dashboard.addplayer');
 });
-Route::get('addplayer','TeamController@search');
-Route::get('searchPlayer', 'PlayerController@search');
+
+Route::get('/players/addplayer','TeamController@search');
+Route::get('editPlayer','TeamController@search1');
+//Route::get('/players/addteam','TeamController@searchTeam');
+Route::get('/players/search', 'PlayerController@search');
+Route::get('/players/addteam', 'PlayerController@search1');
+Route::get('players/{player}/edit', 'PlayerController@edit');
+Route::get('/players/tournamentplayers', 'PlayerController@search2');
+Route::get('/addplayer','TeamController@search');
+Route::get('/searchPlayer', 'PlayerController@search');
+Route::post('/tournamentTeamPlayer', 'PlayerController@storeTournamentPlayer');
 Route::post('/players', 'PlayerController@store');
+Route::post('/playerTeam', 'PlayerController@storeTeam');
+Route::PUT('/players/{player}', 'PlayerController@update');
+Route::DELETE('/players/{player}', 'PlayerController@destroy')->name('player.destroy');
+
+
 
 
 //routes for Teams
-Route::get('teamRegistration', function () {
-    return view('player.teamRegistration');
+Route::get('/teamRegistration', function () {
+    return view('dashboard.teamRegistration');
 });
 Route::POST('/teams', 'TeamController@store');
 
 //routes for Scorer
-Route::get('createScorer', 'ScorerController@create');
-Route::get('searchScorer', 'ScorerController@search');
+Route::get('/createScorer', 'ScorerController@create');
+Route::get('/searchScorer', 'ScorerController@search');
 Route::post('/scorers', 'ScorerController@store');
 
 
@@ -52,14 +66,26 @@ Route::DELETE('/institues/{institute}', 'InstituteController@destroy')->name('in
 
 
 //routes for Matches
-Route::get('/matchResults/{match}', 'MatchResultController@show');
+Route::get('/matchResultsMain/{match}', 'MatchResultController@show');
+Route::get('/matchResults/{match}', 'MatchResultController@showMatchBasicInfo');
+Route::POST('/matchResult/{match}/basicDetails', 'MatchResultController@updateBasicInfo');
+Route::POST('/matchResult/{match}/finalResult', 'MatchResultController@updateFinalResult');
+Route::POST('/updateInnings/new/{match}', 'InningsController@newInning');
+Route::POST('/updateInnings/reset/{inning}', 'InningsController@resetInning');
+Route::get('/updateInnings/{inning}', 'InningsController@show');
+Route::POST('/updateInnings/{inning}/basic', 'InningsController@update');
+Route::POST('/updateInnings/{inning}/batting', 'InningsController@updateBatsman');
+Route::POST('/updateInnings/batting/delete', 'InningsController@deleteBatsman');
+Route::POST('/updateInnings/{inning}/bowling', 'InningsController@updateBowler');
+Route::POST('/updateInnings/bowling/delete', 'InningsController@deleteBowler');
 
 
 //routes for Tournaments
 
-Route::get('createTournament', function () {
+Route::get('/createTournament', function () {
     return view('tournaments.createTournament');
 });
+
 
 Route::get('tournamentStructure', function () {
     return view('tournaments.tournamentStructure');
@@ -67,9 +93,17 @@ Route::get('tournamentStructure', function () {
 Route::get('tournamentStructure', 'TournamentController@index');
 
 
-Route::POST('/matchResult/{match}/basicDetails', 'MatchResultController@updateBasicInfo');
+
 
 Route::post('/tournaments', 'TournamentController@store');
+
+
+Route::get('/team', 'TeamController@index');
+Route::get('/addteam', 'TeamController@addteam');
+Route::post('/saveteam', 'TeamController@store');
+Route::get('deleteteam/{id}', 'TeamController@destroy');
+Route::get('editteamteam/{team}', 'TeamController@edit');
+Route::PUT('saveeditteam/{team}', 'TeamController@update');
 
 //routes for Rounds
 Route::post('/tournamentRounds', 'RoundController@store');
@@ -77,6 +111,8 @@ Route::get('/roundsDropDown/{id}', 'TournamentController@roundsDropDown');
 
 //routes for Pools
 Route::post('/roundPools', 'PoolController@store');
-Route::get('/poolsDropDown/{id}', 'TournamentController@poolsDropDown');
 
+Route::get('/poolsDropDown/{id}', 'TournamentController@poolsDropDown');
 Route::post('/poolTeams', 'TournamentController@storeTournamentTeams');
+
+

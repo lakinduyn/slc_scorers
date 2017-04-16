@@ -15,9 +15,11 @@ class CreatePlayersTable extends Migration
     {
         Schema::create('players', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('regId')->nullable();
             $table->string('firstName'); //All Names other than last name
             $table->string('lastName');
             $table->string('useName')->nullable();
+            $table->string('nic')->nullable();
             $table->date('dob')->nullable();
             $table->string('email')->nullable();
             $table->string('contactNo')->nullable();

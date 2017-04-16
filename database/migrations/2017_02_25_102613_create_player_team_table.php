@@ -23,7 +23,7 @@ class CreatePlayerTeamTable extends Migration
             $table->foreign('team_id')->references('id')->on('teams');
 
             $table->date('joinDate');
-            $table->date('endDate');
+            $table->date('endDate')->nullable();
             $table->timestamps();
 
 

@@ -12,7 +12,7 @@ class Match extends Model
         return $this->belongsTo(Tournament::class);
     }
     public function matchresult(){
-        return $this->hasOne('App\MatchResult', 'id', 'match_id');
+        return $this->hasOne(MatchResult::class);
     }
     public function team1(){
         return $this->hasOne(Team::class, 'id','team1_id');
@@ -26,5 +26,21 @@ class Match extends Model
     }
     public function players(){
         return $this->belongsToMany('App\Player','match_players')->withPivot('team_id');
+    }
+    public function inning1()
+    {
+        return $this->hasOne(Inning::class)->where('inningNo','=','1');
+    }
+    public function inning2()
+    {
+        return $this->hasOne(Inning::class)->where('inningNo','=','2');
+    }
+    public function inning3()
+    {
+        return $this->hasOne(Inning::class)->where('inningNo','=','3');
+    }
+    public function inning4()
+    {
+        return $this->hasOne(Inning::class)->where('inningNo','=','4');
     }
 }

@@ -35,32 +35,37 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="playersDataTable" class="table table-bordered table-striped">
+            <label>Search  : <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Reg No.."></label>
+              <table id="playersDataTable" class="table table-bordered table-striped" pagesize="25">
                 <thead>
                 <tr>
-                  <th>Name</th>
-                  <th>Type</th>
-                  <th>ContactNo</th>
-                  <th>Email</th>
-                  <th>Address</th>
+                  <th>Registration number</th>
+                  <th>NIC</th>
+                  <th>First Name</th>
+                  <th>Playing Role</th>
                 </tr>
                 </thead>
                 <tbody>
-                <?php foreach ($ply as $insData) : ?>
+                <?php foreach ($ply as $plyData) : ?>
                  <tr>
 
-                  <td><?= $insData->regId ?> </td>
+                  <td><?= $plyData->regId ?> </td>
 
                  
-                  <td><?= $insData->firstName?></td>
+                  <td><?= $plyData->nic?></td>
 
                   
-                  <td><?= $insData->contactNo ?></td>
+                  <td><?= $plyData->firstName ?></td>
 
                     
-                  <td><?= $insData->email ?></td>
-
-                  <td><?= $insData->playingRole?></td>
+                  <td><?= $plyData->playingRole?></td>
+                  <td>
+                    <a class="btn btn-sm" href="/players/{{$plyData ->id}}/edit"><i class="fa fa-edit"></i> </a>
+                      {{ Form::open(['method' => 'DELETE', 'route' => ['player.destroy', $plyData->id]]) }}
+                    {{ Form::button('<i class="fa fa-remove"></i>', ['type' => 'submit', 'class' => 'btn btn-sm']) }}
+                    {{ Form::close() }}
+                    
+                  </td>
               
                 </tr>
 
@@ -74,9 +79,12 @@
           <!-- /.box -->
         </div>
         <!-- /.col -->
+        </section>
+        
+
       </div>
       <!-- /.row -->
-    </section>
+    
 
 @endsection()
 
@@ -85,8 +93,42 @@
     <!-- DataTables -->
     <script src="bower_components/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="bower_components/adminlte/plugins/datatables/dataTables.bootstrap.min.js"></script>
-    <script> 
-        $(document).ready(function(){
-        $('#playersDataTable').DataTable();
-});</script>
+   <script src="code.jquery.com/jquery-1.12.4.js"></script>
+   <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+    <!-- DataTables -->
+    
+   
+ <script>
+  $(function () {
+    $('#playersDataTable').DataTable();
+
+  });
+  
+function myFunction() {
+  // Declare variables 
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("playersDataTable");
+  tr = table.getElementsByTagName("tr");
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    } 
+  }
+}
+$(document).ready(function() {
+    $('#playersDataTable').DataTable( {
+        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
+    } );
+} );
+</script>
+
 @endsection()
