@@ -38,10 +38,16 @@ class PoolController extends Controller
     {
         $pool = new Pool;
         $pool->name = $request->poolName;
+
+        // $tournament = new Tournament;
+        $tournamentID = $request->tournamentName2;
+
         
         $round = new Round;
-        $roundName = $request->roundName;
-        $round = $round::where('name', $roundName)->firstOrFail();
+        $roundName = $request->round;
+        $round = $round::where([['name', $roundName],
+                    ['tournament_id', $tournamentID]])
+                    ->firstOrFail();
         $round->pools()->save($pool);
 
         return redirect('/tournamentStructure');
