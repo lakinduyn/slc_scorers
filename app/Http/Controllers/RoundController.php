@@ -13,9 +13,15 @@ class RoundController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+     public function __construct(){
+        $this->middleware('auth');
+    }
     public function index()
     {
-        //
+        // $rounds = DB::table('rounds')->get();
+        // $teams = DB::table('teams')->get();
+
+        // return view('tournaments.tournamentStructure', ['tournaments' => $tournaments, 'teams' => $teams]);
     }
 
     /**
@@ -38,9 +44,21 @@ class RoundController extends Controller
     {
         $round = new Round;
         $round->name = $request->roundName;
+        $isKnockout = $request->isKnockout;
+
+        if ($isKnockout == 'league')
+        {
+            $round->isKnockout = 0;
+            $round->isPointsTable = 1;
+        }
+        else
+        {
+            $round->isKnockout = 1;
+            $round->isPointsTable = 0;
+        };
 
         $tournament = new Tournament;
-        $tournamentName = $request->tournamentName;
+        $tournamentName = $request->tournamentName1;
         $tournament = $tournament::where('name', $tournamentName)->firstOrFail();
         $tournament->rounds()->save($round);
         

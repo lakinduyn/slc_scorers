@@ -13,13 +13,9 @@
 
 use App\Institutes;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'DashboardController@index');
 
-Route::get('/admin', function () {
-    return view('dashboard.index');
-});
+Route::get('/admin', 'DashboardController@index')->name('home');
 
 //routes for Player
 Route::get('/addplayer', function () {
@@ -107,8 +103,21 @@ Route::PUT('saveeditteam/{team}', 'TeamController@update');
 
 //routes for Rounds
 Route::post('/tournamentRounds', 'RoundController@store');
+Route::get('/roundsDropDown/{id}', 'TournamentController@roundsDropDown');
 
 //routes for Pools
 Route::post('/roundPools', 'PoolController@store');
+
+Route::get('/poolsDropDown/{id}', 'TournamentController@poolsDropDown');
 Route::post('/poolTeams', 'TournamentController@storeTournamentTeams');
+
+
+
+//login register
+Route::get('/register','RegistrationController@create');
+Route::post('/register','RegistrationController@store');
+
+Route::get('/login','SessionsController@create');
+Route::post('/login','SessionsController@store');
+Route::get('/logout','SessionsController@destroy');
 
