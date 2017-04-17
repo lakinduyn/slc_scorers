@@ -87,8 +87,8 @@ Route::get('tournamentStructure', function () {
     return view('tournaments.tournamentStructure');
 });
 Route::get('tournamentStructure', 'TournamentController@index');
-
-
+Route::get('/tournaments/addTournamentTeams', 'TournamentController@search');
+Route::post('/tournamentTeam', 'TournamentController@storeTeam');
 
 
 Route::post('/tournaments', 'TournamentController@store');

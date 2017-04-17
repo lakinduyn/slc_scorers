@@ -42,13 +42,19 @@
               <div class="form-group">
                   <label for="inputLastName" class="col-sm-3 control-label">NIC</label>
                   <div class="col-sm-9">
-                    <input type="text" class="form-control" id="nic" name="nic" placeholder="123456789v">
+                    <input type="text" class="form-control" required id="nic" name="nic" placeholder="123456789v">
               </div>
               </div>
                <div class="form-group">
                   <label for="inputLastName" class="col-sm-3 control-label">Last Name</label>
                   <div class="col-sm-9">
-                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name">
+                    <input type="text" class="form-control" required id="lastName" name="lastName" placeholder="Last Name">
+              </div>
+              </div>
+              <div class="form-group">
+                  <label for="inputLastName" class="col-sm-3 control-label">First Name</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" required id="firstName" name="firstName" placeholder="firstName">
               </div>
               </div>
                   <div class="form-group">
@@ -67,7 +73,7 @@
                  <div class="form-group">
                   <label for="inputContact" class="col-sm-3 control-label">Contact No</label>
                   <div class="col-sm-9">
-                  <input type="text" pattern="d{10}?" class="form-control" id="contactNo" name="contactNo" placeholder="ContactNumber" >
+                  <input type="text" class="form-control" id="contactNo" name="contactNo" placeholder="ContactNumber" >
                   </div>
                   </div>
                   <div class="form-group">
@@ -76,15 +82,7 @@
                  <input type="email" class="form-control"  id="Email" placeholder="Email address">
                   </div>
                   </div>
-                  <div class="form-group">
-                  <label for="image" class="col-sm-3 control-label">Image</label>
-                   <div class="col-sm-9">
-                 <input type="file" id="image" name="image" value="image" accept="image/*">
-                 <img id="image" style="width:70px;height:70px"; />
                  
-
-                 </div>
-                 </div>
                 </div>
                 </div>
                 </div>
@@ -95,6 +93,15 @@
                  <div class="box-header with-border">
 
                 <label>Player Details</label><br><br>
+                 <div class="form-group">
+                  <label for="image" class="col-sm-3 control-label">Image</label>
+                   <div class="col-sm-9">
+                 <input type="file" id="image" name="image" value="image" accept="image/*">
+                 <img id="image" style="width:70px;height:70px"; />
+                 
+
+                 </div>
+                 </div>
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-3 control-label">Height</label>
                   <div class="col-sm-9">
@@ -138,28 +145,7 @@
                   </div>
                 </div>
               </div>
-              <div class="box box-primary">
-                 <div class="box-header with-border">
-                  <label>Team Details</label><br><br>
-                  <div class="form-group">
-                  <label for="teamId" class="col-sm-3 control-label">Team Name</label>
-                  <div class="col-sm-9">
-                  <select class="form-control" style="width: 100%;" id="teamName" name="teamName" onChange="getteamName(this)";>
-                  <option selected="selected" value="1">Select team</option>
-                  <?php foreach ($teams as $teamsData) : ?>
-                 
-                  <option value="<?= $teamsData->id ?>"><?= $teamsData->name ?></option>
-                   <?php endforeach; ?>
-                </select><br>
-                  </div>
-                  </div>
-                  <div class="form-group">
-                  <label for="teamName" class="col-sm-3 control-label">Team ID</label>
-                  <div class="col-sm-9">
-                    <input type="text" class="form-control" id="teamId" name="teamId"  >
-                  </div></div>
-
-                </div>
+             
               </div>
             </div><!-- /.box -->
           </div<!-- /.col -->
