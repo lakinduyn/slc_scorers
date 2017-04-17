@@ -35,7 +35,7 @@
                   <div class="col-md-4">
                   <div class="form-group">
                   <label>Format</label>
-                  <select class="form-control">
+                  <select class="form-control" name="format">
                     <option value>5 Days</option>
                     <option>3 Days</option>
                     <option>50 Overs</option>
@@ -47,7 +47,7 @@
                   <div class="col-md-4">
                   <div class="form-group" >
                   <label>Level</label>
-                  <select class="form-control" name="divLevel">
+                  <select class="form-control" name="level">
                     <option value="19">Under 19</option>
                     <option value="club">Club</option>
                     <option value="mercantile">Mercantile</option>
@@ -59,7 +59,7 @@
                 <div class="col-md-4">
                   <div class="form-group">
                   <label>Division</label>
-                  <select class="form-control">
+                  <select class="form-control" name="division">
                     <option>Division 1</option>
                     <option>Division 2</option>
                     <option>Division 3</option>
