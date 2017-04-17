@@ -28,7 +28,7 @@ Route::get('/addplayer', function () {
 Route::get('/players/addplayer','TeamController@search');
 Route::get('editPlayer','TeamController@search1');
 //Route::get('/players/addteam','TeamController@searchTeam');
-Route::get('/players/search', 'PlayerController@search');
+
 Route::get('/players/addteam', 'PlayerController@search1');
 Route::get('players/{player}/edit', 'PlayerController@edit');
 Route::get('/players/tournamentplayers', 'PlayerController@search2');
@@ -81,18 +81,19 @@ Route::POST('/updateInnings/bowling/delete', 'InningsController@deleteBowler');
 
 //routes for Tournaments
 
-Route::get('/createTournament', function () {
+Route::get('createTournament', function () {
     return view('tournaments.createTournament');
 });
-
-
-Route::get('tournamentStructure', function () {
+Route::get('setTournament', function () {
     return view('tournaments.tournamentStructure');
 });
-Route::get('tournamentStructure', 'TournamentController@index');
+
+Route::get('setTournament', 'TournamentController@index');
+Route::get('matchSchedule', function () {
+    return view('tournaments.matchSchedule');
+});
 Route::get('/tournaments/addTournamentTeams', 'TournamentController@search');
 Route::post('/tournamentTeam', 'TournamentController@storeTeam');
-
 
 Route::post('/tournaments', 'TournamentController@store');
 

@@ -22,6 +22,8 @@
   <link rel="stylesheet" href="/bower_components/adminlte/dist/css/skins/skin-blue.min.css">
 
   <!--Load css files that are specific to a particular page -->
+  <link rel="stylesheet" href="/bower_components/adminlte/plugins/datepicker/datepicker3.css">
+  <link rel="stylesheet" href="/bower_components/adminlte/plugins/datatables/dataTables.bootstrap.css">
   @yield('page_specific_css')
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
