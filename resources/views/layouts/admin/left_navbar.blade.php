@@ -66,7 +66,7 @@
           <ul class="treeview-menu">
 
             <li><a href="/players/addplayer">Add Player</a></li>
-            <li><a href="/players/search">Search Players</a></li>
+            <li><a href="/searchPlayer">Search Players</a></li>
             <li><a href="/players/addteam">Add Player to Team</a></li>
 
           </ul>
@@ -79,9 +79,9 @@
           </a>
           <ul class="treeview-menu">
 
-            <li><a href="/createTournament">Create Tournament</a></li>
-            <li><a href="tournamentStructure">Set Tournament</a></li>
-            <li><a href="#">Schedule Matches</a></li>
+            <li><a href="createTournament">Create Tournament</a></li>
+            <li><a href="setTournament">Set Tournament</a></li>
+            <li><a href="matchSchedule">Schedule Matches</a></li>
 
           </ul>
         </li>
