@@ -7,8 +7,8 @@
 <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Tournament Structure
-        <small>Optional description</small>
+        Set Tournament
+        <small></small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
@@ -44,6 +44,23 @@
                 <div class="form-group">
                   <label for="round">Round</label>
                   <input type="text" class="form-control" id="roundName" name="roundName" placeholder="1">
+                  </div>
+                  </div>
+                  <div class="col-md-2">
+                <div class="form-group">
+                    <label for="league">League</label>
+                  <div class="radio">
+                      <input type="radio" name="isKnockout" id="league" value="league" checked="">
+                  </div>
+                </div>
+                  </div>
+                <div class="col-md-2">
+                 <div class="form-group">
+                     <label for="knockout">Knockout</label>
+                        <div class="radio">
+                            <input type="radio" name="isKnockout" id="knockout" value="knockout">
+                        </div>
+                </div>
                 </div>
                 </div>        
               </div>
@@ -54,8 +71,8 @@
                 <button type="submit" class="btn btn-primary">Add Round</button>
                 </div>   
               </div>
-            </div></form>
-          </div>
+            </form>
+            </div>
           </section>
            <!--End of add rounds-->
 
@@ -180,6 +197,7 @@
            <!--End of add teams-->
 
 </div>
+
 @endsection()
 
 @section('page_specific_scripts')

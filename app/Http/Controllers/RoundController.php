@@ -44,6 +44,18 @@ class RoundController extends Controller
     {
         $round = new Round;
         $round->name = $request->roundName;
+        $isKnockout = $request->isKnockout;
+
+        if ($isKnockout == 'league')
+        {
+            $round->isKnockout = 0;
+            $round->isPointsTable = 1;
+        }
+        else
+        {
+            $round->isKnockout = 1;
+            $round->isPointsTable = 0;
+        };
 
         $tournament = new Tournament;
         $tournamentName = $request->tournamentName1;
