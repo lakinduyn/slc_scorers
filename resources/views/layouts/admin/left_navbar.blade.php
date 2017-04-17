@@ -78,11 +78,10 @@
             </span>
           </a>
           <ul class="treeview-menu">
-
             <li><a href="createTournament">Create Tournament</a></li>
+            <li><a href="/tournaments/addTournamentTeams">Add Tournament Teams </a></li>
             <li><a href="setTournament">Set Tournament</a></li>
             <li><a href="matchSchedule">Schedule Matches</a></li>
-
           </ul>
         </li>
         <li class="treeview">

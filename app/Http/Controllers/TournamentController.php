@@ -68,6 +68,29 @@ class TournamentController extends Controller
     {
         
     }
+     public function search()
+    {
+        $tm = Tournament::all();
+        $teams=Team::all();
+        return view('dashboard.tournamentTeams', compact('tm','teams'));
+
+    }
+      public function storeTeam(Request $request)
+    {
+        $add = $_POST['add'];
+        $length = count($add);
+        for ($i = 0; $i < $length; $i++) {
+         // print $add[$i];
+        $ttp[$i] = new TeamTournament;
+        $ttp[$i]->tournament_id=request('tournamentId');
+        $ttp[$i]->team_id=$add[$i];
+        //$ttp[$i]->tournament_id=request('tournamentId');
+        //$ttp[$i]->joinDate=$myDate;
+        $ttp[$i]->save();
+        }
+        return redirect('/admin');
+    }
+
 
     /**
      * Store a newly created resource in storage.

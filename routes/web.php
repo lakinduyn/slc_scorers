@@ -13,7 +13,10 @@
 
 use App\Institutes;
 
-Route::get('/', 'DashboardController@index');
+Route::get('/', function () {
+    return view('website.home');
+});
+
 
 Route::get('/admin', 'DashboardController@index')->name('home');
 
@@ -84,10 +87,13 @@ Route::get('createTournament', function () {
 Route::get('setTournament', function () {
     return view('tournaments.tournamentStructure');
 });
+
 Route::get('setTournament', 'TournamentController@index');
 Route::get('matchSchedule', function () {
     return view('tournaments.matchSchedule');
 });
+Route::get('/tournaments/addTournamentTeams', 'TournamentController@search');
+Route::post('/tournamentTeam', 'TournamentController@storeTeam');
 
 Route::post('/tournaments', 'TournamentController@store');
 
