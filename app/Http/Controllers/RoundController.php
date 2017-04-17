@@ -62,7 +62,7 @@ class RoundController extends Controller
         $tournament = $tournament::where('name', $tournamentName)->firstOrFail();
         $tournament->rounds()->save($round);
         
-        return redirect('/tournamentStructure');
+        return redirect('/setTournament');
         // return redirect()->action('PoolController@store');
     }
 

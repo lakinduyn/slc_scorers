@@ -141,7 +141,7 @@ class TournamentController extends Controller
             $poolTeam->save();
         }
 
-        return redirect('/tournamentStructure');
+        return redirect('/setTournament');
     }
 
     /**
