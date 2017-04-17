@@ -78,13 +78,15 @@ class TournamentController extends Controller
     public function store(Request $request)
     {
         $tournament = new Tournament;
-         $tournament->name = $request->name;
-         $tournament->divLevel = $request->divLevel;
-         $tournament->imgUrl = $request->tournamentLogo;
+        $tournament->name = $request->name;
+        $tournament->level = $request->level;
+        $tournament->format = $request->format;
+        $tournament->division = $request->division;
+        $tournament->imgUrl = $request->tournamentLogo;
 
-         $tournament->save();
+        $tournament->save();
 
-         return redirect('/admin');
+        return redirect('/admin');
     }
 
     public function storeTournamentTeams(Request $request)
