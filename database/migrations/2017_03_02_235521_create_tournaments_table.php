@@ -16,7 +16,9 @@ class CreateTournamentsTable extends Migration
         Schema::create('tournaments', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('divLevel');      
+            $table->string('level');
+            $table->string('format');
+            $table->string('division');      
             $table->string('imgUrl')->nullable();
             $table->timestamps();
         });
