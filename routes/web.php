@@ -13,7 +13,10 @@
 
 use App\Institutes;
 
-Route::get('/', 'DashboardController@index');
+Route::get('/', function () {
+    return view('website.home');
+});
+
 
 Route::get('/admin', 'DashboardController@index')->name('home');
 
