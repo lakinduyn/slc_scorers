@@ -1,13 +1,5 @@
 @extends('layout_admin')
 
-
-@section('page_specific_css')
-
-  <!-- DataTables -->
-  <link rel="stylesheet" href="bower_components/adminlte/plugins/datatables/dataTables.bootstrap.css">
-
-@endsection
-
 @section('content')
 
      <!-- Content Wrapper. Contains page content -->
@@ -16,7 +8,7 @@
     <section class="content-header">
       <h1>
         Search Players
-        <small>Optional title here</small>
+        <small></small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -24,29 +16,24 @@
         <li class="active">Data tables</li>
       </ol>
     </section>
-
-    <!-- Main content -->
+    
     <section class="content">
-      <div class="row">
-        <div class="col-xs-12">
-           <div class="box">
-            <div class="box-header">
-              <!--h3 class="box-title">Data Table With Full Features</h3-->
+    <div class="box box-primary">
+            <div class="box-header with-border">
+              <!--<h3 class="box-title">Schedule Match</h3>-->
             </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-            <label>Search  : <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Reg No.."></label>
-              <table id="playersDataTable" class="table table-bordered table-striped" pagesize="25">
+    <div class="box-body">
+              <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                <div class="row"><div class="col-sm-12"><table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
                 <thead>
-                <tr>
-                  <th>Registration number</th>
-                  <th>NIC</th>
-                  <th>First Name</th>
-                  <th>Playing Role</th>
-                </tr>
+                <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 95px;">Registration number</th>
+                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 126px;">NIC</th>
+                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 116px;">First Name</th>
+                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 80px;">Playing Role</th>
+                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 57px;">Edit/Delete</th></tr>
                 </thead>
                 <tbody>
-                <?php foreach ($ply as $plyData) : ?>
+                  <?php foreach ($ply as $plyData) : ?>
                  <tr>
 
                   <td><?= $plyData->regId ?> </td>
@@ -71,20 +58,15 @@
 
                 <?php endforeach; ?>
                 </tbody>
-
-            </table>
+              </table>
+              </div>
+              </div>
             </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-        </div>
-        <!-- /.col -->
-        </section>
-        
+    </div>
 
-      </div>
-      <!-- /.row -->
-    
+    </div>
+    </section>
+  </div>
 
 @endsection()
 
@@ -93,42 +75,11 @@
     <!-- DataTables -->
     <script src="bower_components/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="bower_components/adminlte/plugins/datatables/dataTables.bootstrap.min.js"></script>
-   <script src="code.jquery.com/jquery-1.12.4.js"></script>
-   <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-    <!-- DataTables -->
     
-   
- <script>
+  <script>
   $(function () {
-    $('#playersDataTable').DataTable();
-
+    $("#example1").DataTable();
   });
-  
-function myFunction() {
-  // Declare variables 
-  var input, filter, table, tr, td, i;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("playersDataTable");
-  tr = table.getElementsByTagName("tr");
-  // Loop through all table rows, and hide those who don't match the search query
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    if (td) {
-      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    } 
-  }
-}
-$(document).ready(function() {
-    $('#playersDataTable').DataTable( {
-        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
-    } );
-} );
 </script>
 
 @endsection()
