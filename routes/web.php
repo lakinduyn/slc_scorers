@@ -92,6 +92,11 @@ Route::get('setTournament', 'TournamentController@index');
 Route::get('matchSchedule', function () {
     return view('tournaments.matchSchedule');
 });
+Route::get('matchSchedule', 'MatchController@index');
+Route::get('/matchSchedulePoolsDropDown/{id}', 'MatchController@poolsDropDown');
+
+Route::post('setMatch', 'MatchController@store');
+
 Route::get('/tournaments/addTournamentTeams', 'TournamentController@search');
 Route::post('/tournamentTeam', 'TournamentController@storeTeam');
 
@@ -114,8 +119,6 @@ Route::post('/roundPools', 'PoolController@store');
 
 Route::get('/poolsDropDown/{id}', 'TournamentController@poolsDropDown');
 Route::post('/poolTeams', 'TournamentController@storeTournamentTeams');
-
-
 
 //login register
 Route::get('/register','RegistrationController@create');
