@@ -53,7 +53,7 @@ class PoolController extends Controller
                     ->firstOrFail();
         $round->pools()->save($pool);
 
-        return redirect('/tournamentStructure');
+        return redirect('/setTournament');
     }
 
     /**
