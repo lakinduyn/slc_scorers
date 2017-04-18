@@ -160,7 +160,7 @@ document.getElementById("image").onchange = function () {
             };
     function validate()
             {
-                if(document.getElementById("tournamentName").value=="1") //|| document.getElementByName["add[]"].length == 0)
+                if(document.getElementById("tournamentName").value=="0") //|| document.getElementByName["add[]"].length == 0)
                 {
                     window.alert("Please check inputs");
                     return false;

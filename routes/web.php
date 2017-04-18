@@ -13,10 +13,16 @@
 
 use App\Institutes;
 
+
+
+Route::get('/tournaments/club', 'TournamentController@showDetails');
+
+
 //website
 Route::get('/', 'WebsiteController@index');
 Route::get('/viewMatchResult/{match}', 'WebsiteController@matchResult');
 Route::get('/viewInning/{inning}', 'WebsiteController@inningResult');
+
 
 Route::get('/admin', 'DashboardController@index')->name('home');
 
