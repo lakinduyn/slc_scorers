@@ -16,6 +16,7 @@ use App\Institutes;
 Route::get('/', function () {
     return view('website.home');
 });
+Route::get('/tournaments/club', 'TournamentController@showDetails');
 
 
 Route::get('/admin', 'DashboardController@index')->name('home');
