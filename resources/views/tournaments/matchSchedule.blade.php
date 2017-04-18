@@ -177,7 +177,7 @@
 
                   <td><?= $match->venue ?></td>
                   <td>
-                    <a class="btn btn-app bg-olive">
+                    <a class="btn btn-app bg-olive" href="/matchResultsMain/{{$match->id}}">
                         <i class="fa fa-edit"></i> Score
                     </a>   
                   </td>
