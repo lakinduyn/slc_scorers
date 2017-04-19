@@ -42,7 +42,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="/institutes/create">Add Institute</a></li>
-            <li><a href="/institutes/search">Search Institute</a></li>
+            <li><a href="/searchInstitue">Search Institute</a></li>
             <li><a href="/players/tournamentplayers">Add Tournament Players </a></li>
           </ul>
         </li>
@@ -53,8 +53,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="/team">Add Team</a></li>
-            <li><a href="/addteam">Search Institute</a></li>
+            <li><a href="/addteam">Add Team</a></li>
+            <li><a href="/team">Search Institute</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -79,7 +79,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="createTournament">Create Tournament</a></li>
-            <li><a href="/tournaments/addTournamentTeams">Add Tournament Teams </a></li>
+            <li><a href="/addTournamentTeams">Add Tournament Teams </a></li>
             <li><a href="setTournament">Set Tournament</a></li>
             <li><a href="matchSchedule">Schedule Matches</a></li>
           </ul>
