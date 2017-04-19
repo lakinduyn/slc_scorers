@@ -32,17 +32,17 @@
 							</div>
 							<ul><?php $match=$tm->matches?>
 								<?php foreach ($match as $match) : ?>
+								 @if($match->getStatus()!=null)
 								<li>
 									<span class="pull-left"><img src="images/matches-logo/img-01.png" alt="">{{$match->getTeam1->abbrevation}}</span>
 									<span class="pull-right"><img src="images/matches-logo/img-02.png" alt="">{{$match->getTeam2->abbrevation}}</span>
 									<div class="detail">
 									  	<span class="result-vs"><h3>
                     <!--Match Final Result -->
-					 @if($match->venue!="asd")
+					
                       <a href="/viewMatchResult/{{$match->id}}"> {{$match->getMatchResultSentence()}}</a>
-					   @else
-					   Did not Play yet
-					    @endif
+					  
+					  
                     </h3></span>
 										<div class="location-marker">
 											<ul>
@@ -52,7 +52,7 @@
 										</div>
 									</div>
 								</li>
-								
+								  @endif
 								  <?php endforeach; ?>
 								
 							</ul>

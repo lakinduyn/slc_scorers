@@ -145,5 +145,7 @@ class Match extends Model
     public function getTournament(){
         return $this->hasOne(Tournament::class, 'id','tournament_id');
     }
-    
+    public function getStatus(){
+       return $this->matchresult;
+    }
 }
