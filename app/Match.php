@@ -135,4 +135,17 @@ class Match extends Model
     public function getScorer(){
         return $this->hasOne(Scorer::class, 'id','scorer_id');
     }
+    //testcode
+    public function getTeam1(){
+        return $this->hasOne(Team::class, 'id','team1_id');
+    }
+    public function getTeam2(){
+        return $this->hasOne(Team::class, 'id','team2_id');
+    }
+    public function getTournament(){
+        return $this->hasOne(Tournament::class, 'id','tournament_id');
+    }
+    public function getStatus(){
+       return $this->matchresult;
+    }
 }
