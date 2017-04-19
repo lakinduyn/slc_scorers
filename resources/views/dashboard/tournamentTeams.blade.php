@@ -8,12 +8,12 @@
     <section class="content-header">
       <h1>
         Add Teams to Tournament
-        <small>Optional description</small>
+        <!--<small>Optional description</small>-->
       </h1>
-      <ol class="breadcrumb">
+      <!--<ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
         <li class="active">Here</li>
-      </ol>
+      </ol>-->
     </section>
     <section class="content">
     <div class="box box-primary">
@@ -33,8 +33,8 @@
                   <div class="form-group">
                   <label for="teamId" class="col-sm-3 control-label">Tournament Name</label>
                   <div class="col-sm-9">
-                  <select class="form-control" style="width: 100%;" id="tournamentName" name="tournamentName" onChange="gettournamentName(this)";>
-                  <option selected="selected" value="0">Select team</option>
+                  <select class="form-control" style="width: 100%;" id="tournamentName" name="tournamentID" onChange="gettournamentName(this)";>
+                  <option selected="selected" value="0">Select Tournament</option>
                  <?php foreach ($tm as $tournaments) : ?>
                  
                   <option value="<?= $tournaments->id ?>"><?= $tournaments->name ?></option>
@@ -43,14 +43,6 @@
                   </div>
                   </div>
                   </div>
-                  <div class="col-md-4">
-                  <div class="form-group">
-                  <label for="teamName" class="col-sm-3 control-label">Tournament ID</label>
-                  <div class="col-sm-9">
-                    <input type="text" class="form-control" id="tournamentId" name="tournamentId" readonly="readonly" > 
-                </div>
-                </div>
-              </div>
                 <div class="col-md-3">
                   <div class="form-group">
                   <button type="submit" class="btn btn-info pull-right" ;>Register</button>
@@ -58,62 +50,51 @@
                 </div>
                 </div>
                 </div>
-                 <div class="box-body">
-                 <label>Add players</label><br>
-               <label>Search  : <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Reg No.."></label>
-              <table id="playersDataTable" class="table table-bordered table-striped">
+              
+              <div class="box-body">
+              <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
                 <thead>
-                <tr>
-                  <th>Team Id</th>
-                  <th>Team Name</th>
-                  <th>Age category</th>
-                  <th>Division</th>
-                </tr>
+                <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 95px;">Team ID</th>
+                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 126px;">Team Name</th>
+                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 116px;">Age Category</th>
+                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 80px;">Division</th>
+                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 57px;"></th></tr>
                 </thead>
                 <tbody>
-                <?php foreach ($teams as $teamData) : ?>
+                  <?php foreach ($teams as $tm) : ?>
                  <tr>
 
-                  <td><?= $teamData->id ?> </td>
-
+                  <td><?= $tm->id ?> </td>
+                
+                  <td><?= $tm->name ?></td>
                  
-                  <td><?= $teamData->name ?></td>
-
-                  
-                  <td><?= $teamData->ageCat ?></td>
-
+                  <td><?= $tm->ageCat ?></td>
                     
-                  <td><?= $teamData->div?></td>
+                  <td><?= $tm->div ?></td>
+
                   <td>
                     <div class="checkbox">
                   <label>
-                    <input type="checkbox" id="add" name="add[]" value="{{ $teamData->id}}"> ADD
+                    <input type="checkbox" id="add" name="add[]" value="{{ $tm->id}}"> ADD
                   </label>
                 </div>
                     
                   </td>
-              
                 </tr>
 
                 <?php endforeach; ?>
                 </tbody>
-
-            </table>
-            </div>
-            <!-- /.box-body -->
-                  
-                <!--<div class="checkbox">
-                  <label>
-                    <input type="checkbox"> Check me out
-                  </label>
-                </div>-->
+              </table>
               </div>
-              
-              <!-- /.box-body -->
+              </div>
             </div>
-            </form>
-          </div>
-          </div>
+    </div>
+         </form>
+           
+    </div>
          
           </section>
    
@@ -123,53 +104,14 @@
 
 @section('page_specific_scripts')
 
-<script>
-function myFunction() {
-  // Declare variables 
-  var input, filter, table, tr, td, i;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("playersDataTable");
-  tr = table.getElementsByTagName("tr");
-  // Loop through all table rows, and hide those who don't match the search query
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    if (td) {
-      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    } 
-  }
-}
-document.getElementById("image").onchange = function () {
-    var reader = new FileReader();
-
-    reader.onload = function (e) {
-        // get loaded data and render thumbnail.
-        document.getElementById("image").src = e.target.result;
-    };
-
-    // read the image file as a data URL.
-    reader.readAsDataURL(this.files[0]);
-};
-   function gettournamentName(selectObject)
-            {
-                document.getElementById("tournamentId").value=selectObject.value;
-            };
-    function validate()
-            {
-                if(document.getElementById("tournamentName").value=="1") //|| document.getElementByName["add[]"].length == 0)
-                {
-                    window.alert("Please check inputs");
-                    return false;
-                }
-           
-            };
-          
+<!-- DataTables -->
+    <script src="bower_components/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="bower_components/adminlte/plugins/datatables/dataTables.bootstrap.min.js"></script>
+    
+  <script>
+  $(function () {
+    $("#example1").DataTable();
+  });
 </script>
-<script type="text/javascript">
-         
-        </script>
+
 @endsection()
