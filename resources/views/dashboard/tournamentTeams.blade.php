@@ -104,6 +104,7 @@
 
 @section('page_specific_scripts')
 
+
 <!-- DataTables -->
     <script src="bower_components/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="bower_components/adminlte/plugins/datatables/dataTables.bootstrap.min.js"></script>
@@ -112,6 +113,7 @@
   $(function () {
     $("#example1").DataTable();
   });
+
 </script>
 
 @endsection()

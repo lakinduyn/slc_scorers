@@ -15,4 +15,8 @@ class BattingStat extends Model
     public function fielder(){
         return $this->hasOne(Player::class, 'id','dismissalFielder');
     }
+    public function strikeRate(){
+        $strRate=($this->runs/$this->balls)*100;
+        return $strRate;
+    }
 }
