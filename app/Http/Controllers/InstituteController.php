@@ -23,9 +23,9 @@ class InstituteController extends Controller
 
     public function search()
     {
-        $ins = Institute::all();
+        $institute = Institute::all();
 
-        return view('dashboard.searchInstitute', compact('ins'));
+        return view('dashboard.searchInstitute', compact('institute'));
 
     }
     /**

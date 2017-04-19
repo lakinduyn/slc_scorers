@@ -1,13 +1,5 @@
 @extends('layout_admin')
 
-
-@section('page_specific_css')
-
-  <!-- DataTables -->
-  <link rel="stylesheet" href="bower_components/adminlte/plugins/datatables/dataTables.bootstrap.css">
-
-@endsection
-
 @section('content')
 
      <!-- Content Wrapper. Contains page content -->
@@ -16,59 +8,53 @@
     <section class="content-header">
       <h1>
         Search Institutes
-        <small>Optional title here</small>
+        <!--<small>Optional title here</small>-->
       </h1>
-      <ol class="breadcrumb">
+      <!--<ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="#">Tables</a></li>
         <li class="active">Data tables</li>
-      </ol>
+      </ol>-->
     </section>
 
     <!-- Main content -->
     <section class="content">
-      <div class="row">
-        <div class="col-xs-12">
-           <div class="box">
-            <div class="box-header">
-              <!--h3 class="box-title">Data Table With Full Features</h3-->
-            </div>
-            <!-- /.box-header -->
+            <div class="box box-primary">
+              <div class="box-header with-border">
+                <h3 class="box-title">Institutes</h3>
+              </div>
             <div class="box-body">
-
-              <div class="col-xs-12">
-              <table id="institutesDataTable" class="table table-bordered table-striped">
+              <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                <div class="row"><div class="col-sm-12"><table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
                 <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Type</th>
-                  <th>ContactNo</th>
-                  <th>Email</th>
-                  <th>Edit/Delete</th>
-                </tr>
+                <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 95px;">Name</th>
+                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 126px;">Type</th>
+                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 116px;">Contact No.</th>
+                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 80px;">Email</th>
+                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 80px;">Edit/ Delete</th>
+                <!--<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 80px;">Venue</th>
+                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 57px;"></th></tr>-->
                 </thead>
                 <tbody>
-                <?php foreach ($ins as $insData) : ?>
+                  <?php foreach ($institute as $in) : ?>
                  <tr>
 
-                  <td><?= $insData->name ?> </td>
+                  <td><?= $in->name ?> </td>
+                
+                  <td><?= $in->type ?></td>
                  
-                  <td><?= $insData->type ?></td>
-
-                  
-                  <td><?= $insData->contactNo ?></td>
-
+                  <td><?= $in->contactNo ?></td>
                     
-                  <td><?= $insData->email ?></td>
+                  <td><?= $in->email ?></td>
 
                   <td>
                     <table>
                       <tr>
                         <td>
-                          <a class="btn btn-sm" href="/institutes/{{$insData ->id}}/edit"><i class="fa fa-edit"></i> </a>
+                          <a class="btn btn-sm" href="/institutes/{{$in ->id}}/edit"><i class="fa fa-edit"></i> </a>
                         </td>
                         <td>
-                          {{ Form::open(['method' => 'DELETE', 'route' => ['institute.destroy', $insData->id]]) }}
+                          {{ Form::open(['method' => 'DELETE', 'route' => ['institute.destroy', $in->id]]) }}
                           {{ Form::button('<i class="fa fa-remove"></i>', ['type' => 'submit', 'class' => 'btn btn-sm']) }}
                           {{ Form::close() }}
                         </td>
@@ -80,20 +66,15 @@
 
                 <?php endforeach; ?>
                 </tbody>
-
-            </table>
+              </table>
+              </div>
+              </div>
             </div>
+    </div>
 
-
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-        </div>
-        <!-- /.col -->
-        
-      </div>
-      <!-- /.row -->
+    </div>
     </section>
+  </div>
 
 @endsection()
 
@@ -104,6 +85,7 @@
     <script src="bower_components/adminlte/plugins/datatables/dataTables.bootstrap.min.js"></script>
     <script> 
         $(document).ready(function(){
-        $('#institutesDataTable').DataTable();
-});</script>
+        $('#example1').DataTable();
+});
+</script>
 @endsection()
