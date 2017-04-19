@@ -16,9 +16,9 @@ class CreateBowlingStatsTable extends Migration
         Schema::create('bowling_stats', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('inning_id')->unsigned();
-            $table->foreign('inning_id')->references('id')->on('innings');
+            $table->foreign('inning_id')->references('id')->on('innings')->onDelete('cascade');
             $table->integer('player_id')->unsigned();
-            $table->foreign('player_id')->references('id')->on('players');
+            $table->foreign('player_id')->references('id')->on('players')->onDelete('cascade');
             $table->integer('bwOrderNo')->unsigned();
             $table->integer('wide')->unsigned()->default(0);
             $table->integer('nb')->unsigned()->default(0);         

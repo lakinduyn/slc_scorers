@@ -16,9 +16,9 @@ class CreatePointsTablesTable extends Migration
         Schema::create('points_tables', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('pool_id')->unsigned();
-            $table->foreign('pool_id')->references('id')->on('pools');
+            $table->foreign('pool_id')->references('id')->on('pools')->onDelete('cascade');
             $table->integer('team_id')->unsigned();
-            $table->foreign('team_id')->references('id')->on('teams');
+            $table->foreign('team_id')->references('id')->on('teams')->onDelete('cascade');
             $table->integer('won')->unsigned()->default(0);
             $table->integer('lost')->unsigned()->default(0);
             $table->integer('noresult')->unsigned()->default(0);

@@ -16,10 +16,10 @@ class CreateInningsTable extends Migration
         Schema::create('innings', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('match_id')->unsigned()->nullable();
-            $table->foreign('match_id')->references('id')->on('matches');
+            $table->foreign('match_id')->references('id')->on('matches')->onDelete('cascade');
             $table->integer('inningNo')->unsigned()->nullable();
             $table->integer('batTeam')->unsigned();
-            $table->foreign('batTeam')->references('id')->on('teams');
+            $table->foreign('batTeam')->references('id')->on('teams')->onDelete('cascade');
             $table->double('maxOvers',4,1)->default(0);
             $table->double('oversPlayed',4,1)->default(0);
             $table->integer('total')->unsigned()->default(0);

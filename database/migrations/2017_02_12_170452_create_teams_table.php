@@ -21,7 +21,7 @@ class CreateTeamsTable extends Migration
             $table->enum('div', ['0','1', '2','3', 'A', 'B', 'C', 'D', 'E', 'F']);        
             $table->string('abbrevation'); 
             $table->integer('institute_id')->unsigned();
-            $table->foreign('institute_id')->references('id')->on('institutes');
+            $table->foreign('institute_id')->references('id')->on('institutes')->onDelete('cascade');
             $table->timestamps();
 
         });

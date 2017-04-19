@@ -16,9 +16,9 @@ class CreateBattingStatsTable extends Migration
         Schema::create('batting_stats', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('inning_id')->unsigned();
-            $table->foreign('inning_id')->references('id')->on('innings');
+            $table->foreign('inning_id')->references('id')->on('innings')->onDelete('cascade');
             $table->integer('player_id')->unsigned();
-            $table->foreign('player_id')->references('id')->on('players');
+            $table->foreign('player_id')->references('id')->on('players')->onDelete('cascade');
             $table->integer('btOrderNo')->unsigned();
             $table->integer('runs')->unsigned();
             $table->integer('balls')->unsigned();
@@ -29,9 +29,9 @@ class CreateBattingStatsTable extends Migration
             $table->double('dismissalAtOver',4,1)->unsigned()->nullable();
             $table->integer('dismissalAtRuns')->unsigned()->nullable();
             $table->integer('dismissalBowler')->unsigned()->nullable();
-            $table->foreign('dismissalBowler')->references('id')->on('players');
+            $table->foreign('dismissalBowler')->references('id')->on('players')->onDelete('cascade');
             $table->integer('dismissalFielder')->unsigned()->nullable();
-            $table->foreign('dismissalFielder')->references('id')->on('players');
+            $table->foreign('dismissalFielder')->references('id')->on('players')->onDelete('cascade');
             $table->timestamps();
         });
     }
