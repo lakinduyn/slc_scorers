@@ -120,7 +120,7 @@ class InstituteController extends Controller
 
        $institute->save();
 
-       return redirect('/institutes/search');
+       return redirect('/searchInstitue');
     }
 
     /**
@@ -136,7 +136,7 @@ class InstituteController extends Controller
 
         //Session::flash('message', 'Successfully deleted the record!');
 
-        return redirect('/institutes/search');
+        return redirect('/searchInstitue');
 
     }
 }
