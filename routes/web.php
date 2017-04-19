@@ -57,7 +57,7 @@ Route::post('/scorers', 'ScorerController@store');
 
 //routes for Institutes
 Route::get('/institutes/create', 'InstituteController@create');
-Route::get('/institutes/search', 'InstituteController@search');
+Route::get('/searchInstitue', 'InstituteController@search');
 Route::get('/institutes/{institute}/edit', 'InstituteController@edit');
 Route::PUT('/institutes/{institute}', 'InstituteController@update');
 Route::POST('/institutes', 'InstituteController@store');
@@ -93,11 +93,11 @@ Route::get('matchSchedule', function () {
     return view('tournaments.matchSchedule');
 });
 Route::get('matchSchedule', 'MatchController@index');
-Route::get('/matchSchedulePoolsDropDown/{id}', 'MatchController@poolsDropDown');
+Route::get('/matchSchedulePools/{id}', 'MatchController@poolsDropDown');
 
 Route::post('setMatch', 'MatchController@store');
 
-Route::get('/tournaments/addTournamentTeams', 'TournamentController@search');
+Route::get('/addTournamentTeams', 'TournamentController@search');
 Route::post('/tournamentTeam', 'TournamentController@storeTeam');
 
 Route::post('/tournaments', 'TournamentController@store');
