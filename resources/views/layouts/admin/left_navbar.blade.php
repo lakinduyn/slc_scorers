@@ -85,13 +85,13 @@
           </ul>
         </li>
         <li class="treeview">
-          <a href="#"><i class="fa fa-link"></i> <span>Scoreres</span>
+          <a href="#"><i class="fa fa-link"></i> <span>Scorers</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="/createScorer">Add Scorere</a></li>
+            <li><a href="/createScorer">Add Scorer</a></li>
             <li><a href="/searchScorer">Search Scorer</a></li>
           </ul>
         </li>

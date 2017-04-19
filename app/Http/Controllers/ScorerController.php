@@ -32,9 +32,9 @@ class ScorerController extends Controller
     }
     public function search()
     {
-        $ins = Scorer::all();
+        $scorer = Scorer::all();
 
-        return view('dashboard.searchScorer', compact('ins'));
+        return view('dashboard.searchScorer', compact('scorer'));
 
     }
 
