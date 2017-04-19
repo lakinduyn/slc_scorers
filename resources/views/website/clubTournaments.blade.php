@@ -1,5 +1,6 @@
 @extends('layout_website')
 @section('content')
+
 <div class="page-heading-breadcrumbs">
 		<div class="container">
 			<h2>Club Tournaments</h2>
@@ -11,8 +12,8 @@
 	</div>
   <div class="overlay-dark theme-padding parallax-window" data-appear-top-offset="600" data-parallax="scroll" data-image-src="images/inner-banner/img-01.jpg">
 	</div>
-  <main class="main-content">	
-
+  <main class="main-content">
+  
 		<!-- Team Width Sidebar -->
 		<div class="team-width-sidebar theme-padding white-bg">
 			<div class="container">
@@ -34,8 +35,8 @@
 								<?php foreach ($match as $match) : ?>
 								 @if($match->getStatus()!=null)
 								<li>
-									<span class="pull-left"><img src="images/matches-logo/img-01.png" alt="">{{$match->getTeam1->abbrevation}}</span>
-									<span class="pull-right"><img src="images/matches-logo/img-02.png" alt="">{{$match->getTeam2->abbrevation}}</span>
+									<a href=/teamcard/{{$match->getTeam1->id}}><span class="pull-left"><img src="images/matches-logo/img-01.png" alt="">{{$match->getTeam1->abbrevation}}</span></a>
+									<a href=/teamcard/{{$match->getTeam2->id}}><span class="pull-right"><img src="images/matches-logo/img-02.png" alt="">{{$match->getTeam2->abbrevation}}</span></a>
 									<div class="detail">
 									  	<span class="result-vs"><h3>
                     <!--Match Final Result -->
@@ -165,6 +166,9 @@
 
 @endsection
 @section('page_specific_scripts')
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="/front_end/js/vendor/jquery.js"></script>        
 <script src="/front_end/js/vendor/bootstrap.min.js"></script> 
 <script src="http://maps.google.com/maps/api/js?sensor=false"></script>

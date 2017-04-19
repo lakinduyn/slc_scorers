@@ -15,11 +15,13 @@ use App\Institutes;
 
 
 
-Route::get('/tournaments/club/{level}', 'WebsiteController@showDomestic');
+
 
 
 //website
 Route::get('/', 'WebsiteController@index');
+Route::get('/teamcard/{id}', 'WebsiteController@teamCard');
+Route::get('/tournaments/club/{level}', 'WebsiteController@showDomestic');
 Route::get('/viewMatchResult/{match}', 'WebsiteController@matchResult');
 Route::get('/viewInning/{inning}', 'WebsiteController@inningResult');
 
