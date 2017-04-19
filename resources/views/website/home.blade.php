@@ -82,15 +82,16 @@
 
 			<!-- Itme -->
 			<li>
-				<img src="/front_end/images/banner-bgs/img-03.jpg" alt="">
+				<img src="/front_end/images/banner-bgs/cricket.jpg" alt="">
 				<div class="video-banner-caption position-center-center p-white h-white">
-					<h1>Continuous effort  not strength or<br> intelligence  is the key to unlocking our potential</h1>
-					<p>Hart's short pass wasn't controlled by Fernando, and the Swedish striker's tackle<br> resulted in the ball rolling into the net. While the bulk</p>
+					<h1 style=" font-size:100px;">One Team One Nation</h1>
+					
 					<ul class="btn-list">
-						<li><a class="btn lg red-btn" href="http://www.youtube.com/watch?v=cH6kxtzovew" data-rel="prettyPhoto[video]">watch video<i class="fa fa-play-circle"></i></a></li>
-						<li><a class="btn lg red-btn" href="#">MOre videos<i class="fa fa-angle-right"></i></a></li>
+						<li><a class="btn lg red-btn" href="https://www.youtube.com/watch?v=JHGHxExEkzY" data-rel="prettyPhoto[video]">watch video<i class="fa fa-play-circle"></i></a></li>
+						<li><a class="btn lg red-btn" href="https://www.youtube.com/user/TheOfficialSLC">MOre videos<i class="fa fa-angle-right"></i></a></li>
 					</ul>
 				</div>
+			</li>
 			</li>
 			<!-- Itme -->
 
@@ -160,13 +161,13 @@
 				<div class="add-banners">
 					<ul id="add-banners-slider" class="add-banners-slider">
 						<li>
-							<a href="#"><img src="/front_end/images/add-banners/img-01.jpg" alt=""></a>
+							<a href="#"><img src="/front_end/images/add-banners/redbull.png" alt=""></a>
 						</li>
 						<li>
-							<a href="#"><img src="/front_end/images/add-banners/img-02.jpg" alt=""></a>
+							<a href="/tournaments/club/19"><img src="/front_end/images/add-banners/domestic.png" alt=""></a>
 						</li>
 						<li>
-							<a href="#"><img src="/front_end/images/add-banners/img-03.jpg" alt=""></a>
+							<a href="#"><img src="/front_end/images/add-banners/mercantile.png" alt=""></a>
 						</li>
 					</ul>
 				</div>

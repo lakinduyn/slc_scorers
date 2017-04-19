@@ -72,7 +72,7 @@
 						  	</ul>
 						</li>
 						<li class="mega-dropdown">
-					    	<a href="#">news</a>
+					    	<a href="#">Tournaments</a>
 					    	<ul>
 							    <li class="row">
 							    	<div class="col-lg-3 col-md-3 col-sm-3">
@@ -89,25 +89,45 @@
 								    		</ul>
 							    		</div>
 							    	</div>
-							    	<div class="col-lg-9 col-md-9 col-sm-9">
+							    <div class="col-lg-9 col-md-9 col-sm-9">
 							    		<div id="mega-blog-slider" class="mega-blog-slider">
-
-							    			<!-- Post Img -->
+											<!-- Post Img -->
 											<div class="item">
 
 												<!-- Post Img -->
+												<a href="#">
 												<div class="large-post-img">
-													<img src="/front_end/images/blog-grid-view/img-2-1.jpg" alt="">
+													<img src="/front_end/images/blog-grid-view/red_bull.png" alt="">
 												</div>
 												<!-- Post Img -->
 
 												<!-- Post Detail -->
 												<div class="large-post-detail style-3 p-0">
-													<span class="red-color">Englis FA Cup</span>
-													<h2>Man United reunion for Ibrahimovic,</h2>
+													<span class="red-color">Redbull tournament</span>
+													<h2>International Tournament Matches</h2>
 												</div>
 												<!-- Post Detail -->
+												</a>
 
+											</div>
+											<!-- Post Img -->
+
+							    			<!-- Post Img -->
+											<div class="item">
+
+												<!-- Post Img -->
+												<a href="/tournaments/club/19"><div class="large-post-img">
+													<img src="/front_end/images/blog-grid-view/Sri_Lanka_Cricket_logo.png" alt="">
+												</div>
+												<!-- Post Img -->
+
+												<!-- Post Detail -->
+												<div class="large-post-detail style-3 p-0">
+													<span class="red-color">Club Tournaments</span>
+													<h2>Primeir League and much more</h2>
+												</div>
+												<!-- Post Detail -->
+												</a>	
 											</div>
 											<!-- Post Img -->
 
@@ -115,18 +135,19 @@
 											<div class="item">
 
 												<!-- Post Img -->
+												<a href="#">
 												<div class="large-post-img">
-													<img src="/front_end/images/blog-grid-view/img-2-2.jpg" alt="">
+													<img src="/front_end/images/blog-grid-view/school.png" alt="">
 												</div>
 												<!-- Post Img -->
 
 												<!-- Post Detail -->
 												<div class="large-post-detail style-3 p-0">
-													<span class="red-color">Englis FA Cup</span>
-													<h2>Man United reunion for Ibrahimovic,</h2>
+													<span class="red-color">Scool Tournaments</span>
+													<h2>All Island School Tournaments</h2>
 												</div>
 												<!-- Post Detail -->
-
+												</a>
 											</div>
 											<!-- Post Img -->
 
@@ -141,32 +162,14 @@
 
 												<!-- Post Detail -->
 												<div class="large-post-detail style-3 p-0">
-													<span class="red-color">Englis FA Cup</span>
-													<h2>Man United reunion for Ibrahimovic,</h2>
+													<span class="red-color">MCA Tournaments</span>
+													<h2>All divisions of MCA  Tournaments</h2>
 												</div>
 												<!-- Post Detail -->
 
 											</div>
 											<!-- Post Img -->
 
-											<!-- Post Img -->
-											<div class="item">
-
-												<!-- Post Img -->
-												<div class="large-post-img">
-													<img src="/front_end/images/blog-grid-view/img-2-4.jpg" alt="">
-												</div>
-												<!-- Post Img -->
-
-												<!-- Post Detail -->
-												<div class="large-post-detail style-3 p-0">
-													<span class="red-color">Englis FA Cup</span>
-													<h2>Man United reunion for Ibrahimovic,</h2>
-												</div>
-												<!-- Post Detail -->
-
-											</div>
-											<!-- Post Img -->
 
 											<!-- Post Img -->
 											<div class="item">
@@ -219,14 +222,7 @@
 							    <li><a href="match-result.html">Match Result</a></li>
 						  	</ul>
 						</li>
-						<li>
-					    	<a href="#">shop</a>
-					    	<ul>
-					    		<li><a href="shop.html">shop</a></li>
-							    <li><a href="shop-detail.html">shop detail</a></li>
-							    <li><a href="cart.html">cart</a></li>
-						  	</ul>
-						</li>
+					
 						<li>
 					    	<a href="#">pages</a>
 					    	<ul>

@@ -15,7 +15,7 @@ use App\Institutes;
 
 
 
-Route::get('/tournaments/club', 'TournamentController@showDetails');
+Route::get('/tournaments/club/{level}', 'WebsiteController@showDomestic');
 
 
 //website
