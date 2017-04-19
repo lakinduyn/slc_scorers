@@ -35,8 +35,8 @@
 								<?php foreach ($match as $match) : ?>
 								 @if($match->getStatus()!=null)
 								<li>
-									<a href=/teamcard/{{$match->getTeam1->id}}><span class="pull-left"><img src="images/matches-logo/img-01.png" alt="">{{$match->getTeam1->abbrevation}}</span></a>
-									<a href=/teamcard/{{$match->getTeam2->id}}><span class="pull-right"><img src="images/matches-logo/img-02.png" alt="">{{$match->getTeam2->abbrevation}}</span></a>
+									<a href=/teamcard/{{$match->getTeam1->id}}><span class="pull-left"><img src="images/matches-logo/img-01.png" alt="">{{$match->getTeam1->abbrevation}}<br>188</span></a>
+									<a href=/teamcard/{{$match->getTeam2->id}}><span class="pull-right"><img src="images/matches-logo/img-02.png" alt="">{{$match->getTeam2->abbrevation}}<br>200</span></a>
 									<div class="detail">
 									  	<span class="result-vs"><h3>
                     <!--Match Final Result -->
