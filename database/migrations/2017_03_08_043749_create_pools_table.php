@@ -17,7 +17,7 @@ class CreatePoolsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->integer('round_id')->unsigned();
-            $table->foreign('round_id')->references('id')->on('rounds');
+            $table->foreign('round_id')->references('id')->on('rounds')->onDelete('cascade');
             $table->timestamps();
         });
     }

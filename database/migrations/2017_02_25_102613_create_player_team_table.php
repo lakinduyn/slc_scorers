@@ -17,10 +17,10 @@ class CreatePlayerTeamTable extends Migration
             $table->increments('id');
             
             $table->integer('player_id')->unsigned();
-            $table->foreign('player_id')->references('id')->on('players');
+            $table->foreign('player_id')->references('id')->on('players')->onDelete('cascade');
 
             $table->integer('team_id')->unsigned();
-            $table->foreign('team_id')->references('id')->on('teams');
+            $table->foreign('team_id')->references('id')->on('teams')->onDelete('cascade');
 
             $table->date('joinDate');
             $table->date('endDate')->nullable();

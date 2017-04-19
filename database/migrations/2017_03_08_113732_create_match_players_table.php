@@ -16,11 +16,11 @@ class CreateMatchPlayersTable extends Migration
         Schema::create('match_players', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('team_id')->unsigned();
-            $table->foreign('team_id')->references('id')->on('teams');
+            $table->foreign('team_id')->references('id')->on('teams')->onDelete('cascade');
             $table->integer('player_id')->unsigned();
-            $table->foreign('player_id')->references('id')->on('players');
+            $table->foreign('player_id')->references('id')->on('players')->onDelete('cascade');
             $table->integer('match_id')->unsigned();
-            $table->foreign('match_id')->references('id')->on('matches');
+            $table->foreign('match_id')->references('id')->on('matches')->onDelete('cascade');
             $table->boolean('isCaptain')->default(false);
             $table->boolean('isWK')->default(false);
             $table->boolean('is12thMan')->default(false);
