@@ -7,6 +7,9 @@ use \App\Match;
 use App\Tournament;
 use \App\Inning;
 use \App\MatchResult;
+use \App\PlayerTeam;
+use \App\Team;
+use \App\TeamTournamentPlayer;
 
 class WebsiteController extends Controller
 {
@@ -44,5 +47,11 @@ class WebsiteController extends Controller
         $in= Inning::all();
         
         return view('website.clubTournaments', compact('tm') );
+    }
+    public function teamCard($teamId){
+        $name=Team::find($teamId);
+        //$tp=PlayerTeam::where('team_id',$teamId)->get();
+       $tp=TeamTournamentPlayer::where('team_id',$teamId)->get();
+        return view('website.teamCard', compact('tp','name'));
     }
 }
