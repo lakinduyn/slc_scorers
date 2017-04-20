@@ -22,7 +22,7 @@
         <!-- Match Result Contenet -->
  
 					<div class="col-lg-9 col-sm-8">
-					   <?php foreach ($tm as $tm) : ?>		
+					@foreach ($tm as $tm)
 						<!-- Matches Result Shedule -->
 						<div class="matches-dates-shedule style-2">
 						
@@ -31,8 +31,8 @@
 								<span class="pull-left">Match Results</span>
 								<span class="pull-right">Recently played</span>
 							</div>
-							<ul><?php $match=$tm->matches?>
-								<?php foreach ($match as $match) : ?>
+							<ul> @php ($match=$tm->matches)
+								@foreach ($match as $match) 
 								 @if($match->getStatus()!=null)
 								<li>
 									<a href=/teamcard/{{$match->getTeam1->id}}><span class="pull-left"><img src="images/matches-logo/img-01.png" alt="">{{$match->getTeam1->abbrevation}}<br>188</span></a>
@@ -54,10 +54,9 @@
 									</div>
 								</li>
 								  @endif
-								  <?php endforeach; ?>
-								
+								 	@endforeach
 							</ul>
-							<?php endforeach; ?>
+							@endforeach
 						</div>
 						<!-- Matches Result Shedule -->
 	
