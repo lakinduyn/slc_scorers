@@ -22,7 +22,9 @@
         <!-- Match Result Contenet -->
  
 					<div class="col-lg-9 col-sm-8">
+
 					   @foreach ($tm as $tournament)
+
 						<!-- Matches Result Shedule -->
 						<div class="matches-dates-shedule style-2">
 						
@@ -31,6 +33,7 @@
 								<span class="pull-left">Match Results</span>
 								<span class="pull-right">Recently played</span>
 							</div>
+
 							<ul>							
 								@foreach ($tournament->matches as $match)
 									@if($match->getStatus()!=null)
