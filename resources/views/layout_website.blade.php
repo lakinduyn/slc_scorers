@@ -5,7 +5,7 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="author" content=""/>
 <!-- Document Title -->
-<title>Soccer HTML5 Template</title>
+<title>Sri Lanka Cricket Scorers' Association</title>
 <!-- StyleSheets -->
 <link rel="stylesheet" href="/front_end/css/bootstrap/bootstrap.min.css">
 <link rel="stylesheet" href="/front_end/css/main.css">	
