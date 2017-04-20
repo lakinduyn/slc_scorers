@@ -148,4 +148,11 @@ class Match extends Model
     public function getStatus(){
        return $this->matchresult;
     }
+    public function getMatchDates(){
+        $dates=$this->matchStartDate;
+        if($this->format=="Test"){
+            $dates=$dates." - ".$this->matchEndDate;
+        }
+        return $dates;
+    }
 }
