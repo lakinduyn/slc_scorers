@@ -10,7 +10,7 @@
 			</ul>
 		</div>
 	</div>
-  <div class="overlay-dark theme-padding parallax-window" data-appear-top-offset="600" data-parallax="scroll" data-image-src="images/inner-banner/img-01.jpg">
+  <div class="overlay-dark theme-padding parallax-window" data-appear-top-offset="600" data-parallax="scroll" data-image-src="/front_end/images/inner-banner/img-01.jpg">
 	</div>
   <main class="main-content">
   
@@ -22,47 +22,60 @@
         <!-- Match Result Contenet -->
  
 					<div class="col-lg-9 col-sm-8">
-					   <?php foreach ($tm as $tm) : ?>		
+					   @foreach ($tm as $tournament)
 						<!-- Matches Result Shedule -->
 						<div class="matches-dates-shedule style-2">
 						
-            <h1><label>  {{$tm->name}} </label></h1>
+							<h1><label>  {{$tournament->name}} </label></h1>
 							<div class="result-top-bar">
 								<span class="pull-left">Match Results</span>
 								<span class="pull-right">Recently played</span>
 							</div>
-							<ul><?php $match=$tm->matches?>
-								<?php foreach ($match as $match) : ?>
-								 @if($match->getStatus()!=null)
-								<li>
-									<a href=/teamcard/{{$match->getTeam1->id}}><span class="pull-left"><img src="images/matches-logo/img-01.png" alt="">{{$match->getTeam1->abbrevation}}<br>188</span></a>
-									<a href=/teamcard/{{$match->getTeam2->id}}><span class="pull-right"><img src="images/matches-logo/img-02.png" alt="">{{$match->getTeam2->abbrevation}}<br>200</span></a>
-									<div class="detail">
-									  	<span class="result-vs"><h3>
-                    <!--Match Final Result -->
-					
-                      <a href="/viewMatchResult/{{$match->id}}"> {{$match->getMatchResultSentence()}}</a>
-					  
-					  
-                    </h3></span>
-										<div class="location-marker">
-											<ul>
-												<li><i class="fa fa-clock-o"></i> {{$match->matchStartDate}}</li>
-												<li><i class="fa fa-map-marker"></i>{{$match->venue}}</li>
-											</ul>
-										</div>
-									</div>
-								</li>
-								  @endif
-								  <?php endforeach; ?>
-								
+							<ul>							
+								@foreach ($tournament->matches as $match)
+									@if($match->getStatus()!=null)
+										<li>
+											@if($match->inning1!=null)
+												<a href=/teamcard/{{$match->inning1->batTeam}}>											
+													<span class="pull-left" style="font-weight:bold;font-size:18px;">
+														{{$match->inning1->battingTeam->abbrevation}}<br />
+														<img src="/front_end/images/matches-logo/img-01.png" alt="">											
+														<br />{{$match->getBatFirstTeamScores()}}
+													</span>
+												</a>
+												<a href=/teamcard/{{$match->inning1->bowlTeam}}>											
+													<span class="pull-right" style="font-weight:bold;font-size:18px;">
+														{{$match->inning1->bowlingTeam()->abbrevation}}<br />
+														<img src="/front_end/images/matches-logo/img-01.png" alt="">											
+														<br />{{$match->getBatSecondTeamScores()}}
+													</span>
+												</a>
+											@endif
+											
+											<div class="detail">
+												<span class="result-vs">
+												<h3>
+												<!--Match Final Result -->					
+													<a href="/viewMatchResult/{{$match->id}}"> {{$match->getMatchResultSentence()}}</a>		  
+												</h3>
+												</span>
+												<div class="location-marker">
+													<ul>
+														<li><i class="fa fa-clock-o"></i> {{$match->getMatchDates()}}</li>
+														<li><i class="fa fa-map-marker"></i>{{$match->venue}}</li>
+													</ul>
+												</div>
+											</div>
+										</li>
+									@endif
+								@endforeach								
 							</ul>
-							<?php endforeach; ?>
+							
 						</div>
 						<!-- Matches Result Shedule -->
-	
+						@endforeach
 					</div>
-					</div>
+					
 				
 					<!-- Match Result Contenet -->
 					<!-- Team List Content -->
