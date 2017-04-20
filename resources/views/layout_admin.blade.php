@@ -64,7 +64,7 @@ desired effect
 
   @include('layouts.admin.footer')
   
-  @include('layouts.admin.control_sidebar')
+ 
   
 </div>
 <!-- ./wrapper -->

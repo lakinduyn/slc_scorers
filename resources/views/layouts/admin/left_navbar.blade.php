@@ -16,7 +16,7 @@
         </div>
       </div>
 
-      <!-- search form (Optional) -->
+      <!-- search form (Optional) 
       <form action="#" method="get" class="sidebar-form">
         <div class="input-group">
           <input type="text" name="q" class="form-control" placeholder="Search...">
@@ -26,7 +26,7 @@
               </span>
         </div>
       </form>
-      <!-- /.search form -->
+      < /.search form -->
 
       <!-- Sidebar Menu -->
       <ul class="sidebar-menu">
@@ -42,8 +42,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="/institutes/create">Add Institute</a></li>
-            <li><a href="/searchInstitue">Search Institute</a></li>
-            <li><a href="/players/tournamentplayers">Add Tournament Players </a></li>
+            <li><a href="/searchInstitue">Search Institute</a></li>            
           </ul>
         </li>
         <li class="treeview">
@@ -78,10 +77,11 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="createTournament">Create Tournament</a></li>
+            <li><a href="/createTournament">Create Tournament</a></li>
             <li><a href="/addTournamentTeams">Add Tournament Teams </a></li>
-            <li><a href="setTournament">Set Tournament</a></li>
-            <li><a href="matchSchedule">Schedule Matches</a></li>
+            <li><a href="/setTournament">Set Tournament</a></li>
+            <li><a href="/matchSchedule">Schedule Matches</a></li>
+            <li><a href="/players/tournamentplayers">Add Tournament Players </a></li>
           </ul>
         </li>
         <li class="treeview">
