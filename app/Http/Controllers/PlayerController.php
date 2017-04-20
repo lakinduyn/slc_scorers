@@ -254,7 +254,7 @@ class PlayerController extends Controller
 
        $player->save();
 
-       return redirect('/players/search');
+       return redirect('/searchPlayer');
 
 
     }
@@ -271,7 +271,7 @@ class PlayerController extends Controller
         $player = Player::findOrFail($id);
         $player->delete();
 
-        return redirect('/players/search');
+        return redirect('/searchPlayer');
     }
 
 

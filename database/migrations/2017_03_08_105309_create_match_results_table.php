@@ -16,16 +16,16 @@ class CreateMatchResultsTable extends Migration
         Schema::create('match_results', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('match_id')->unsigned()->nullable();
-            $table->foreign('match_id')->references('id')->on('matches');
+            $table->foreign('match_id')->references('id')->on('matches')->onDelete('cascade');
 
             
             
             $table->integer('winTeam')->unsigned()->nullable();
-            $table->foreign('winTeam')->references('id')->on('teams');
+            $table->foreign('winTeam')->references('id')->on('teams')->onDelete('cascade');
             $table->enum('wintype', ['runs', 'wickets','innings','tie','noresult','drawn'])->nullable();
             $table->integer('winMargin')->nullable();
             $table->integer('tossTeam')->unsigned()->nullable();
-            $table->foreign('tossTeam')->references('id')->on('teams');
+            $table->foreign('tossTeam')->references('id')->on('teams')->onDelete('cascade');
             $table->enum('tossDecision', ['bat', 'field'])->nullable();
             $table->enum('dlMethod', ['yes', 'no'])->default('no');
             $table->timestamps();

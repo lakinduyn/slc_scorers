@@ -44,8 +44,17 @@ class TournamentController extends Controller
                     ->select("name","id")
                     // ->distinct()
                     ->get();
+
+        $teams = DB::table('team_tournaments')
+                    ->where('tournament_id', $id)
+                    ->select('team_id')
+                    ->join('teams', 'team_tournaments.team_id', '=', 'teams.id')
+                    ->select('teams.name','teams.id')
+                    ->get();
+
+        $data = array($rounds, $teams);
                 
-        return json_encode($rounds);
+        return json_encode($data);
     }
 
     public function poolsDropDown($id)
@@ -55,7 +64,7 @@ class TournamentController extends Controller
                     ->select("name","id")
                     // ->distinct()
                     ->get();
-                
+ 
         return json_encode($pools);
     }
 
@@ -77,18 +86,18 @@ class TournamentController extends Controller
     }
       public function storeTeam(Request $request)
     {
-        $add = $_POST['add'];
-        $length = count($add);
-        for ($i = 0; $i < $length; $i++) {
-         // print $add[$i];
-        $ttp[$i] = new TeamTournament;
-        $ttp[$i]->tournament_id=request('tournamentId');
-        $ttp[$i]->team_id=$add[$i];
-        //$ttp[$i]->tournament_id=request('tournamentId');
-        //$ttp[$i]->joinDate=$myDate;
-        $ttp[$i]->save();
+        $tournamentID = $request->tournamentID;
+        $teamID = $request->add;
+
+        foreach ($teamID as $tid)
+        {
+            $teamTournament = new TeamTournament;
+            $teamTournament->tournament_id = $tournamentID;
+            $teamTournament->team_id = $tid;
+            $teamTournament->save();
         }
-        return redirect('/admin');
+
+        return redirect('/addTournamentTeams');
     }
 
 
@@ -109,18 +118,22 @@ class TournamentController extends Controller
 
         $tournament->save();
 
-        return redirect('/admin');
+        return redirect('/createTournament');
     }
 
     public function storeTournamentTeams(Request $request)
     {
-        $tournament = new Tournament;
-        $tournamentID = $request->tournamentName3;
-        $tournament = $tournament::where('id', $tournamentID)->firstOrFail();
+        // $tournament = new Tournament;
+        // $tournamentID = $request->tournamentName3;
+        // $tournament = $tournament::where('id', $tournamentID)->firstOrFail();
+
+        $roundID = $request->round2;
 
         $pool = new Pool;
         $poolName = $request->pool;
-        $pool = $pool::where('name', $poolName)->firstOrFail();
+        $pool = $pool::where([['name', $poolName],
+                    ['round_id', $roundID]])
+                    ->firstOrFail();
 
         $team = new Team;
         $teamName = $request->teamName;
@@ -129,15 +142,15 @@ class TournamentController extends Controller
         {
             $team = $team::where('name', $tn)->firstOrFail();
 
-            $teamTournament = new TeamTournament;
-            $teamTournament->tournament_id = $tournament->id;
-            $teamTournament->team_id = $team->id;
+            // $teamTournament = new TeamTournament;
+            // $teamTournament->tournament_id = $tournament->id;
+            // $teamTournament->team_id = $team->id;
 
             $poolTeam = new PoolTeam;
             $poolTeam->pool_id = $pool->id;
             $poolTeam->team_id = $team->id;
 
-            $teamTournament->save();
+            // $teamTournament->save();
             $poolTeam->save();
         }
 

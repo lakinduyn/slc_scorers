@@ -17,7 +17,7 @@ class CreateRoundsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->integer('tournament_id')->unsigned();
-            $table->foreign('tournament_id')->references('id')->on('tournaments');
+            $table->foreign('tournament_id')->references('id')->on('tournaments')->onDelete('cascade');
             $table->boolean('isKnockout');
             $table->boolean('isPointsTable');
             $table->timestamps();

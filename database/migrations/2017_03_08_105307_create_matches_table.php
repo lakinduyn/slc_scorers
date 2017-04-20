@@ -21,20 +21,20 @@ class CreateMatchesTable extends Migration
             $table->date('matchStartDate');
             $table->date('matchEndDate')->nullable();
             $table->integer('team1_id')->unsigned();
-            $table->foreign('team1_id')->references('id')->on('teams');
+            $table->foreign('team1_id')->references('id')->on('teams')->onDelete('cascade');
             $table->integer('team2_id')->unsigned();
-            $table->foreign('team2_id')->references('id')->on('teams');
+            $table->foreign('team2_id')->references('id')->on('teams')->onDelete('cascade');
             $table->integer('tournament_id')->unsigned();
-            $table->foreign('tournament_id')->references('id')->on('tournaments');
+            $table->foreign('tournament_id')->references('id')->on('tournaments')->onDelete('cascade');
             $table->integer('pool_id')->unsigned();
-            $table->foreign('pool_id')->references('id')->on('pools');
+            $table->foreign('pool_id')->references('id')->on('pools')->onDelete('cascade')->onDelete('cascade');
 
             $table->integer('umpire1')->unsigned()->nullable();
-            $table->foreign('umpire1')->references('id')->on('umpires');
+            $table->foreign('umpire1')->references('id')->on('umpires')->onDelete('cascade');
             $table->integer('umpire2')->unsigned()->nullable();
-            $table->foreign('umpire2')->references('id')->on('umpires');
+            $table->foreign('umpire2')->references('id')->on('umpires')->onDelete('cascade');
             $table->integer('scorer_id')->unsigned()->nullable();
-            $table->foreign('scorer_id')->references('id')->on('scorers');
+            $table->foreign('scorer_id')->references('id')->on('scorers')->onDelete('cascade');
          
             $table->timestamps();
         });

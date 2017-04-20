@@ -8,12 +8,12 @@
     <section class="content-header">
       <h1>
         Set Tournament
-        <small></small>
+        <!--<small></small>-->
       </h1>
-      <ol class="breadcrumb">
+      <!--<ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
         <li class="active">Here</li>
-      </ol>
+      </ol>-->
     </section>
     <!--Start of add rounds-->
     <section class="content">
@@ -49,17 +49,25 @@
                   <div class="col-md-2">
                 <div class="form-group">
                     <label for="league">League</label>
+                    <div class="row">
+                        <div class="col-xs-4 col-xs-offset-2">
                   <div class="radio">
                       <input type="radio" name="isKnockout" id="league" value="league" checked="">
                   </div>
+                        </div>
+                    </div>
                 </div>
                   </div>
                 <div class="col-md-2">
                  <div class="form-group">
                      <label for="knockout">Knockout</label>
+                     <div class="row">
+                        <div class="col-xs-4 col-xs-offset-2">
                         <div class="radio">
                             <input type="radio" name="isKnockout" id="knockout" value="knockout">
                         </div>
+                        </div>
+                    </div>
                 </div>
                 </div>
                 </div>        
@@ -173,14 +181,15 @@
                     <div class="form-group">
                       <label for="teams">Teams</label>
                       <ul class="todo-list">  
-                            @foreach ($teams as $team) 
-                            <li>                      
+                            <!--@foreach ($teams as $team) -->
+                            <!--<li>                      -->
                               <!-- checkbox -->
-                              <input type="checkbox" value="{{ $team->name }}" class="" name="teamName[]">
+                              <!--<input type="checkbox" value="{{ $team->name }}" class="" name="teamName[]">-->
                               <!-- todo text -->
-                              <span class="text">{{ $team->name }}</span>
-                            </li>
-                            @endforeach
+                              <!--<span class="text">{{ $team->name }}</span>-->
+                            <!--</li>-->
+                            <!--@endforeach-->
+                      </ul>
                     </div>
                     </div>        
                   </div>
@@ -215,7 +224,7 @@
 
                         
                         $('select[name="round"]').empty();
-                        $.each(data, function(key, value) {
+                        $.each(data[0], function(key, value) {
                             $('select[name="round"]').append('<option value="'+ value.name +'">'+ value.name +'</option>');
                         });
 
@@ -242,8 +251,16 @@
 
                         
                         $('select[name="round2"]').empty();
-                        $.each(data, function(key, value) {
+                        $.each(data[0], function(key, value) {
                             $('select[name="round2"]').append('<option value="'+ value.id +'">'+ value.name +'</option>');
+                        });
+
+                        $('.todo-list').empty();
+                        $.each(data[1], function(key, value) {
+                            console.log(data[1]);  
+                            $('.todo-list').append('<li><input type="checkbox" name="teamName[]" id="' + value.id + '" value="' + value.name + '"/>' +
+                            '<label for="' + value.name + '">'+value.name+'</label></li>');
+                            
                         });
 
                     }
@@ -252,7 +269,7 @@
                 $('select[name="round2"]').empty();
             }
         });
-
+        
         // Pool drop down in Add Teams
         $('select[name="round2"]').on('change', function() {
             var roundID = $(this).val();
