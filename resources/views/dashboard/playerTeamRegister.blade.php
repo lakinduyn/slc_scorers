@@ -8,12 +8,12 @@
     <section class="content-header">
       <h1>
         Add player to Team
-        <small>Optional description</small>
+        <!--<small>Optional description</small>-->
       </h1>
-      <ol class="breadcrumb">
+      <!--<ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
         <li class="active">Here</li>
-      </ol>
+      </ol>-->
     </section>
     <section class="content">
     <div class="box box-primary">
@@ -32,8 +32,8 @@
                   <div class="form-group">
                   <label for="teamId" class="col-sm-3 control-label">Team Name</label>
                   <div class="col-sm-9">
-                  <select class="form-control" style="width: 100%;" id="teamName" name="teamName" onChange="getteamName(this)";>
-                  <option selected="selected" value="1">Select team</option>
+                  <select class="form-control" style="width: 100%;" id="teamName" name="teamID" onChange="getteamName(this)";>
+                  <option selected="selected" value="">Select team</option>
                  <?php foreach ($team as $teamsData) : ?>
                  
                   <option value="<?= $teamsData->id ?>"><?= $teamsData->name ?></option>
@@ -42,14 +42,6 @@
                   </div>
                   </div>
                   </div>
-                  <div class="col-md-4">
-                  <div class="form-group">
-                  <label for="teamName" class="col-sm-3 control-label">Team ID</label>
-                  <div class="col-sm-9">
-                    <input type="text" class="form-control" id="teamId" name="teamId"  > 
-                </div>
-                </div>
-              </div>
                 <div class="col-md-3">
                   <div class="form-group">
                   <button type="submit" class="btn btn-info pull-right">Register</button>
@@ -57,106 +49,70 @@
                 </div>
                 </div>
                 </div>
-                 <div class="box-body">
-                 <label>Add players</label><br>
-               <label>Search  : <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Reg No.."></label>
-              <table id="playersDataTable" class="table table-bordered table-striped">
+
+                <div class="box-body">
+              <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                <div class="row">
+                <div class="col-sm-12">
+                <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
                 <thead>
-                <tr>
-                  <th>Registration number</th>
-                  <th>NIC</th>
-                  <th>First Name</th>
-                  <th>Playing Role</th>
+                <tr role="row">
+                <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 95px;">Registration No.</th>
+                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 126px;">First Name</th>
+                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 116px;">Last Name</th>
+                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 80px;">NIC</th>
+                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 57px;">Playing Role</th>
+                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 57px;">Add</th>
                 </tr>
                 </thead>
                 <tbody>
-                <?php foreach ($ply as $plyData) : ?>
+                  <?php foreach ($ply as $pl) : ?>
                  <tr>
 
-                  <td><?= $plyData->regId ?> </td>
-
-                 
-                  <td><?= $plyData->nic?></td>
-
+                  <td><?= $pl->regId ?> </td>
+                
+                  <td><?= $pl->firstName ?></td>
                   
-                  <td><?= $plyData->firstName ?></td>
-
+                  <td><?= $pl->lastName ?></td>
                     
-                  <td><?= $plyData->playingRole?></td>
+                  <td><?= $pl->nic ?></td>
+
+                  <td><?= $pl->playingRole ?></td>
+
                   <td>
                     <div class="checkbox">
-                  <label>
-                    <input type="checkbox" id="add" name="add[]" value="{{$plyData ->id}}"> ADD
-                  </label>
-                </div>
-                    
+                      <label>
+                        <input type="checkbox" id="add" name="add[]" value="{{$pl ->id}}"> ADD
+                      </label>
+                    </div>
                   </td>
               
                 </tr>
 
                 <?php endforeach; ?>
                 </tbody>
-
-            </table>
-            </div>
-            <!-- /.box-body -->
-                  
-                <!--<div class="checkbox">
-                  <label>
-                    <input type="checkbox"> Check me out
-                  </label>
-                </div>-->
+              </table>
               </div>
-              
-              <!-- /.box-body -->
+              </div>
             </div>
-            </form>
           </div>
-          </section>
-   
-</div>
+         </form>
+    </div>
+    </section>
+  </div>
+                 
 @endsection()
 
 @section('page_specific_scripts')
 
-<script>
-function myFunction() {
-  // Declare variables 
-  var input, filter, table, tr, td, i;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("playersDataTable");
-  tr = table.getElementsByTagName("tr");
-  // Loop through all table rows, and hide those who don't match the search query
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    if (td) {
-      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    } 
-  }
-}
-document.getElementById("image").onchange = function () {
-    var reader = new FileReader();
-
-    reader.onload = function (e) {
-        // get loaded data and render thumbnail.
-        document.getElementById("image").src = e.target.result;
-    };
-
-    // read the image file as a data URL.
-    reader.readAsDataURL(this.files[0]);
-};
-   function getteamName(selectObject)
-            {
-                document.getElementById("teamId").value=selectObject.value;
-            };
-          
+    <!-- DataTables -->
+    <script src="bower_components/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="bower_components/adminlte/plugins/datatables/dataTables.bootstrap.min.js"></script>
+    
+  <script>
+  $(function () {
+    $("#example1").DataTable();
+  });
 </script>
-<script type="text/javascript">
-         
-        </script>
+
 @endsection()
