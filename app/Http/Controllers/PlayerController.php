@@ -122,13 +122,15 @@ class PlayerController extends Controller
       $player = new Player;
       $pt = new PlayerTeam;// object from model player team
       $myDate =time();// date nd time
+      $name=request('firstName');
+      $lname=request('lastName');
 
       if(isset($_FILES['image'])){
       $errors= array();
       $file_name = $_FILES['image']['name'];
       $file_size =$_FILES['image']['size'];
       $ext = strtolower(substr(strrchr($file_name, '.'), 1)); 
-      $newfilename=$myDate.".".$ext;
+      $newfilename=$name. '' .$lname.''.$myDate.".".$ext;
       $file_tmp =$_FILES['image']['tmp_name'];
       $file_type=$_FILES['image']['type'];
       //$file_ext=strtolower(end(explode('.',$_FILES['image']['name'])));
@@ -144,7 +146,7 @@ class PlayerController extends Controller
       }
       
       if(empty($errors)==true){
-         move_uploaded_file($file_tmp,"../images/players/".$newfilename);
+         move_uploaded_file($file_tmp,"resources/images/players/".$newfilename);
          echo "Success";
       }
       
@@ -157,7 +159,7 @@ class PlayerController extends Controller
         
         $player->regId=request('registrationNo');
         $player->nic=request('nic');
-        $player->firstName=request('otherNames');
+        $player->firstName=request('firstName');
         $player->lastName=request('lastName');
         $player->photoUrl=$newfilename;
         //testing code

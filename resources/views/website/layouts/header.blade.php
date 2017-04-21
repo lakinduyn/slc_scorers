@@ -40,7 +40,7 @@
 
 					<!-- Logo -->
 					<div class="logo">
-						<a href="home-1.html"><img src="/front_end/images/logo-4.png" alt=""></a>
+						<a href="/"><img src="/front_end/images/logo-4.png" alt=""></a>
 					</div>
 					<!-- Logo -->
 
@@ -56,11 +56,7 @@
 					<!-- Nav List -->
 					<ul class="nav-list pull-right">
 						<li>
-					    	<a href="#">Home</a>
-					    	<ul>
-							    <li><a href="home-1.html">Home 1</a></li>
-							    <li><a href="home-2.html">Home 2</a></li>
-						  	</ul>
+					    	<a href="/">Home</a>
 						</li>
 						<li><a href="about.html">about</a></li>
 						<li>
