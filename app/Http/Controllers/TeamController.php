@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Team;
+
+use DB;
 use App\Institute;
+
 
 class TeamController extends Controller
 {
@@ -48,9 +51,9 @@ class TeamController extends Controller
 
     public function search()
     {
-        $teams = Team::all();
+        $teams = DB::table('teams')->get();
 
-        return view('dashboard.addplayer', compact('teams'));
+        return view('dashboard.addplayer', ['teams'=>$teams]);
 
     }
     public function searchTeam()

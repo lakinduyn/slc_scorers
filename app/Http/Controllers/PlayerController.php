@@ -52,48 +52,39 @@ class PlayerController extends Controller
   
   public function storeTournamentPlayer(Request $request)
     {
-        
-        $myDate =date("Y-m-d");
-        
-        $add = $_POST['add'];
-        $length = count($add);
-        for ($i = 0; $i < $length; $i++) {
-         // print $add[$i];
-        $ttp[$i] = new TeamTournamentPlayer;
-        $ttp[$i]->player_id=$add[$i];
-        $ttp[$i]->team_id=request('teamId');
-        $ttp[$i]->tournament_id=request('tournamentId');
-        //$ttp[$i]->joinDate=$myDate;
-        $ttp[$i]->save();
+        $teamID = $request->teamID;
+        $tournamnetID = $request->tournamentID;
+        $playerID = $request->add;
+
+        foreach ($playerID as $pid)
+        {
+            $teamTournamnetPlayer = new TeamTournamentPlayer;
+            $teamTournamnetPlayer->tournament_id = $tournamnetID;
+            $teamTournamnetPlayer->team_id = $teamID;
+            $teamTournamnetPlayer->player_id = $pid;
+            $teamTournamnetPlayer->save();
         }
-        return redirect('/admin');
+
+        return redirect('/addTournamentPlayers');
 
     }
     public function storeTeam(Request $request)
     {
-        $myDate =date("Y-m-d");
-        
-        $add = $_POST['add'];
-        $length = count($add);
-        for ($i = 0; $i < $length; $i++) {
-         // print $add[$i];
-        $pt[$i] = new PlayerTeam;
-        $pt[$i]->player_id=$add[$i];
-        $pt[$i]->team_id=request('teamId');
-        $pt[$i]->joinDate=$myDate;
-        $pt[$i]->save();
+        $today =date("Y-m-d");
+
+        $teamID = $request->teamID;
+        $playerID = $request->add;
+
+        foreach ($playerID as $pid)
+        {
+            $playerTeam = new PlayerTeam;
+            $playerTeam->player_id = $pid;
+            $playerTeam->team_id = $teamID;
+            $playerTeam->joinDate = $today;
+            $playerTeam->save();
         }
-        //for(int i=0;i<$add.length;i++){
-        /*foreach ($add as $id){
-         
-        $pt[i] = new PlayerTeam;
-        $pt[i]->player_id=$id;
-        $pt[i]->team_id=request('teamId');
-        $pt[i]->joinDate=$myDate;
-        $pt[i]->save();
-     
-        }*/
-        return redirect('/admin');
+        
+        return redirect('/addTeamPlayer');
 
     }
   
