@@ -87,39 +87,48 @@ class Match extends Model
         //matchResult->winningTeam->institute->name
     }
     public function getBatFirstTeamScores(){
-        $scores=$this->inning1->total."/".$this->inning1->wicketsFallen;
-
-        if($this->format=="Test"){
-            if($this->inning3!=null){
-                if($this->inning3->batTeam==$this->inning1->batTeam){
-                    $scores=$scores." & ".$this->inning3->total."/".$this->inning3->wicketsFallen;
-                }
-            }
-            if($this->inning4!=null){
-                if($this->inning4->batTeam==$this->inning1->batTeam){
-                    $scores=$scores." & ".$this->inning4->total."/".$this->inning4->wicketsFallen;
-                }
-            }
+        if($this->inning1==null){
+            return "-/-";
         }
-        return $scores;
+        else{
+            $scores=$this->inning1->total."/".$this->inning1->wicketsFallen;
+
+            if($this->format=="Test"){
+                if($this->inning3!=null){
+                    if($this->inning3->batTeam==$this->inning1->batTeam){
+                        $scores=$scores." & ".$this->inning3->total."/".$this->inning3->wicketsFallen;
+                    }
+                }
+                if($this->inning4!=null){
+                    if($this->inning4->batTeam==$this->inning1->batTeam){
+                        $scores=$scores." & ".$this->inning4->total."/".$this->inning4->wicketsFallen;
+                    }
+                }
+            }
+            return $scores;
+        }
     }
     public function getBatSecondTeamScores(){
-
-        $scores=$this->inning2->total."/".$this->inning2->wicketsFallen;
-
-        if($this->format=="Test"){
-            if($this->inning3!=null){
-                if($this->inning3->batTeam==$this->inning2->batTeam){
-                    $scores=$scores." & ".$this->inning3->total."/".$this->inning3->wicketsFallen;
-                }
-            }
-            if($this->inning4!=null){
-                if($this->inning4->batTeam==$this->inning2->batTeam){
-                    $scores=$scores." & ".$this->inning4->total."/".$this->inning4->wicketsFallen;
-                }
-            }
+        if($this->inning2==null){
+            return "-/-";
         }
-        return $scores;
+        else{
+            $scores=$this->inning2->total."/".$this->inning2->wicketsFallen;
+
+            if($this->format=="Test"){
+                if($this->inning3!=null){
+                    if($this->inning3->batTeam==$this->inning2->batTeam){
+                        $scores=$scores." & ".$this->inning3->total."/".$this->inning3->wicketsFallen;
+                    }
+                }
+                if($this->inning4!=null){
+                    if($this->inning4->batTeam==$this->inning2->batTeam){
+                        $scores=$scores." & ".$this->inning4->total."/".$this->inning4->wicketsFallen;
+                    }
+                }
+            }
+            return $scores;
+        }
     }
 
     public function getTossSentence(){
