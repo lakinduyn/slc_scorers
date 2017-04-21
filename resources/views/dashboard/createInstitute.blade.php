@@ -29,7 +29,7 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form class="form-horizontal" method="POST" action="/institutes">
+            <form class="form-horizontal" method="POST" action="/institutes" files="true" enctype="multipart/form-data">
             
             {{csrf_field() }}
 
@@ -73,7 +73,8 @@
                 <div class="form-group">
                   <label for="inputPicture" class="col-sm-2 control-label">Logo</label>
                 <div class="col-sm-10">
-                 <input type="file" id="instituteLogoImage" name="logoUrl">
+                 <input type="file" id="image" name="image" accept="image/*">
+                 <img id="image" style="width:70px;height:70px"; />
                  </div>
                 </div>
                 </div>
@@ -125,3 +126,26 @@
 </div>
 @endsection()
 
+@section('page_specific_scripts')
+<script>
+document.getElementById("image").onchange = function () {
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+        // get loaded data and render thumbnail.
+        document.getElementById("image").src = e.target.result;
+    };
+
+    // read the image file as a data URL.
+    reader.readAsDataURL(this.files[0]);
+};
+   function getteamName(selectObject)
+            {
+                document.getElementById("teamId").value=selectObject.value;
+            };
+          
+</script>
+<script type="text/javascript">
+         
+        </script>
+@endsection()

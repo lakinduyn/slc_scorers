@@ -52,8 +52,10 @@
             </span>
           </a>
           <ul class="treeview-menu">
+
             <li><a href="/addteam">Add Team</a></li>
             <li><a href="/searchTeam">Search Team</a></li>
+
           </ul>
         </li>
         <li class="treeview">

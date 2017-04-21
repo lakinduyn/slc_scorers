@@ -52,10 +52,11 @@ Route::DELETE('/players/{player}', 'PlayerController@destroy')->name('player.des
 
 
 //routes for Teams
-Route::get('/teamRegistration', function () {
-    return view('dashboard.teamRegistration');
-});
-Route::POST('/teams', 'TeamController@store');
+//Route::get('/teamRegistration', function () {
+  //  return view('dashboard.teamRegistration');
+//});
+Route::get('/teams/teamRegistration', 'InstituteController@getInstitutes');
+//Route::POST('/teams/search', 'TeamController@store');
 
 //routes for Scorer
 Route::get('/createScorer', 'ScorerController@create');
@@ -110,13 +111,13 @@ Route::post('/tournamentTeam', 'TournamentController@storeTeam');
 
 Route::post('/tournaments', 'TournamentController@store');
 
-
 Route::get('/searchTeam', 'TeamController@index');
+
 Route::get('/addteam', 'TeamController@addteam');
 Route::post('/saveteam', 'TeamController@store');
 Route::get('deleteteam/{id}', 'TeamController@destroy');
-Route::get('editteamteam/{team}', 'TeamController@edit');
-Route::PUT('saveeditteam/{team}', 'TeamController@update');
+Route::get('/editteamteam/{team}', 'TeamController@edit');
+Route::PUT('/saveeditteam/{team}', 'TeamController@update');
 
 //routes for Rounds
 Route::post('/tournamentRounds', 'RoundController@store');

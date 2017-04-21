@@ -24,7 +24,7 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-               <form class="form-horizontal" method="POST" action="../saveeditteam/{{$team -> id}}">
+               <form class="form-horizontal" method="POST" action="/saveeditteam/{{$team -> id}}">
             {{ method_field('PUT') }}
             {{csrf_field() }}
 
@@ -43,9 +43,9 @@
                   </div>
                   </div>
                <div class="form-group">
-                  <label for="inputotherName" class="col-sm-2 control-label">Age Category</label>
+                  <label for="abbrevation" class="col-sm-2 control-label">Abbreavtaion</label>
                   <div class="col-sm-10">
-                     <input type="text" value= "{{$team ->ageCat}}" class="form-control" id="age" name="age" placeholder="">
+                     <input type="abbrevation" value= "{{$team ->abbrevation}}" class="form-control" id="abbrevation" name="abbrevation" placeholder="">
                   </div></div>
                 <div class="form-group">
                 <label for="type" class="col-sm-2 control-label">Division</label>
@@ -69,9 +69,15 @@
                 </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputContact" class="col-sm-2 control-label">Institute</label>
+                  <label for="inputContact" class="col-sm-2 control-label">Institute Name</label>
                   <div class="col-sm-10">
-                    <input type="text" value= "{{$team ->institute_id}}" class="form-control" id="ins" name="ins" placeholder="">
+                  <select class="form-control" style="width: 100%;" id="instituteName" name="instituteName">
+                  <option selected="selected" value="{{$team ->institute_id}}">{{$team ->getInstitute->name}}</option>
+                 <?php foreach ($ins as $insData) : ?>
+                 
+                  <option value="<?= $insData->id ?>"><?= $insData->name ?></option>
+                   <?php endforeach; ?>
+                </select><br>
                   </div>
                   </div>
                 </div>

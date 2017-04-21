@@ -46,7 +46,7 @@
 														<br />{{$match->getBatFirstTeamScores()}}
 													</span>
 												</a>
-												<a href=/teamcard/{{$match->inning1->bowlTeam}}>											
+												<a href=/teamcard/{{$match->inning1->bowlingTeam()->id}}>											
 													<span class="pull-right" style="font-weight:bold;font-size:18px;">
 														{{$match->inning1->bowlingTeam()->abbrevation}}<br />
 														<img src="/front_end/images/matches-logo/img-01.png" alt="">											

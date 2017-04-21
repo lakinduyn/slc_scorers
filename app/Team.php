@@ -15,4 +15,7 @@ class Team extends Model
     {
        return $this->belongsToMany('App\Player')->withPivot('joinDate','endDate');
     }
+    public function getInstitute(){
+        return $this->hasOne(Institute::class, 'id','institute_id');
+    }
 }

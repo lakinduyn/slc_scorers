@@ -58,9 +58,9 @@
               </div>
               </div>
                   <div class="form-group">
-                  <label for="inputotherName" class="col-sm-3 control-label">Other Names</label>
+                  <label for="inputotherName" class="col-sm-3 control-label">Use Names</label>
                   <div class="col-sm-9">
-                    <input type="text" class="form-control" id="otherNames" name="otherNames" placeholder="Other Names">
+                    <input type="text" class="form-control" id="useName" name="useName" placeholder="useName">
                   </div></div>
                   <div class="form-group">
                 <label for="inputLastName" class="col-sm-3 control-label">Date of Birth</label>
