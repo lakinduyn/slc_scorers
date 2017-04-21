@@ -216,29 +216,37 @@ class PlayerController extends Controller
         //
         $player = Player::findOrFail($id);
        $myDate =time();// date nd time
+       $name=request('firstName');
+      $lname=request('lastName');
 
-      if(isset($_FILES['image'])){
+      $this->file = $_FILES['image'];
+      if(file_exists($this->file['tmp_name'])){
       $errors= array();
       $file_name = $_FILES['image']['name'];
       $file_size =$_FILES['image']['size'];
       $ext = strtolower(substr(strrchr($file_name, '.'), 1)); 
-      $newfilename=$myDate.".".$ext;
+      $newfilename=$name. '' .$lname.''.$myDate.".".$ext;
       $file_tmp =$_FILES['image']['tmp_name'];
       $file_type=$_FILES['image']['type'];
+      
+    
       if($file_size > 2097152){
          $errors[]='File size must be excately 2 MB';
       }
-       if(empty($errors)==true){
-         move_uploaded_file($file_tmp,"../images/players/".$newfilename);
-         $player->photoUrl=$newfilename;
+      
+      if(empty($errors)==true){
+         move_uploaded_file($file_tmp,"resources/images/players/".$newfilename);
          echo "Success";
       }
-      }
+      $player->photoUrl=$newfilename;
+      
+   }
 
        
        $player->regId=request('registrationNo');
-       $player->firstName = $request->input('otherNames');
+       $player->firstName = $request->input('firstName');
        $player->lastName = $request->input('lastName');
+       $player->useName=request('useName');
        $player->dob = $request->input('dob');
        $player->playingRole=request('playerRole');
        $player->nic = $request->input('nic');
