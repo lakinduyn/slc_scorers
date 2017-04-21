@@ -162,20 +162,21 @@
                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 57px;"></th></tr>
                 </thead>
                 <tbody>
-                  <?php foreach ($matches as $match) : ?>
+                  @foreach ($matches as $match)
+                  
                  <tr>
 
-                  <td><?= $match->tournament_id ?> </td>
+                  <td>{{ $match->tournament_id }} </td>
                 
-                  <td><?= $match->name ?></td>
+                  <td>{{ $match->name }}</td>
                  
-                  <td><?= $match->format ?></td>
+                  <td>{{ $match->format }}</td>
                     
-                  <td><?= $match->team1_id ?></td>
+                  <td>{{ $match->team1_id }}</td>
 
-                  <td><?= $match->team2_id ?></td>
+                  <td>{{ $match->team2_id }}</td>
 
-                  <td><?= $match->venue ?></td>
+                  <td>{{ $match->venue }}</td>
                   <td>
                     <a class="btn btn-app bg-olive" href="/matchResultsMain/{{$match->id}}">
                         <i class="fa fa-edit"></i> Score
@@ -183,8 +184,7 @@
                   </td>
               
                 </tr>
-
-                <?php endforeach; ?>
+                @endforeach
                 </tbody>
               </table>
               </div>
@@ -194,6 +194,9 @@
 
     </div>
     </section>
+    <!--<div>
+      <label>{{$matches}}</label>
+      </div>-->
 
 </div>
 @endsection()
