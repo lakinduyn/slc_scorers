@@ -22,7 +22,7 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" method="POST" action="/tournaments">
+            <form role="form" method="POST" action="/tournaments" files="true" enctype="multipart/form-data">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
               <div class="box-body">
                 <div class="row">
@@ -72,9 +72,8 @@
                 <div class="col-md-4">
                   <div class="form-group">
                   <label for="tournamentLogo">Tournament Logo</label>
-                  <input type="file" id="tournamentLogo" name="tournamentLogo">
-                  <img id="image" style="width:70px;height:70px"; />
-
+                   <input type="file" id="image" name="image" value="image" accept="image/*">
+                 <img id="image" style="width:70px;height:70px"; />
                   <!--<p class="help-block">Example block-level help text here.</p>-->
                 </div>
               </div>
