@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Team;
+use App\Institute;
 
 class TeamController extends Controller
 {
@@ -22,7 +23,7 @@ class TeamController extends Controller
          
          $team = Team::all();
 
-        return view('dashboard.teamregistration', compact('team'));
+        return view('dashboard.searchTeam', compact('team'));
          
     }
       public function addteam()
@@ -82,7 +83,8 @@ class TeamController extends Controller
         $team->name=request('teamName');
         $team->ageCat=request('ageCategory');
         $team->div=request('division');
-        $team->institute_id=request('institute');
+        $team->abbrevation=request('abbrevation'); 
+        $team->institute_id=request('instituteName');
 
         $team->save();
 
@@ -113,8 +115,8 @@ class TeamController extends Controller
      */
     public function edit(Team $team)
     {
-        
-         return view('dashboard.editTeam', compact('team'));
+        $ins = Institute::all(); 
+         return view('dashboard.editTeam', compact('team','ins'));
     }
 
     /**
@@ -131,10 +133,11 @@ class TeamController extends Controller
        $team->name = $request->input('name');
        $team->ageCat = $request->input('age');
        $team->div = $request->input('div');
-       $team->institute_id = $request->input('ins');
+       $team->abbrevation = $request->input('abbrevation');
+       $team->institute_id = $request->input('instituteName');
      
        $team->save();
-      return redirect('/team');
+      return redirect('/admin');
     }
 
     /**

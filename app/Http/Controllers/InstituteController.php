@@ -164,4 +164,14 @@ class InstituteController extends Controller
         return redirect('/searchInstitue');
 
     }
+   
+    public function  getInstitutes()
+    {
+        $ins = Institute::all(); 
+
+        //Session::flash('message', 'Successfully deleted the record!');
+
+        return view('dashboard.addTeam', compact('ins'));
+
+    }
 }
