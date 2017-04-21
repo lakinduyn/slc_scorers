@@ -30,7 +30,7 @@
 
 @yield('content')
 
-
+@include('website.layouts.responsiveNavBar')
 @include('website.layouts.footer')
 </div>
 <!-- Wrapper -->
