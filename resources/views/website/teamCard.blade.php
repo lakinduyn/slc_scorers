@@ -30,7 +30,7 @@
 	<!-- Team Column -->@php ($i++)
 					<div class="col-lg-3 col-sm-4 col-xs-6 r-full-width">
 						<div class="team-column">
-							<img src="../../public/front_end/images/team/img-01.jpg" alt=""  height="386" width="286">
+							<img src="/front_end/images/team/img-01.jpg" alt=""  height="386" width="286">
 							<span class="player-number">{{$i}}</span>
 							<div class="team-detail">
 								<h5><a href="#">{{$tp->getPlayer->firstName}} {{$tp->getPlayer->lastName}} </a></h5>

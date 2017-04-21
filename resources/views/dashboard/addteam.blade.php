@@ -51,11 +51,12 @@
                     <input type="text" class="form-control" id="teamName" name="teamName" placeholder="Team Name">
               </div>
               </div>
-                  <div class="form-group">
-                  <label for="inputotherName" class="col-sm-2 control-label">Age Category</label>
+              <div class="form-group">
+                  <label for="Abbreviation" class="col-sm-2 control-label">Abbrevation</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="ageCategory" name="ageCategory" placeholder="Age Category">
-                  </div></div>
+                    <input type="text" class="form-control" id="abbrevation" name="abbrevation" placeholder="abbreviation">
+              </div>
+              </div>
 
                 <div class="form-group">
                 <label for="inputLastName" class="col-sm-2 control-label">Division</label>
@@ -74,10 +75,16 @@
                   </div>
                   </div>
                  <div class="form-group">
-                  <label for="inputContact" class="col-sm-2 control-label">Institute</label>
+                  <label for="inputContact" class="col-sm-2 control-label">Institute Name</label>
                   <div class="col-sm-10">
-                  <input type="text" class="form-control" id="institute" name="institute" placeholder="Institute ID">
-                  </div>
+                  <select class="form-control" style="width: 100%;" id="instituteName" name="instituteName">
+                  <option selected="selected" value="0">Select team</option>
+                 <?php foreach ($ins as $insData) : ?>
+                 
+                  <option value="<?= $insData->id ?>"><?= $insData->name ?></option>
+                   <?php endforeach; ?>
+                </select><br>                  
+                </div>
                   </div>
                  <div class="box-footer">
                 <button type="submit" class="btn btn-default">Cancel</button>

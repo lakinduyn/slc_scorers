@@ -52,8 +52,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="/addteam">Add Team</a></li>
-            <li><a href="/team">Search Institute</a></li>
+            <li><a href="/teams/teamRegistration">Add Team</a></li>
+            <li><a href="/teams/search">Search Teams</a></li>
           </ul>
         </li>
         <li class="treeview">
