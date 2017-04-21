@@ -39,6 +39,7 @@ class InstituteController extends Controller
         return view('dashboard.createInstitute');
 
     }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -49,11 +50,35 @@ class InstituteController extends Controller
     public function store(Request $request)
     {
         
-        $institute = new Institute;
+      $institute = new Institute;
+      $myDate =time();// date nd time
+      $name=request('name');
+      $type=request('type');
+
+      $this->file = $_FILES['image'];
+      if(file_exists($this->file['tmp_name'])){
+      $errors= array();
+      $file_name = $_FILES['image']['name'];
+      $file_size =$_FILES['image']['size'];
+      $ext = strtolower(substr(strrchr($file_name, '.'), 1)); 
+      $newfilename=$name. '' .$type.''.$myDate.".".$ext;
+      $file_tmp =$_FILES['image']['tmp_name'];
+      $file_type=$_FILES['image']['type'];
+      
+      if($file_size > 2097152){
+         $errors[]='File size must be excately 2 MB';
+      }
+      
+   
+         move_uploaded_file($file_tmp,"resources/images/clubs/".$newfilename);
+         
+          $institute->logoUrl=$newfilename;
+      
+      
+   }
 
         $institute->name = $request->name;
         $institute->type = $request->type;
-        $institute->logoUrl = $request->logoUrl;
         $institute->contactNo = $request->contactNo;
         $institute->email = $request->email;
         $institute->address = $request->address;
