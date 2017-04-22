@@ -24,7 +24,9 @@ Route::get('/teamcard/{id}', 'WebsiteController@teamCard');
 Route::get('/tournaments/club/{level}', 'WebsiteController@showDomestic');
 Route::get('/viewMatchResult/{match}', 'WebsiteController@matchResult');
 Route::get('/viewInning/{inning}', 'WebsiteController@inningResult');
-
+Route::get('/association/about', function () {
+    return view('website.aboutUs');
+});
 
 Route::get('/admin', 'DashboardController@index')->name('home');
 
@@ -37,9 +39,9 @@ Route::get('/players/addplayer','TeamController@search');
 Route::get('editPlayer','TeamController@search1');
 //Route::get('/players/addteam','TeamController@searchTeam');
 
-Route::get('/players/addteam', 'PlayerController@search1');
+Route::get('/addTeamPlayer', 'PlayerController@search1');
 Route::get('players/{player}/edit', 'PlayerController@edit');
-Route::get('/players/tournamentplayers', 'PlayerController@search2');
+Route::get('/addTournamentPlayers', 'PlayerController@search2');
 Route::get('/addplayer','TeamController@search');
 Route::get('/searchPlayer', 'PlayerController@search');
 Route::post('/tournamentTeamPlayer', 'PlayerController@storeTournamentPlayer');
@@ -111,8 +113,8 @@ Route::post('/tournamentTeam', 'TournamentController@storeTeam');
 
 Route::post('/tournaments', 'TournamentController@store');
 
+Route::get('/searchTeam', 'TeamController@index');
 
-Route::get('/teams/search', 'TeamController@index');
 Route::get('/addteam', 'TeamController@addteam');
 Route::post('/saveteam', 'TeamController@store');
 Route::get('deleteteam/{id}', 'TeamController@destroy');

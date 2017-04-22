@@ -20,12 +20,12 @@
     <section class="content-header">
       <h1>
         Team Registration
-        <small>Register the Teams</small>
+        <!--<small>Register the Teams</small>-->
       </h1>
-      <ol class="breadcrumb">
+      <!--<ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
         <li class="active">Here</li>
-      </ol>
+      </ol>-->
     </section>
 
     <!-- Main content -->
@@ -79,9 +79,9 @@
                   <div class="col-sm-10">
                   <select class="form-control" style="width: 100%;" id="instituteName" name="instituteName">
                   <option selected="selected" value="0">Select team</option>
-                 <?php foreach ($ins as $insData) : ?>
+                 <?php foreach ($team as $tm) : ?>
                  
-                  <option value="<?= $insData->id ?>"><?= $insData->name ?></option>
+                  <option value="<?= $tm->id ?>"><?= $tm->name ?></option>
                    <?php endforeach; ?>
                 </select><br>                  
                 </div>
@@ -89,25 +89,15 @@
                  <div class="box-footer">
                 <button type="submit" class="btn btn-default">Cancel</button>
                 <button type="submit" class="btn btn-info pull-right">Register</button>
-                </form>
+                 </div>
+            </div>
               </div>
-                </div>
-                </div>
-                </div>
-                 
-                           
+              </div>
+               </div>
+              </div>
               
-               
-                  </div>
-                  </div>
-                 
-              </div>
+                </form>
+              </div></section>
         
-              <!-- /.bo
-            
-   
-
-    </section>
-    <!-- /.content -->
 </div>
 @endsection()

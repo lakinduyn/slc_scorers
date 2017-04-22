@@ -28,7 +28,7 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form class="form-horizontal" method="POST" action="/institutes/{{$institute -> id}}">
+            <form class="form-horizontal" method="POST" action="/institutes/{{$institute -> id}}" files="true" enctype="multipart/form-data">
             {{ method_field('PUT') }}
             {{csrf_field() }}
 
@@ -87,14 +87,13 @@
 
                 </div>
                 </div>
-                <div class="form-group">
+                 <div class="form-group">
                   <label for="inputPicture" class="col-sm-2 control-label">Logo</label>
-
-                  <!--<img src="" alt="Mountain View" style="width:30px;height:40px;">-->
-
                 <div class="col-sm-10">
-                 <input type="file" id="instituteLogoImage" name="logoUrl">
+                 <input type="file" id="image" name="image" accept="image/*">
+                 <img id="image" style="width:70px;height:70px"; />
                  </div>
+                </div>
                 </div>
                 </div>
                 </div>
@@ -144,4 +143,19 @@
     <!-- /.content -->
 </div>
 
+@endsection()
+@section('page_specific_scripts')
+<script>
+document.getElementById("image").onchange = function () {
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+        // get loaded data and render thumbnail.
+        document.getElementById("image").src = e.target.result;
+    };
+
+    // read the image file as a data URL.
+    reader.readAsDataURL(this.files[0]);
+};       
+        </script>
 @endsection()
