@@ -19,7 +19,7 @@ class MatchController extends Controller
     }
     public function index()
     {
-        $tournaments = DB::table('tournaments')->get();
+        $tournaments = \App\Tournament::all();
         $pools = \App\Pool::all();
         $teams = \App\Team::all();;
         // $rounds = DB::table('rounds')
