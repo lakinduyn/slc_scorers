@@ -166,15 +166,15 @@
                   
                  <tr>
 
-                  <td>{{ $match->tournament_id }} </td>
+                  <td>{{ $match->getTournament->name }} </td>
                 
                   <td>{{ $match->name }}</td>
                  
                   <td>{{ $match->format }}</td>
                     
-                  <td>{{ $match->team1_id }}</td>
+                  <td>{{ $match->getTeam1->name }}</td>
 
-                  <td>{{ $match->team2_id }}</td>
+                  <td>{{ $match->getTeam2->name }}</td>
 
                   <td>{{ $match->venue }}</td>
                   <td>

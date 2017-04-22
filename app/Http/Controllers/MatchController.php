@@ -20,15 +20,13 @@ class MatchController extends Controller
     public function index()
     {
         $tournaments = DB::table('tournaments')->get();
-        $pools = DB::table('pools')->get();
-        $teams = DB::table('teams')->get();
+        $pools = \App\Pool::all();
+        $teams = \App\Team::all();;
         // $rounds = DB::table('rounds')
         //             ->join('tournaments', 'rounds.tournament_id', '=', 'tournaments.id')
         //             ->select('rounds.name')
         //             ->get();
-        $matches = DB::table('matches')
-                    ->orderBy('id', 'desc')
-                    ->get();
+        $matches = Match::orderBy('id', 'desc')->get();
 
         // return view('tournaments.matchSchedule', compact('matches'));
 
