@@ -110,15 +110,41 @@ class TournamentController extends Controller
     public function store(Request $request)
     {
         $tournament = new Tournament;
+        $myDate =time();// date nd time
+        $name=request('name');
+        $type=request('level');
+
+
+        $this->file = $_FILES['image'];
+      if(file_exists($this->file['tmp_name'])){
+      $errors= array();
+      $file_name = $_FILES['image']['name'];
+      $file_size =$_FILES['image']['size'];
+      $ext = strtolower(substr(strrchr($file_name, '.'), 1)); 
+      $newfilename=$name. '' .$type.''.$myDate.".".$ext;
+      $file_tmp =$_FILES['image']['tmp_name'];
+      $file_type=$_FILES['image']['type'];
+      
+      if($file_size > 2097152){
+         $errors[]='File size must be excately 2 MB';
+      }
+      
+   
+         move_uploaded_file($file_tmp,"resources/images/tournaments/".$newfilename);
+         
+          $tournament->imgUrl=$newfilename;
+      
+      
+   }
         $tournament->name = $request->name;
         $tournament->level = $request->level;
         $tournament->format = $request->format;
         $tournament->division = $request->division;
-        $tournament->imgUrl = $request->tournamentLogo;
+        //$tournament->imgUrl = $request->tournamentLogo;
 
         $tournament->save();
 
-        return redirect('/createTournament');
+        return redirect('/admin');
     }
 
     public function storeTournamentTeams(Request $request)

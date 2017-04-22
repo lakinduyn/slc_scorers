@@ -58,7 +58,7 @@
 						<li>
 					    	<a href="/">Home</a>
 						</li>
-						<li><a href="about.html">about</a></li>
+						<li><a href="/association/about">about</a></li>
 						<li>
 					    	<a href="team.html">team</a>
 					    	<ul>

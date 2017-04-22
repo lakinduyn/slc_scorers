@@ -24,7 +24,9 @@ Route::get('/teamcard/{id}', 'WebsiteController@teamCard');
 Route::get('/tournaments/club/{level}', 'WebsiteController@showDomestic');
 Route::get('/viewMatchResult/{match}', 'WebsiteController@matchResult');
 Route::get('/viewInning/{inning}', 'WebsiteController@inningResult');
-
+Route::get('/association/about', function () {
+    return view('website.aboutUs');
+});
 
 Route::get('/admin', 'DashboardController@index')->name('home');
 

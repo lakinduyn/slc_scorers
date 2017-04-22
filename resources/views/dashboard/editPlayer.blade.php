@@ -25,7 +25,7 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form class="form-horizontal" method="POST" action="/players/{{$player->id}}" >
+            <form class="form-horizontal" method="POST" action="/players/{{$player->id}}" files="true" enctype="multipart/form-data">
             {{csrf_field() }}
             {{ method_field('PUT') }}
               <div class="box-body">
@@ -53,9 +53,14 @@
               </div>
               </div>
                   <div class="form-group">
-                  <label for="inputotherName" class="col-sm-3 control-label">Other Names</label>
+                  <label for="inputotherName" class="col-sm-3 control-label">First Names</label>
                   <div class="col-sm-9">
-                    <input type="text" value= "{{$player ->firstName}}" class="form-control" id="otherNames" name="otherNames" placeholder="Other Names">
+                    <input type="text" value= "{{$player ->firstName}}" class="form-control" id="firstName" name="firstName" placeholder="Otherfisrt Names">
+                  </div></div>
+                  <div class="form-group">
+                  <label for="inputotherName" class="col-sm-3 control-label">Use Names</label>
+                  <div class="col-sm-9">
+                    <input type="text"  value= "{{$player ->useName}}" class="form-control" id="useName" name="useName" placeholder="useName">
                   </div></div>
                   <div class="form-group">
                 <label for="inputLastName" class="col-sm-3 control-label">Date of Birth</label>
@@ -77,14 +82,7 @@
                  <input type="email" class="form-control"  id="Email" placeholder="Email address">
                   </div>
                   </div>
-                  <div class="form-group">
-                  <label for="inputPicture" class="col-sm-3 control-label">Image</label>
-                   <div class="col-sm-9">
-                 <input type="file" id="image" name="image" value="image" accept="image/*">
-                 <img id="image" style="width:70px;height:70px"; />
-
-                 </div>
-                 </div>
+                  
                 </div>
                 </div>
                 </div>
@@ -95,6 +93,13 @@
                  <div class="box-header with-border">
 
                 <label>Player Details</label><br><br>
+                <div class="form-group">
+                  <label for="inputPicture" class="col-sm-3 control-label">Image</label>
+                   <div class="col-sm-9">
+                 <input type="file" id="image" name="image" value="image" accept="image/*">
+                 <img id="image" style="width:70px;height:70px"; />
+                 </div>
+                 </div>
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-3 control-label">Height</label>
                   <div class="col-sm-9">
